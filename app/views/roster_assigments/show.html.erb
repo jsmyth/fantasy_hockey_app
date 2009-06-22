@@ -1,0 +1,24 @@
+<% title "Roster Assigment" %>
+
+<p>
+  <strong>Fanatsy Team:</strong>
+  <%=h @roster_assigment.fanatsy_team_id %>
+</p>
+<p>
+  <strong>Player:</strong>
+  <%=h @roster_assigment.player_id %>
+</p>
+<p>
+  <strong>Injured Reserve:</strong>
+  <%=h @roster_assigment.injured_reserve %>
+</p>
+<p>
+  <strong>Minor League:</strong>
+  <%=h @roster_assigment.minor_league %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_roster_assigment_path(@roster_assigment) %> |
+  <%= link_to "Destroy", @roster_assigment, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", roster_assigments_path %>
+</p>

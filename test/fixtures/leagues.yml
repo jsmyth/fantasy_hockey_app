@@ -1,0 +1,11 @@
+one:
+  name: MyString
+  max_roster_size: 1
+  trade_deadline: 2009-06-22
+  playoffs_start_on: 2009-06-22
+
+two:
+  name: MyString
+  max_roster_size: 1
+  trade_deadline: 2009-06-22
+  playoffs_start_on: 2009-06-22

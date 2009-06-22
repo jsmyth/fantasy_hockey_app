@@ -1,0 +1,20 @@
+<% form_for @league do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :max_roster_size %><br />
+    <%= f.text_field :max_roster_size %>
+  </p>
+  <p>
+    <%= f.label :trade_deadline %><br />
+    <%= f.date_select :trade_deadline %>
+  </p>
+  <p>
+    <%= f.label :playoffs_start_on %><br />
+    <%= f.date_select :playoffs_start_on %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

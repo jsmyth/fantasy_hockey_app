@@ -1,4 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :players
+
+  map.resources :fantsay_teams
+
+  map.resources :leagues
+
+  map.resources :roster_assigments
+
+  map.resources :stats
+
+  map.resources :games
+
   map.root :controller => 'site'
 
   map.resource  :user_session

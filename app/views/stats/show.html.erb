@@ -1,0 +1,200 @@
+<% title "Stat" %>
+
+<p>
+  <strong>Game:</strong>
+  <%=h @stat.game_id %>
+</p>
+<p>
+  <strong>Player:</strong>
+  <%=h @stat.player_id %>
+</p>
+<p>
+  <strong>Games Played:</strong>
+  <%=h @stat.games_played %>
+</p>
+<p>
+  <strong>Goals:</strong>
+  <%=h @stat.goals %>
+</p>
+<p>
+  <strong>Assists:</strong>
+  <%=h @stat.assists %>
+</p>
+<p>
+  <strong>Points:</strong>
+  <%=h @stat.points %>
+</p>
+<p>
+  <strong>Hat Tricks:</strong>
+  <%=h @stat.hat_tricks %>
+</p>
+<p>
+  <strong>Plus Minus:</strong>
+  <%=h @stat.plus_minus %>
+</p>
+<p>
+  <strong>Shots:</strong>
+  <%=h @stat.shots %>
+</p>
+<p>
+  <strong>Penalties:</strong>
+  <%=h @stat.penalties %>
+</p>
+<p>
+  <strong>Penalty Minutes:</strong>
+  <%=h @stat.penalty_minutes %>
+</p>
+<p>
+  <strong>Powerplay Goals:</strong>
+  <%=h @stat.powerplay_goals %>
+</p>
+<p>
+  <strong>Powerplay Assists:</strong>
+  <%=h @stat.powerplay_assists %>
+</p>
+<p>
+  <strong>Powerplay Points:</strong>
+  <%=h @stat.powerplay_points %>
+</p>
+<p>
+  <strong>Shorthanded Goals:</strong>
+  <%=h @stat.shorthanded_goals %>
+</p>
+<p>
+  <strong>Shorthanded Assists:</strong>
+  <%=h @stat.shorthanded_assists %>
+</p>
+<p>
+  <strong>Shorthanded Points:</strong>
+  <%=h @stat.shorthanded_points %>
+</p>
+<p>
+  <strong>Game Winning Goals:</strong>
+  <%=h @stat.game_winning_goals %>
+</p>
+<p>
+  <strong>Game Tying Goals:</strong>
+  <%=h @stat.game_tying_goals %>
+</p>
+<p>
+  <strong>Hits:</strong>
+  <%=h @stat.hits %>
+</p>
+<p>
+  <strong>Faceoffs:</strong>
+  <%=h @stat.faceoffs %>
+</p>
+<p>
+  <strong>Faceoff Wins:</strong>
+  <%=h @stat.faceoff_wins %>
+</p>
+<p>
+  <strong>Faceoff Losses:</strong>
+  <%=h @stat.faceoff_losses %>
+</p>
+<p>
+  <strong>Shootout Attempts:</strong>
+  <%=h @stat.shootout_attempts %>
+</p>
+<p>
+  <strong>Shootout Misses:</strong>
+  <%=h @stat.shootout_misses %>
+</p>
+<p>
+  <strong>Shootout Goals:</strong>
+  <%=h @stat.shootout_goals %>
+</p>
+<p>
+  <strong>Wins:</strong>
+  <%=h @stat.wins %>
+</p>
+<p>
+  <strong>Losses:</strong>
+  <%=h @stat.losses %>
+</p>
+<p>
+  <strong>Overtime Wins:</strong>
+  <%=h @stat.overtime_wins %>
+</p>
+<p>
+  <strong>Overtime Losses:</strong>
+  <%=h @stat.overtime_losses %>
+</p>
+<p>
+  <strong>Shootout Wins:</strong>
+  <%=h @stat.shootout_wins %>
+</p>
+<p>
+  <strong>Shootout Losses:</strong>
+  <%=h @stat.shootout_losses %>
+</p>
+<p>
+  <strong>Goals Against:</strong>
+  <%=h @stat.goals_against %>
+</p>
+<p>
+  <strong>Shots Against:</strong>
+  <%=h @stat.shots_against %>
+</p>
+<p>
+  <strong>Saves:</strong>
+  <%=h @stat.saves %>
+</p>
+<p>
+  <strong>Shutouts:</strong>
+  <%=h @stat.shutouts %>
+</p>
+<p>
+  <strong>Games Started:</strong>
+  <%=h @stat.games_started %>
+</p>
+<p>
+  <strong>Credit For Game:</strong>
+  <%=h @stat.credit_for_game %>
+</p>
+<p>
+  <strong>Shootout Defences:</strong>
+  <%=h @stat.shootout_defences %>
+</p>
+<p>
+  <strong>Shootout Saves:</strong>
+  <%=h @stat.shootout_saves %>
+</p>
+<p>
+  <strong>Minutes Played:</strong>
+  <%=h @stat.minutes_played %>
+</p>
+<p>
+  <strong>Shot Percentage:</strong>
+  <%=h @stat.shot_percentage %>
+</p>
+<p>
+  <strong>Faceoff Percentage:</strong>
+  <%=h @stat.faceoff_percentage %>
+</p>
+<p>
+  <strong>Shootout Goal Percentage:</strong>
+  <%=h @stat.shootout_goal_percentage %>
+</p>
+<p>
+  <strong>Goals Against Average:</strong>
+  <%=h @stat.goals_against_average %>
+</p>
+<p>
+  <strong>Save Percentage:</strong>
+  <%=h @stat.save_percentage %>
+</p>
+<p>
+  <strong>Shootout Save Percentage:</strong>
+  <%=h @stat.shootout_save_percentage %>
+</p>
+<p>
+  <strong>Shootout Goals Against:</strong>
+  <%=h @stat.shootout_goals_against %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_stat_path(@stat) %> |
+  <%= link_to "Destroy", @stat, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", stats_path %>
+</p>

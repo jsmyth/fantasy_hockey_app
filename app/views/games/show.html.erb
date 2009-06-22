@@ -1,0 +1,12 @@
+<% title "Game" %>
+
+<p>
+  <strong>Starts At:</strong>
+  <%=h @game.starts_at %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_game_path(@game) %> |
+  <%= link_to "Destroy", @game, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", games_path %>
+</p>

@@ -1,0 +1,24 @@
+<% title "League" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @league.name %>
+</p>
+<p>
+  <strong>Max Roster Size:</strong>
+  <%=h @league.max_roster_size %>
+</p>
+<p>
+  <strong>Trade Deadline:</strong>
+  <%=h @league.trade_deadline %>
+</p>
+<p>
+  <strong>Playoffs Start On:</strong>
+  <%=h @league.playoffs_start_on %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_league_path(@league) %> |
+  <%= link_to "Destroy", @league, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", leagues_path %>
+</p>

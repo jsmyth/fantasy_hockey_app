@@ -1,0 +1,11 @@
+one:
+  nhl_team_id: 1
+  beacon_id: 1
+  first_name: MyString
+  last_name: MyString
+
+two:
+  nhl_team_id: 1
+  beacon_id: 1
+  first_name: MyString
+  last_name: MyString

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  fantasy_team_id: 1
+  player_id: 1
+  game_id: 1
+
+two:
+  fantasy_team_id: 1
+  player_id: 1
+  game_id: 1

@@ -1,0 +1,23 @@
+<% title "Roster Assigments" %>
+
+<table>
+  <tr>
+    <th>Fanatsy Team</th>
+    <th>Player</th>
+    <th>Injured Reserve</th>
+    <th>Minor League</th>
+  </tr>
+  <% for roster_assigment in @roster_assigments %>
+    <tr>
+      <td><%=h roster_assigment.fanatsy_team_id %></td>
+      <td><%=h roster_assigment.player_id %></td>
+      <td><%=h roster_assigment.injured_reserve %></td>
+      <td><%=h roster_assigment.minor_league %></td>
+      <td><%= link_to "Show", roster_assigment %></td>
+      <td><%= link_to "Edit", edit_roster_assigment_path(roster_assigment) %></td>
+      <td><%= link_to "Destroy", roster_assigment, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Roster Assigment", new_roster_assigment_path %></p>

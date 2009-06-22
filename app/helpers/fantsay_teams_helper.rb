@@ -1,0 +1,2 @@
+module FantsayTeamsHelper
+end

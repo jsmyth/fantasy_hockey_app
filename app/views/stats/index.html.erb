@@ -1,0 +1,111 @@
+<% title "Stats" %>
+
+<table>
+  <tr>
+    <th>Game</th>
+    <th>Player</th>
+    <th>Games Played</th>
+    <th>Goals</th>
+    <th>Assists</th>
+    <th>Points</th>
+    <th>Hat Tricks</th>
+    <th>Plus Minus</th>
+    <th>Shots</th>
+    <th>Penalties</th>
+    <th>Penalty Minutes</th>
+    <th>Powerplay Goals</th>
+    <th>Powerplay Assists</th>
+    <th>Powerplay Points</th>
+    <th>Shorthanded Goals</th>
+    <th>Shorthanded Assists</th>
+    <th>Shorthanded Points</th>
+    <th>Game Winning Goals</th>
+    <th>Game Tying Goals</th>
+    <th>Hits</th>
+    <th>Faceoffs</th>
+    <th>Faceoff Wins</th>
+    <th>Faceoff Losses</th>
+    <th>Shootout Attempts</th>
+    <th>Shootout Misses</th>
+    <th>Shootout Goals</th>
+    <th>Wins</th>
+    <th>Losses</th>
+    <th>Overtime Wins</th>
+    <th>Overtime Losses</th>
+    <th>Shootout Wins</th>
+    <th>Shootout Losses</th>
+    <th>Goals Against</th>
+    <th>Shots Against</th>
+    <th>Saves</th>
+    <th>Shutouts</th>
+    <th>Games Started</th>
+    <th>Credit For Game</th>
+    <th>Shootout Defences</th>
+    <th>Shootout Saves</th>
+    <th>Minutes Played</th>
+    <th>Shot Percentage</th>
+    <th>Faceoff Percentage</th>
+    <th>Shootout Goal Percentage</th>
+    <th>Goals Against Average</th>
+    <th>Save Percentage</th>
+    <th>Shootout Save Percentage</th>
+    <th>Shootout Goals Against</th>
+  </tr>
+  <% for stat in @stats %>
+    <tr>
+      <td><%=h stat.game_id %></td>
+      <td><%=h stat.player_id %></td>
+      <td><%=h stat.games_played %></td>
+      <td><%=h stat.goals %></td>
+      <td><%=h stat.assists %></td>
+      <td><%=h stat.points %></td>
+      <td><%=h stat.hat_tricks %></td>
+      <td><%=h stat.plus_minus %></td>
+      <td><%=h stat.shots %></td>
+      <td><%=h stat.penalties %></td>
+      <td><%=h stat.penalty_minutes %></td>
+      <td><%=h stat.powerplay_goals %></td>
+      <td><%=h stat.powerplay_assists %></td>
+      <td><%=h stat.powerplay_points %></td>
+      <td><%=h stat.shorthanded_goals %></td>
+      <td><%=h stat.shorthanded_assists %></td>
+      <td><%=h stat.shorthanded_points %></td>
+      <td><%=h stat.game_winning_goals %></td>
+      <td><%=h stat.game_tying_goals %></td>
+      <td><%=h stat.hits %></td>
+      <td><%=h stat.faceoffs %></td>
+      <td><%=h stat.faceoff_wins %></td>
+      <td><%=h stat.faceoff_losses %></td>
+      <td><%=h stat.shootout_attempts %></td>
+      <td><%=h stat.shootout_misses %></td>
+      <td><%=h stat.shootout_goals %></td>
+      <td><%=h stat.wins %></td>
+      <td><%=h stat.losses %></td>
+      <td><%=h stat.overtime_wins %></td>
+      <td><%=h stat.overtime_losses %></td>
+      <td><%=h stat.shootout_wins %></td>
+      <td><%=h stat.shootout_losses %></td>
+      <td><%=h stat.goals_against %></td>
+      <td><%=h stat.shots_against %></td>
+      <td><%=h stat.saves %></td>
+      <td><%=h stat.shutouts %></td>
+      <td><%=h stat.games_started %></td>
+      <td><%=h stat.credit_for_game %></td>
+      <td><%=h stat.shootout_defences %></td>
+      <td><%=h stat.shootout_saves %></td>
+      <td><%=h stat.minutes_played %></td>
+      <td><%=h stat.shot_percentage %></td>
+      <td><%=h stat.faceoff_percentage %></td>
+      <td><%=h stat.shootout_goal_percentage %></td>
+      <td><%=h stat.goals_against_average %></td>
+      <td><%=h stat.save_percentage %></td>
+      <td><%=h stat.shootout_save_percentage %></td>
+      <td><%=h stat.shootout_goals_against %></td>
+      <td><%= link_to "Show", stat %></td>
+      <td><%= link_to "Edit", edit_stat_path(stat) %></td>
+      <td><%= link_to "Destroy", stat, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Stat", new_stat_path %></p>

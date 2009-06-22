@@ -1,0 +1,11 @@
+one:
+  fanatsy_team_id: 1
+  player_id: 1
+  injured_reserve: false
+  minor_league: false
+
+two:
+  fanatsy_team_id: 1
+  player_id: 1
+  injured_reserve: false
+  minor_league: false

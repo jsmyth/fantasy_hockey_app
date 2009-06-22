@@ -1,0 +1,16 @@
+<% form_for @fantsay_team do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :league_id %><br />
+    <%= f.text_field :league_id %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

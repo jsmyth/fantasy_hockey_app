@@ -1,0 +1,23 @@
+<% title "Leagues" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Max Roster Size</th>
+    <th>Trade Deadline</th>
+    <th>Playoffs Start On</th>
+  </tr>
+  <% for league in @leagues %>
+    <tr>
+      <td><%=h league.name %></td>
+      <td><%=h league.max_roster_size %></td>
+      <td><%=h league.trade_deadline %></td>
+      <td><%=h league.playoffs_start_on %></td>
+      <td><%= link_to "Show", league %></td>
+      <td><%= link_to "Edit", edit_league_path(league) %></td>
+      <td><%= link_to "Destroy", league, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New League", new_league_path %></p>

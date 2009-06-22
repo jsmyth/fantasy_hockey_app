@@ -1,0 +1,24 @@
+<% title "Player" %>
+
+<p>
+  <strong>Nhl Team:</strong>
+  <%=h @player.nhl_team_id %>
+</p>
+<p>
+  <strong>Beacon:</strong>
+  <%=h @player.beacon_id %>
+</p>
+<p>
+  <strong>First Name:</strong>
+  <%=h @player.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%=h @player.last_name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_player_path(@player) %> |
+  <%= link_to "Destroy", @player, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", players_path %>
+</p>

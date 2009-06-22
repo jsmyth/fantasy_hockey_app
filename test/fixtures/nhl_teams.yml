@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  city: MyString
+  abbreviation: MyString
+  beacon_id: 1
+
+two:
+  name: MyString
+  city: MyString
+  abbreviation: MyString
+  beacon_id: 1

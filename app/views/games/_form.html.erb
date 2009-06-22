@@ -1,0 +1,8 @@
+<% form_for @game do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :starts_at %><br />
+    <%= f.datetime_select :starts_at %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
