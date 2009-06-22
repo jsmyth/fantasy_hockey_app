@@ -1,0 +1,6 @@
+#edit-user.listing.container_16
+
+  %h3 Edit your Account
+    
+  - airbudd_form_for @user do |f|
+    = render :partial => "form", :locals => {:f => f}
