@@ -1,0 +1,17 @@
+=round-corners( !radius_tl = 1em, !radius_tr = !radius_tl, !radius_br = !radius_tl, !radius_bl = !radius_tr )
+  :-moz-border-radius
+    :topleft= !radius_tl
+    :topright= !radius_tr
+    :bottomleft= !radius_bl
+    :bottomright= !radius_br
+  :-webkit-border
+    :top
+      :left-radius= !radius_tl
+      :right-radius= !radius_tr
+    :bottom
+      :left-radius= !radius_bl
+      :right-radius= !radius_br
+  
+=wrap-words
+  :word-wrap break-word
+  :overflow-y hidden
