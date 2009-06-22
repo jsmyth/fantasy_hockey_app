@@ -1,0 +1,31 @@
+center:
+  name: "Center"
+  abbreviation: "C"
+  
+right_wing:
+  name: "Right Wing"
+  abbreviation: "RW"
+  
+left_wing:
+  name: "Left Wing"
+  abbreviation: "LW"
+  
+defense:
+  name: "Defense"
+  abbreviation: "D"
+  
+wing:
+  name: "Wing"
+  abbreviation: "W"
+  
+forward:
+  name: "Forward"
+  abbreviation: "F"
+  
+skater:
+  name: "Skater"
+  abbreviation: "S"
+  
+goalie:
+  name: "Goalie"
+  abbreviation: "G"

@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
   
   validates_presence_of :display_name, :on => :create, :message => "can't be blank"
   
+  has_many :fantasy_teams
+  has_many :role_assignments
+  has_many :roles, :through => :role_assignments
+  has_many :leagues, :through => :role_assignments
+  
   def self.[](login)
     first(:conditions => ["LOWER(users.login) = ?", login.downcase])
   end
