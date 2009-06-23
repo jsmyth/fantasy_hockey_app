@@ -3,4 +3,4 @@ log/*.log
 tmp/**/*
 db/*.sqlite3
 db/schema.rb
-scripts/*.xml
+db/import/*.xml

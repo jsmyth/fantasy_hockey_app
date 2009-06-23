@@ -4,9 +4,9 @@ namespace :db do
     require 'active_record/fixtures'
     Dir.glob(RAILS_ROOT + '/db/fixtures/seed/*.yml').each do |file|
       base_name = File.basename(file, '.*')
-      say "Loading #{base_name}..."
-      #Fixtures.create_fixtures('db/seed', base_name)
+      print "Loading #{base_name}..."
       Fixtures.create_fixtures('db/fixtures/seed', base_name)
+      puts "done!"
     end
   end
 
@@ -18,9 +18,10 @@ namespace :db do
     require 'active_record/fixtures'
     Dir.glob(RAILS_ROOT + '/db/fixtures/dev_data/*.yml').each do |file|
       base_name = File.basename(file, '.*')
-      say "Loading #{base_name}..."
+      print "Loading #{base_name}..."
       #Fixtures.create_fixtures('db/seed', base_name)
       Fixtures.create_fixtures('db/fixtures/dev_data', base_name)
+      puts "done!"
     end
   end
 
@@ -33,11 +34,12 @@ namespace :db do
     require 'rubygems'
     require 'hpricot'
 
-    xml_file = File.expand_path(File.dirname(__FILE__) + "/../../scripts") + "/PLAYER_STATS_OVERALL_TOTALS-NHL-20090412.xml"
+    xml_file = File.expand_path(File.dirname(__FILE__) + "/../../db/import") + "/PLAYER_STATS_OVERALL_TOTALS-NHL-20090412.xml"
     doc = Hpricot.XML(open(xml_file))
 
     SECTIONS = %w{ player team playerstats }
 
+    print "Loading players from #{xml_file}."
     (doc/:statsentry).each do |statsentry|
       p = Player.new
       (statsentry/:player).each do |player|
@@ -49,6 +51,7 @@ namespace :db do
         pos = Position.find_or_create_by_name position
         p.positions << pos
       end
+      print "Loading #{p.first_name} #{p.last_name} (#{p.positions.first.name})..."    
       p.save
   
       t = NhlTeam.new
@@ -60,6 +63,8 @@ namespace :db do
         #print ", #{beacon_id}, #{abbreviation} - #{city} #{name}"
       end
       t.players << p
+      
+      print "Loading #{t.city} #{t.name} (#{t.abbreviation})..."
       t.save
   
       s = Stat.new
