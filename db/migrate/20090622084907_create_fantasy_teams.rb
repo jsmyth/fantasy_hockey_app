@@ -1,6 +1,6 @@
-class CreateFantsayTeams < ActiveRecord::Migration
+class CreateFantasyTeams < ActiveRecord::Migration
   def self.up
-    create_table :fantsay_teams do |t|
+    create_table :fantasy_teams do |t|
       t.string :name
       t.integer :league_id
       t.integer :user_id
@@ -9,6 +9,6 @@ class CreateFantsayTeams < ActiveRecord::Migration
   end
   
   def self.down
-    drop_table :fantsay_teams
+    drop_table :fantasy_teams
   end
 end

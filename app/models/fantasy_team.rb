@@ -1,4 +1,4 @@
-class FantsayTeam < ActiveRecord::Base
+class FantasyTeam < ActiveRecord::Base
   belongs_to :user
   belongs_to :league
   

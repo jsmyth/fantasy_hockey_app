@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :players
 
-  map.resources :fantsay_teams
+  map.resources :fantasy_teams
 
   map.resources :leagues
 

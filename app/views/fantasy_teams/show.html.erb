@@ -1,0 +1,20 @@
+<% title "fantasy Team" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @fantasy_team.name %>
+</p>
+<p>
+  <strong>League:</strong>
+  <%=h @fantasy_team.league_id %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%=h @fantasy_team.user_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_fantasy_team_path(@fantasy_team) %> |
+  <%= link_to "Destroy", @fantasy_team, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", fantasy_teams_path %>
+</p>
