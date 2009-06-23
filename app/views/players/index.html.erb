@@ -2,17 +2,17 @@
 
 <table>
   <tr>
-    <th>Nhl Team</th>
-    <th>Beacon</th>
     <th>First Name</th>
     <th>Last Name</th>
+    <th>NHL Team</th>
+    <th>Positions</th>
   </tr>
   <% for player in @players %>
     <tr>
-      <td><%=h player.nhl_team_id %></td>
-      <td><%=h player.beacon_id %></td>
       <td><%=h player.first_name %></td>
       <td><%=h player.last_name %></td>
+      <td><%=h player.nhl_team_abbreviation %></td>
+      <td><%=h player.positions %></td>
       <td><%= link_to "Show", player %></td>
       <td><%= link_to "Edit", edit_player_path(player) %></td>
       <td><%= link_to "Destroy", player, :confirm => 'Are you sure?', :method => :delete %></td>

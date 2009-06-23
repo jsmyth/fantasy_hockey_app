@@ -4,6 +4,7 @@ class Player < ActiveRecord::Base
   belongs_to :nhl_team
   
   has_many :stats
+  has_many :games, :through => :stats
   has_many :roster_assignments
   has_many :fantasy_teams, :through => :roster_assignments
   has_many :starts
