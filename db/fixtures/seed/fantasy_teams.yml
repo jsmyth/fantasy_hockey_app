@@ -1,0 +1,35 @@
+shamrocks:
+  league_id: "1"
+  user_id: "1"
+  
+the_hammer:
+  league_id: "1"
+  user_id: "2"
+  
+toads:
+  league_id: "1"
+  user_id: "3"
+  
+the_bruce:
+  league_id: "2"
+  user_id: "4"
+  
+windy:
+  league_id: "2"
+  user_id: "5"
+  
+hook:
+  league_id: "2"
+  user_id: "6"
+  
+dirty:
+  league_id: "3"
+  user_id: "7"
+  
+zamboni:
+  league_id: "3"
+  user_id: "8"
+  
+watermelon:
+  league_id: "3"
+  user_id: "9"
