@@ -1,0 +1,19 @@
+pchl:
+  name: "PCHL"
+  max_roster_size: "8"
+  trade_deadline: "2010/02/14"
+  playoffs_start_on: "2010/03/15"
+  
+  
+test_league:
+  name: "Test League"
+  max_roster_size: "10"
+  trade_deadline: "2010/02/28"
+  playoffs_start_on: "2010/03/22"
+  
+  
+dev_league:
+  name: "Dev League"
+  max_roster_size: "12"
+  trade_deadline: "2010/02/07"
+  playoffs_start_on: "2010/03/08"

@@ -1,0 +1,69 @@
+pchl_centers:
+  league_id: "1"
+  position_id: "1"
+  quantity: "2"
+
+pchl_wings:
+  league_id: "1"
+  position_id: "5"
+  quantity: "4"
+
+pchl_defensemen:
+  league_id: "1"
+  position_id: "4"
+  quantity: "4"
+  
+pchl_skaters:
+  league_id: "1"
+  position_id: "7"
+  quantity: "1"
+  
+pchl_goalies:
+  league_id: "2"
+  position_id: "8"
+  quantity: "2"
+
+test_league_centers:
+  league_id: "2"
+  position_id: "1"
+  quantity: "3"
+
+test_league_wings:
+  league_id: "2"
+  position_id: "5"
+  quantity: "4"
+
+test_league_defensemen:
+  league_id: "2"
+  position_id: "4"
+  quantity: "4"
+  
+test_league_skaters:
+  league_id: "2"
+  position_id: "7"
+  quantity: "2"
+  
+test_league_goalies:
+  league_id: "2"
+  position_id: "8"
+  quantity: "2"
+
+dev_league_centers:
+  league_id: "3"
+  position_id: "1"
+  quantity: "3"
+
+dev_league_right_wings:
+  league_id: "3"
+  position_id: "2"
+  quantity: "3"
+    
+dev_league_left_wings:
+  league_id: "3"
+  position_id: "3"
+  quantity: "3"
+
+dev_league_defensemen:
+  league_id: "3"
+  position_id: "4"
+  quantity: "6"

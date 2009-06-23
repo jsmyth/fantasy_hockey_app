@@ -25,7 +25,7 @@ forward:
 skater:
   name: "Skater"
   abbreviation: "S"
-  
+
 goalie:
   name: "Goalie"
   abbreviation: "G"
