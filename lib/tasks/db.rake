@@ -19,7 +19,6 @@ namespace :db do
     Dir.glob(RAILS_ROOT + '/db/fixtures/dev_data/*.yml').each do |file|
       base_name = File.basename(file, '.*')
       print "Loading #{base_name}..."
-      #Fixtures.create_fixtures('db/seed', base_name)
       Fixtures.create_fixtures('db/fixtures/dev_data', base_name)
       puts "done!"
     end
@@ -39,7 +38,7 @@ namespace :db do
 
     SECTIONS = %w{ player team playerstats }
 
-    print "Loading players from #{xml_file}."
+    puts "Loading players from #{xml_file}."
     (doc/:statsentry).each do |statsentry|
       p = Player.new
       (statsentry/:player).each do |player|
@@ -51,7 +50,7 @@ namespace :db do
         pos = Position.find_or_create_by_name position
         p.positions << pos
       end
-      print "Loading #{p.first_name} #{p.last_name} (#{p.positions.first.name})..."    
+      puts "Loading #{p.first_name} #{p.last_name} (#{p.positions.first.name})."    
       p.save
   
       t = NhlTeam.new
@@ -64,7 +63,7 @@ namespace :db do
       end
       t.players << p
       
-      print "Loading #{t.city} #{t.name} (#{t.abbreviation})..."
+      puts "Loading #{t.city} #{t.name} (#{t.abbreviation})."
       t.save
   
       s = Stat.new
