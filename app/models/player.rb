@@ -11,4 +11,8 @@ class Player < ActiveRecord::Base
   has_many :position_assignments
   has_many :positions, :through => :position_assignments
   has_many :moves
+  
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

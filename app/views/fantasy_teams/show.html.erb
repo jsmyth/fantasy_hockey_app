@@ -4,8 +4,18 @@
   <strong>League:</strong>
   <%=h @fantasy_team.league.name %>
   <strong>User:</strong>
-  <%=h @fantasy_team.user_id %>
+  <%=h @fantasy_team.user.name %>
 </p>
+
+<p>
+  <strong>Skaters</strong>
+</p>
+<% @fantasy_team.players.each do |p| %>
+  <p>
+    <%= p.name %>
+  </p>
+<% end %>
+
 
 <p>
   <%= link_to "Edit", edit_fantasy_team_path(@fantasy_team) %> |

@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :role_assignments
   has_many :leagues, :through => :role_assignments
   
+  def name
+    display_name
+  end
+  
   def self.[](login)
     first(:conditions => ["LOWER(users.login) = ?", login.downcase])
   end
