@@ -1,151 +1,151 @@
 pchl_goals:
   stat_category_id: "4"
-  league_id: "1"
+  league_id: "142903258"
 
 pchl_assists:
   stat_category_id: "5"
-  league_id: "1"
+  league_id: "142903258"
 
 pchl_plus_minus:
   stat_category_id: "8"
-  league_id: "1"
+  league_id: "142903258"
   
 pchl_penalty_minutes:
   stat_category_id: "11"
-  league_id: "1"
+  league_id: "142903258"
   
 pchl_powerplay_points:
   stat_category_id: "14"
-  league_id: "1"
+  league_id: "142903258"
   
 pchl_shorthanded_points:
   stat_category_id: "17"
-  league_id: "1"
+  league_id: "142903258"
   
 pchl_hits:
   stat_category_id: "20"
-  league_id: "1"
+  league_id: "142903258"
   
 pchl_faceoff_wins:
   stat_category_id: "22"
-  league_id: "1"
+  league_id: "142903258"
   
 pchl_games_started:
   stat_category_id: "37"
-  league_id: "1"
+  league_id: "142903258"
   
 pchl_goals_against_average:
   stat_category_id: "45"
-  league_id: "1"
+  league_id: "142903258"
   
 pchl_save_percentage:
   stat_category_id: "46"
-  league_id: "1"
+  league_id: "142903258"
   
 test_league_goals:
   stat_category_id: "4"
-  league_id: "2"
+  league_id: "524934528"
 
 test_league_assists:
   stat_category_id: "5"
-  league_id: "2"
+  league_id: "524934528"
   
 test_league_points:
   stat_category_id: "6"
-  league_id: "2"
+  league_id: "524934528"
 
 test_league_hat_tricks:
   stat_category_id: "7"
-  league_id: "2"
+  league_id: "524934528"
 
 test_league_plus_minus:
   stat_category_id: "8"
-  league_id: "2"
+  league_id: "524934528"
   
 test_league_shots:
   stat_category_id: "9"
-  league_id: "2"
+  league_id: "524934528"
 
 test_league_penalty_minutes:
   stat_category_id: "11"
-  league_id: "2"
+  league_id: "524934528"
 
 test_league_powerplay_points:
   stat_category_id: "14"
-  league_id: "2"
+  league_id: "524934528"
 
 test_league_shorthanded_points:
   stat_category_id: "17"
-  league_id: "2"
+  league_id: "524934528"
   
 test_league_game_winning_goals:
   stat_category_id: "18"
-  league_id: "2"
+  league_id: "524934528"
 
 test_league_hits:
   stat_category_id: "20"
-  league_id: "2"
+  league_id: "524934528"
 
 test_league_faceoff_wins:
   stat_category_id: "22"
-  league_id: "2"
+  league_id: "524934528"
   
 test_league_shootout_goals:
   stat_category_id: "26"
-  league_id: "2"
+  league_id: "524934528"
   
 test_league_wins:
   stat_category_id: "27"
-  league_id: "2"
+  league_id: "524934528"
   
 test_league_losses:
   stat_category_id: "28"
-  league_id: "2"
+  league_id: "524934528"
   
 test_league_saves:
   stat_category_id: "35"
-  league_id: "2"
+  league_id: "524934528"
     
 test_league_shutouts:
   stat_category_id: "36"
-  league_id: "2"
+  league_id: "524934528"
 
 test_league_games_started:
   stat_category_id: "37"
-  league_id: "2"
+  league_id: "524934528"
 
 test_league_goals_against_average:
   stat_category_id: "45"
-  league_id: "2"
+  league_id: "524934528"
 
 test_league_save_percentage:
   stat_category_id: "46"
-  league_id: "2"
+  league_id: "524934528"
   
 dev_league_goals:
   stat_category_id: "4"
-  league_id: "3"
+  league_id: "802305331"
 
 dev_league_assists:
   stat_category_id: "5"
-  league_id: "3"
+  league_id: "802305331"
 
 dev_league_plus_minus:
   stat_category_id: "8"
-  league_id: "3"
+  league_id: "802305331"
   
 dev_league_penalty_minutes:
   stat_category_id: "11"
-  league_id: "3"
+  league_id: "802305331"
 
 dev_league_hits:
   stat_category_id: "20"
-  league_id: "3"
+  league_id: "802305331"
 
 dev_league_faceoff_wins:
   stat_category_id: "22"
-  league_id: "3"
+  league_id: "802305331"
     
 dev_league_faceoff_percentage:
   stat_category_id: "43"
-  league_id: "3"
+  league_id: "802305331"

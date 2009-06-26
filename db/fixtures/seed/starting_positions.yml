@@ -1,69 +1,69 @@
 pchl_centers:
-  league_id: "1"
-  position_id: "1"
+  league_id: "142903258"
+  position_id: "328454105"
   quantity: "2"
 
 pchl_wings:
-  league_id: "1"
-  position_id: "5"
+  league_id: "142903258"
+  position_id: "747377620"
   quantity: "4"
 
 pchl_defensemen:
-  league_id: "1"
-  position_id: "4"
+  league_id: "142903258"
+  position_id: "177578049"
   quantity: "4"
   
 pchl_skaters:
-  league_id: "1"
-  position_id: "7"
+  league_id: "142903258"
+  position_id: "905396670"
   quantity: "1"
   
 pchl_goalies:
-  league_id: "2"
-  position_id: "8"
+  league_id: "142903258"
+  position_id: "934623045"
   quantity: "2"
 
 test_league_centers:
-  league_id: "2"
-  position_id: "1"
+  league_id: "524934528"
+  position_id: "328454105"
   quantity: "3"
 
 test_league_wings:
-  league_id: "2"
-  position_id: "5"
+  league_id: "524934528"
+  position_id: "747377620"
   quantity: "4"
 
 test_league_defensemen:
-  league_id: "2"
-  position_id: "4"
+  league_id: "524934528"
+  position_id: "177578049"
   quantity: "4"
   
 test_league_skaters:
-  league_id: "2"
-  position_id: "7"
+  league_id: "524934528"
+  position_id: "905396670"
   quantity: "2"
   
 test_league_goalies:
-  league_id: "2"
-  position_id: "8"
+  league_id: "524934528"
+  position_id: "934623045"
   quantity: "2"
 
 dev_league_centers:
-  league_id: "3"
-  position_id: "1"
+  league_id: "802305331"
+  position_id: "328454105"
   quantity: "3"
 
 dev_league_right_wings:
-  league_id: "3"
-  position_id: "2"
+  league_id: "802305331"
+  position_id: "1016285676"
   quantity: "3"
     
 dev_league_left_wings:
-  league_id: "3"
-  position_id: "3"
+  league_id: "802305331"
+  position_id: "837829803"
   quantity: "3"
 
 dev_league_defensemen:
-  league_id: "3"
-  position_id: "4"
+  league_id: "802305331"
+  position_id: "177578049"
   quantity: "6"

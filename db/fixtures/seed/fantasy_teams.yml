@@ -1,44 +1,44 @@
 shamrocks:
   name: "Shamrocks"
-  league_id: "1"
-  user_id: "1"
+  league_id: "142903258"
+  user_id: "910189019"
   
 the_hammer:
   name: "theHammer"
-  league_id: "1"
-  user_id: "2"
+  league_id: "142903258"
+  user_id: "470119129"
   
 toads:
   name: "Toader McGhees"
-  league_id: "1"
-  user_id: "3"
+  league_id: "142903258"
+  user_id: "274350071"
   
 the_bruce:
   name: "Bruce B. Bruce"
-  league_id: "2"
-  user_id: "4"
+  league_id: "524934528"
+  user_id: "978752318"
   
 windy:
   name: "Nice and Clean"
-  league_id: "2"
-  user_id: "5"
+  league_id: "524934528"
+  user_id: "60983989"
   
 hook:
   name: "Each Day's a Gift"
-  league_id: "2"
-  user_id: "6"
+  league_id: "524934528"
+  user_id: "910594905"
   
 dirty:
   name: "Lone Star"
-  league_id: "3"
-  user_id: "7"
+  league_id: "802305331"
+  user_id: "343839479"
   
 zamboni:
   name: "Danimals"
-  league_id: "3"
-  user_id: "8"
+  league_id: "802305331"
+  user_id: "858529766"
   
 watermelon:
   name: "The Dude"
-  league_id: "3"
-  user_id: "9"
+  league_id: "802305331"
+  user_id: "422094564"

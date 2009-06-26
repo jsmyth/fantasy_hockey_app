@@ -1,14 +1,8 @@
-<% title "Fantasy Team" %>
+<% title @fantasy_team.name %>
 
 <p>
-  <strong>Team:</strong>
-  <%=h @fantasy_team.name %>
-</p>
-<p>
   <strong>League:</strong>
-  <%=h @fantasy_team.league_id %>
-</p>
-<p>
+  <%=h @fantasy_team.league.name %>
   <strong>User:</strong>
   <%=h @fantasy_team.user_id %>
 </p>
