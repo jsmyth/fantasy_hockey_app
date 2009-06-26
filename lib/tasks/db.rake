@@ -46,25 +46,26 @@ namespace :db do
         p.first_name = (player/'FirstName').inner_html
         p.last_name  = (player/'LastName').inner_html
         position   = (player/'Position').inner_html
-        #print "#{beacon_id}, #{first_name} #{last_name}, #{position}"
-        pos = Position.find_or_create_by_name position
+        pos = Position.find_or_create_by_abbreviation position
         p.positions << pos
       end
       puts "Loading #{p.first_name} #{p.last_name} (#{p.positions.first.name})."    
       p.save
   
-      t = NhlTeam.new
+      t = Hash.new
+
       (statsentry/:team).each do |team|
-        t.beacon_id    = (team/'ID').inner_html
-        t.city         = (team/'City').inner_html
-        t.name         = (team/'Name').inner_html
-        t.abbreviation = (team/'Abbreviation').inner_html
-        #print ", #{beacon_id}, #{abbreviation} - #{city} #{name}"
+        t["beacon_id"]    = (team/'ID').inner_html
+        t["city"]         = (team/'City').inner_html
+        t["name"]         = (team/'Name').inner_html
+        t["abbreviation"] = (team/'Abbreviation').inner_html
       end
-      t.players << p
       
-      puts "Loading #{t.city} #{t.name} (#{t.abbreviation})."
-      t.save
+      nhl_team = NhlTeam.find_by_beacon_id(t["beacon_id"]) || NhlTeam.create (t)
+
+      nhl_team.players << p
+      
+      puts "Loading #{nhl_team.city} #{nhl_team.name} (#{nhl_team.abbreviation})."
   
       s = Stat.new
       (statsentry/:playerstats).each do |playerstats|

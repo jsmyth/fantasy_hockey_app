@@ -1,35 +1,44 @@
 shamrocks:
+  name: "Shamrocks"
   league_id: "1"
   user_id: "1"
   
 the_hammer:
+  name: "theHammer"
   league_id: "1"
   user_id: "2"
   
 toads:
+  name: "Toader McGhees"
   league_id: "1"
   user_id: "3"
   
 the_bruce:
+  name: "Bruce B. Bruce"
   league_id: "2"
   user_id: "4"
   
 windy:
+  name: "Nice and Clean"
   league_id: "2"
   user_id: "5"
   
 hook:
+  name: "Each Day's a Gift"
   league_id: "2"
   user_id: "6"
   
 dirty:
+  name: "Lone Star"
   league_id: "3"
   user_id: "7"
   
 zamboni:
+  name: "Danimals"
   league_id: "3"
   user_id: "8"
   
 watermelon:
+  name: "The Dude"
   league_id: "3"
   user_id: "9"

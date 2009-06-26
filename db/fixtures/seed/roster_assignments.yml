@@ -1,0 +1,35 @@
+shamrocks_crosby:
+  player_id: "180"
+  fantasy_team_id: "905272390"
+  
+shamrocks_malkin:
+  player_id: "555"
+  fantasy_team_id: "905272390"
+  
+shamrocks_ryan:
+  player_id: "805"
+  fantasy_team_id: "905272390"
+  minor_league: "1"
+  
+shamrocks_okposo:
+  player_id: "669"
+  fantasy_team_id: "905272390"
+  minor_league: "1"
+  
+thehammer_toews:
+  player_id: "951"
+  fantasy_team_id: "793568281"
+
+thehammer_kane:
+  player_id: "427"
+  fantasy_team_id: "793568281"
+
+thehammer_stamkos:
+  player_id: "889"
+  fantasy_team_id: "793568281"
+  minor_league: "1"
+
+thehammer_filatov:
+  player_id: "254"
+  fantasy_team_id: "793568281"
+  minor_league: "1"
