@@ -18,7 +18,7 @@ class Player < ActiveRecord::Base
   
   named_scope :goalies,
               :include => :positions, 
-              :conditions => [ 'positions.name = ?', 'Goalie' ]
+              :conditions => { 'positions.name' => 'Goalie' }
   
   def name
     "#{first_name} #{last_name}"
