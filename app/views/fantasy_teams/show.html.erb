@@ -7,15 +7,35 @@
   <%=h @fantasy_team.user.name %>
 </p>
 
-<p>
-  <strong>Skaters</strong>
-</p>
-<% @fantasy_team.players.each do |p| %>
-  <p>
-    <%= p.name %>
-  </p>
+<table>
+  <tr>
+    <th>NHL Skater</th>
+  </tr>
+<% @fantasy_team.nhl_skaters.each do |p| %>
+  <tr>
+    <td><%= p.name%></td>
+  </tr>
 <% end %>
+</table>
 
+<table>
+	<tr>
+		<th>NHL Goalie</th>
+	</tr>
+	<tr>
+	</tr>
+</table>
+
+<table>
+  <tr>
+    <th>Minor Leaguers</th>
+  </tr>
+<% @fantasy_team.minor_leaguers.each do |m| %>
+  <tr>
+    <td><%= m.name%></td>
+  </tr>
+<% end %>
+</table>
 
 <p>
   <%= link_to "Edit", edit_fantasy_team_path(@fantasy_team) %> |

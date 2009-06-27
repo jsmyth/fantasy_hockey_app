@@ -6,6 +6,10 @@ shamrocks_malkin:
   player_id: "555"
   fantasy_team_id: "905272390"
   
+shamrocks_miller:
+  player_id: "605"
+  fantasy_team_id: "905272390"
+  
 shamrocks_ryan:
   player_id: "805"
   fantasy_team_id: "905272390"
