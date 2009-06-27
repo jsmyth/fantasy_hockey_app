@@ -10,7 +10,7 @@ class FantasyTeam < ActiveRecord::Base
     self.roster_assignments.find(:all, :conditions => {:minor_league => 1}).collect {|ra| ra.player}
   end
   
-  def nhl_skaters
+  def nhl_players
     self.roster_assignments.find(:all, :conditions => {:minor_league => nil}).collect {|ra| ra.player}
   end
 end

@@ -12,6 +12,14 @@ class Player < ActiveRecord::Base
   has_many :positions, :through => :position_assignments
   has_many :moves
   
+  named_scope :skaters,
+              :include => :positions, 
+              :conditions => [ 'positions.name = ? OR positions.name = ? OR positions.name = ? OR positions.name = ? OR positions.name = ? OR positions.name = ? OR positions.name = ?', 'Center', 'Wing', 'Forward', 'Skater', 'Left Wing', 'Right Wing', 'Defense' ]
+  
+  named_scope :goalies,
+              :include => :positions, 
+              :conditions => [ 'positions.name = ?', 'Goalie' ]
+  
   def name
     "#{first_name} #{last_name}"
   end
