@@ -14,7 +14,7 @@ class Player < ActiveRecord::Base
   
   named_scope :skaters,
               :include => :positions, 
-              :conditions => [ 'positions.name = ? OR positions.name = ? OR positions.name = ? OR positions.name = ? OR positions.name = ? OR positions.name = ? OR positions.name = ?', 'Center', 'Wing', 'Forward', 'Skater', 'Left Wing', 'Right Wing', 'Defense' ]
+              :conditions => [ 'positions.name != ?', 'Goalie' ]
   
   named_scope :goalies,
               :include => :positions, 
