@@ -20,6 +20,15 @@ class Player < ActiveRecord::Base
               :include => :positions, 
               :conditions => { 'positions.name' => 'Goalie' }
   
+  
+  def self.unavailable_in_league(league_name)
+    Player.find(:all, :include => [:fantasy_teams => :league] , :conditions => {'leagues.name' => league_name})
+  end
+
+  def self.available_in_league(league_name)
+    Player.find(:all, :include => [:fantasy_teams => :league] , :conditions => ["leagues.name IS NULL OR leagues.name != ?", league_name])
+  end
+  
   def name
     "#{first_name} #{last_name}"
   end

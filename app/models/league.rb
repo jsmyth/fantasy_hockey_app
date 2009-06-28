@@ -7,4 +7,8 @@ class League < ActiveRecord::Base
   has_many :users, :through => :role_assignments
   has_many :starting_positions
   has_many :positions, :through => :starting_positions
+  
+  def assigned_players
+    self.fantasy_teams.collect{|f_t| f_t.players}
+  end
 end
