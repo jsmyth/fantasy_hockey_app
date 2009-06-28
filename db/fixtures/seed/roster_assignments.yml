@@ -37,3 +37,36 @@ thehammer_filatov:
   player_id: "254"
   fantasy_team_id: "793568281"
   minor_league: "1"
+  
+bruce_richards:
+  player_id: "782"
+  fantasy_team_id: "257834868"
+
+bruce_carter:
+  player_id: "136"
+  fantasy_team_id: "257834868"
+
+windy_thornton:
+  player_id: "944"
+  fantasy_team_id: "575643997"
+
+windy_cheechoo:
+  player_id: "140"
+  fantasy_team_id: "575643997"
+
+dirty_kovalchuk:
+  player_id: "464"
+  fantasy_team_id: "722895573"
+
+dirty_luongo:
+  player_id: "537"
+  fantasy_team_id: "722895573"
+
+dude_lecavalier:
+  player_id: "501"
+  fantasy_team_id: "748268956"
+
+dude_wheeler:
+  player_id: "1011"
+  fantasy_team_id: "748268956"
+  minor_league: "1"
