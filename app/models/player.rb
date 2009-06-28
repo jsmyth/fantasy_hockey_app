@@ -26,19 +26,19 @@ class Player < ActiveRecord::Base
   
   named_scope :centers,
               :include => :positions, 
-              :conditions => [ 'positions.name = ?', 'Center' ]
+              :conditions => { 'positions.name' => 'Center' }
             
   named_scope :right_wings,
               :include => :positions, 
-              :conditions => [ 'positions.name = ?', 'Right Wing' ]
+              :conditions => { 'positions.name' => 'Right Wing' }
   
   named_scope :left_wings,
               :include => :positions, 
-              :conditions => [ 'positions.name = ?', 'Left Wing' ]
+              :conditions => { 'positions.name' => 'Left Wing' }
   
   named_scope :defensemen,
               :include => :positions, 
-              :conditions => [ 'positions.name = ?', 'Defense' ]  
+              :conditions => { 'positions.name' => 'Defense' }
   
   named_scope :goalies,
               :include => :positions, 
