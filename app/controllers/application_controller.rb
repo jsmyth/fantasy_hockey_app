@@ -6,12 +6,18 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   before_filter :require_user
+  before_filter :set_current_league
   filter_parameter_logging :password
 
   helper_method :current_user
 
   private
 
+  def set_current_league
+    @current_league = League.find_by_subdomain!("pchl")
+#    @current_league = League.find_by_subdomain!(request.subdomains.first)
+  end
+  
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find

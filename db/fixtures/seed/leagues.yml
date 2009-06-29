@@ -3,6 +3,7 @@ pchl:
   max_roster_size: "8"
   trade_deadline: "2010/02/14"
   playoffs_start_on: "2010/03/15"
+  subdomain: "pchl"
   
   
 test_league:
@@ -10,6 +11,7 @@ test_league:
   max_roster_size: "10"
   trade_deadline: "2010/02/28"
   playoffs_start_on: "2010/03/22"
+  subdomain: "test"
   
   
 dev_league:
@@ -17,3 +19,4 @@ dev_league:
   max_roster_size: "12"
   trade_deadline: "2010/02/07"
   playoffs_start_on: "2010/03/08"
+  subdomain: "dev"
