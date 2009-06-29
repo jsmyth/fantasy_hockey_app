@@ -20,7 +20,7 @@
 	<strong>Free Agents</strong>
 	<br/>
 	<% @available_players.each do |p| %>
-	  <%= link_to "+", new_roster_assignment_path(p) %>
+	  <%= link_to "+", :controller => 'roster_assignments', :action => 'create', :id => p.id %>
 	  <%= link_to p.name, p %>
 	  <%= p.nhl_team.abbreviation %>
 	  <%= p.positions.collect{|pos| pos.abbreviation} %>

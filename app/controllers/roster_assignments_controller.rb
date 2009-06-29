@@ -8,24 +8,24 @@ class RosterAssignmentsController < ApplicationController
   end
   
   def new
-    @player = Player.find(params[:format])
+    @roster_assignment = RosterAssignment.new
+  end
+  
+  def create
+    @player = Player.find(params[:id])
     
     @fantasy_team = FantasyTeam.find(:all, :include => [ :league, :user], :conditions => { 'leagues.id' => @current_league, 'users.id' => current_user } ).last
     @roster_assignment = RosterAssignment.new
     @roster_assignment.player = @player
     @roster_assignment.fantasy_team = @fantasy_team
-    @roster_assignment.save
     
-    redirect_to @current_league
-  end
-  
-  def create
-    @roster_assignment = RosterAssignment.new(params[:roster_assignment])
+    
     if @roster_assignment.save
       flash[:notice] = "Successfully created rosterassignment."
-      redirect_to @roster_assignment
+      redirect_to @fantasy_team
     else
-      render :action => 'new'
+      flash[:error] = "Can't assign that player to your team."
+      redirect_to @current_league
     end
   end
   
