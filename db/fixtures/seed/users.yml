@@ -1,26 +1,62 @@
 jim:
-  display_name: "Jim"
+  display_name: "Jim Smyth"
+  crypted_password: "029b4c4cdadc894072de796c460cb7df92b2ac5f2be97975fb494ff68d3c31ef921262b1df08ed12795b90d7bc68a12298f017651662b1764670ae453c885769"
+  password_salt: "xt6CDurjZKY-6i14JX8N"
+  slug: "jim-smyth"
+  login: "jim"
 
 jeremy:
-  display_name: "Jeremy"
+  display_name: "Jeremy Pruitt"
+  crypted_password: "029b4c4cdadc894072de796c460cb7df92b2ac5f2be97975fb494ff68d3c31ef921262b1df08ed12795b90d7bc68a12298f017651662b1764670ae453c885769"
+  password_salt: "xt6CDurjZKY-6i14JX8N"
+  slug: "jeremy-pruitt"
+  login: "jeremy"
 
 erik:
-  display_name: "Erik"
+  display_name: "Erik Westrup"
+  crypted_password: "029b4c4cdadc894072de796c460cb7df92b2ac5f2be97975fb494ff68d3c31ef921262b1df08ed12795b90d7bc68a12298f017651662b1764670ae453c885769"
+  password_salt: "xt6CDurjZKY-6i14JX8N"
+  slug: "erik-westrup"
+  login: "erik"
 
 rob:
-  display_name: "Rob"
+  display_name: "Rob Bell"
+  crypted_password: "029b4c4cdadc894072de796c460cb7df92b2ac5f2be97975fb494ff68d3c31ef921262b1df08ed12795b90d7bc68a12298f017651662b1764670ae453c885769"
+  password_salt: "xt6CDurjZKY-6i14JX8N"
+  slug:rob-bell
+  login: "rob"
 
 mike:
-  display_name: "Mike"
+  display_name: "Mike Rezek"
+  crypted_password: "029b4c4cdadc894072de796c460cb7df92b2ac5f2be97975fb494ff68d3c31ef921262b1df08ed12795b90d7bc68a12298f017651662b1764670ae453c885769"
+  password_salt: "xt6CDurjZKY-6i14JX8N"
+  slug: "mike-rezek"
+  login: "mike"
 
 joe:
-  display_name: "Joe"
+  display_name: "Joe Scalisi"
+  crypted_password: "029b4c4cdadc894072de796c460cb7df92b2ac5f2be97975fb494ff68d3c31ef921262b1df08ed12795b90d7bc68a12298f017651662b1764670ae453c885769"
+  password_salt: "xt6CDurjZKY-6i14JX8N"
+  slug: "joe-scalisi"
+  login: "joe"
 
 rich:
-  display_name: "Rich"
+  display_name: "Rich Brown"
+  crypted_password: "029b4c4cdadc894072de796c460cb7df92b2ac5f2be97975fb494ff68d3c31ef921262b1df08ed12795b90d7bc68a12298f017651662b1764670ae453c885769"
+  password_salt: "xt6CDurjZKY-6i14JX8N"
+  slug: "rich-brown"
+  login: "rich"
 
 dan:
-  display_name: "Dan"
+  display_name: "Dan Hagen"
+  crypted_password: "029b4c4cdadc894072de796c460cb7df92b2ac5f2be97975fb494ff68d3c31ef921262b1df08ed12795b90d7bc68a12298f017651662b1764670ae453c885769"
+  password_salt: "xt6CDurjZKY-6i14JX8N"
+  slug: "dan-hagen"
+  login: "dan"
 
 chris:
-  display_name: "Chris"
+  display_name: "Chris Gachowski"
+  crypted_password: "029b4c4cdadc894072de796c460cb7df92b2ac5f2be97975fb494ff68d3c31ef921262b1df08ed12795b90d7bc68a12298f017651662b1764670ae453c885769"
+  password_salt: "xt6CDurjZKY-6i14JX8N"
+  slug: "chris-gachowski"
+  login: "chris"  
