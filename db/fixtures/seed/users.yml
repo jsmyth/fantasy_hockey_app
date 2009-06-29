@@ -23,7 +23,7 @@ rob:
   display_name: "Rob Bell"
   crypted_password: "029b4c4cdadc894072de796c460cb7df92b2ac5f2be97975fb494ff68d3c31ef921262b1df08ed12795b90d7bc68a12298f017651662b1764670ae453c885769"
   password_salt: "xt6CDurjZKY-6i14JX8N"
-  slug:rob-bell
+  slug: "rob-bell"
   login: "rob"
 
 mike:
@@ -59,4 +59,4 @@ chris:
   crypted_password: "029b4c4cdadc894072de796c460cb7df92b2ac5f2be97975fb494ff68d3c31ef921262b1df08ed12795b90d7bc68a12298f017651662b1764670ae453c885769"
   password_salt: "xt6CDurjZKY-6i14JX8N"
   slug: "chris-gachowski"
-  login: "chris"  
+  login: "chris"
