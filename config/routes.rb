@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.login  "login",  :controller => "user_sessions", :action => "login"
+  map.login  "login",  :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
   
   map.resources :fantasy_teams
@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :games
 
-  map.root :controller => 'site'
+  map.root :controller => 'fantasy_teams', :action => 'show'
 
   map.resource  :user_session
 
