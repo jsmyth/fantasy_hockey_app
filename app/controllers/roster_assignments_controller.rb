@@ -44,9 +44,11 @@ class RosterAssignmentsController < ApplicationController
   end
   
   def destroy
-    @roster_assignment = RosterAssignment.find(params[:id])
+    @player = Player.find(params[:id])
+    @fantasy_team = FantasyTeam.find(:all, :include => [ :league, :user], :conditions => { 'leagues.id' => @current_league, 'users.id' => current_user } ).last
+    @roster_assignment = RosterAssignment.find(:all, :conditions => { :fantasy_team_id => @fantasy_team, :player_id => @player }).last
     @roster_assignment.destroy
-    flash[:notice] = "Successfully destroyed rosterassignment."
-    redirect_to roster_assignments_url
+    flash[:notice] = "Successfully removed #{@player.name}."
+    redirect_to fantasy_team_url @fantasy_team
   end
 end
