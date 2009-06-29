@@ -12,6 +12,7 @@ class LeaguesController < ApplicationController
       flash[:notice] = "We have no record of this league. Go ahead and create one now! :)"
       redirect_to new_league_team_url
     end
+    @available_players = Player.available_in_league(@league.name)
   end
   
   def new

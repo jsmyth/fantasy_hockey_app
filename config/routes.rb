@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :leagues
 
-  map.resources :roster_assigments
+  map.resources :roster_assignments
 
   map.resources :stats
 

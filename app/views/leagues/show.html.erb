@@ -1,17 +1,31 @@
-<% title "League" %>
-
+<% title @league.name %>
 <p>
-  <strong>Name:</strong>
-  <%=h @league.name %>
-</p>
-<p>
-  <strong>Max Roster Size:</strong>
-  <%=h @league.max_roster_size %>
   <strong>Trade Deadline:</strong>
   <%=h @league.trade_deadline %>
+<br/>
   <strong>Playoffs Start On:</strong>
   <%=h @league.playoffs_start_on %>
 </p>
+
+<p>
+	<strong>Teams</strong>
+	<br/>
+	<% @league.fantasy_teams.each do |f| %>
+	  <%= link_to f.name, f %>
+	  <br/>
+	<% end %>
+</p>
+
+<p>
+	<strong>Free Agents</strong>
+	<br/>
+	<% @available_players.each do |p| %>
+	  <%= link_to "+", new_roster_assignment_path(p) %>
+	  <%= link_to p.name, p %>
+	  <%= p.nhl_team.abbreviation %>
+	  <%= p.positions.collect{|pos| pos.abbreviation} %>
+	  <br/>
+	<% end %>
 
 <p>
   <%= link_to "Edit", edit_league_path(@league) %> |

@@ -13,7 +13,7 @@
   </tr>
 <% @fantasy_team.nhl_players.each do |p| %>
   <tr>
-    <td><%= p.name%></td>
+    <td><%= p.name rescue nil %></td>
   </tr>
 <% end %>
 </table>

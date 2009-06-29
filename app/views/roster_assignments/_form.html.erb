@@ -1,0 +1,20 @@
+<% form_for @roster_assignment do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :fanatsy_team_id %><br />
+    <%= f.text_field :fanatsy_team_id %>
+  </p>
+  <p>
+    <%= f.label :player_id %><br />
+    <%= f.text_field :player_id %>
+  </p>
+  <p>
+    <%= f.label :injured_reserve %><br />
+    <%= f.check_box :injured_reserve %>
+  </p>
+  <p>
+    <%= f.label :minor_league %><br />
+    <%= f.check_box :minor_league %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
