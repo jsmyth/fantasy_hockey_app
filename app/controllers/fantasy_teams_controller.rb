@@ -4,14 +4,7 @@ class FantasyTeamsController < ApplicationController
   end
   
   def show
-    if params[:id]
-      @fantasy_team = FantasyTeam.find(params[:id])      
-    elsif first_fantasy_team = current_user.fantasy_teams.first
-      @fantasy_team = first_fantasy_team
-    else
-      flash[:notice] = "Looks like you don't have any fantasy teams. Go ahead and create one now! :)"
-      redirect_to new_fantasy_team_url
-    end
+    @fantasy_team = FantasyTeam.find(params[:id])
   end
   
   def new

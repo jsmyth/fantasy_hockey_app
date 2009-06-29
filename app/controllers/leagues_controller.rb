@@ -4,7 +4,14 @@ class LeaguesController < ApplicationController
   end
   
   def show
-    @league = League.find(params[:id])
+    if params[:id]
+      @league = League.find(params[:id])      
+    elsif @current_league
+      @league = @current_league
+    else
+      flash[:notice] = "We have no record of this league. Go ahead and create one now! :)"
+      redirect_to new_league_team_url
+    end
   end
   
   def new

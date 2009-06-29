@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :games
 
-  map.root :controller => 'fantasy_teams', :action => 'show'
+  map.root :controller => 'leagues', :action => 'show'
 
   map.resource  :user_session
 
