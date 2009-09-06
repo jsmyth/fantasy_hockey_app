@@ -15,6 +15,7 @@ Rails::Initializer.run do |config|
   config.gem 'chriseppstein-compass', :lib => 'compass', :version => '>= 0.6.6'
   config.gem 'haml-edge', :lib => 'haml', :version => '>= 2.1.3'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com', :version => '>= 2.2.3'
+  config.gem "josevalim-inherited_resources", :lib => "inherited_resources", :version => "0.9.0", :source => "http://gems.github.com"
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
