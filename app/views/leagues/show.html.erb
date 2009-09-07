@@ -10,9 +10,23 @@
 <p>
 	<strong>Teams</strong>
 	<br/>
-	<% @league.fantasy_teams.each do |f| %>
+	<% @teams.each do |f| %>
 	  <%= link_to f.name, f %>
 	  <br/>
+	<% end %>
+</p>
+
+<p>
+	<strong>Matchups</strong>
+	<br/>
+	<% @all_matchups.each_with_index do |weekly_matchups,i| %>
+	  Week #<%= i + 1 %>
+	  <br />
+	  <% weekly_matchups.each do |home| %>
+  	  -> <%= home.name %>
+  	  <br/>
+	  <% end %>
+  <br/>
 	<% end %>
 </p>
 

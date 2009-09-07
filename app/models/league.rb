@@ -11,4 +11,29 @@ class League < ActiveRecord::Base
   def assigned_players
     self.fantasy_teams.collect{|f_t| f_t.players}
   end
+  
+  def matchups
+    all_matchups = Array.new
+    
+    fantasy_teams.count.times do |week_number|
+      all_matchups.push matchup_for_week(week_number)
+    end
+    
+    return all_matchups
+  end
+
+  private
+  
+  def matchup_for_week(week_number)
+    teams = fantasy_teams.to_a.dup
+    week_number.times do
+      teams << teams.slice!(1)
+    end
+    matchups = Array.new
+    (teams.count / 2).times do
+      matchups << teams.shift
+      matchups << teams.pop
+    end
+    matchups
+  end
 end

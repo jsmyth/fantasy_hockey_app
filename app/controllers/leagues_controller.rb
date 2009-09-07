@@ -1,4 +1,14 @@
+class Array
+  # Converts [[k1,v1],[k2,v2]] into {k1 => v1, k2 => v2}
+  # The opposite of Hash#to_a
+  def to_h
+    a = dup
+    a << nil if a.size % 2 == 1
+    Hash[*a]
+  end
+end
 class LeaguesController < ApplicationController
+  
   def index
     @leagues = League.all
   end
@@ -12,6 +22,10 @@ class LeaguesController < ApplicationController
       flash[:notice] = "We have no record of this league. Go ahead and create one now! :)"
       redirect_to new_league_team_url
     end
+    
+    @teams = @league.fantasy_teams
+    @all_matchups = @league.matchups
+    
     @available_players = Player.available_in_league(@league.name)
   end
   
