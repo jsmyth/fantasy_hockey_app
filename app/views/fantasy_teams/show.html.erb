@@ -14,7 +14,7 @@
 <% @fantasy_team.nhl_players.each do |p| %>
   <tr>
     <td>
-      <%= p.name rescue nil %>
+      <%= link_to p.name, p rescue nil %>
       <%= link_to "-", {:controller => 'roster_assignments', :action => 'destroy', :id => p.id}, :method => :delete %>
   	</td>
   </tr>
@@ -34,7 +34,7 @@
 <% @fantasy_team.minor_leaguers.each do |m| %>
   <tr>
     <td>
-      <%= m.name%>
+      <%= link_to m.name, m %>
       <%= link_to "-", {:controller => 'roster_assignments', :action => 'destroy', :id => m.id}, :method => :delete %>
     </td>
   </tr>
