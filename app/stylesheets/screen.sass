@@ -1,2 +1,42 @@
-@import compass/utilities.sass
-@import util.sass
+@import blueprint/screen.sass
+@import blueprint/modules/scaffolding.sass
+@import compass/reset.sass, compass/utilities.sass, compass/misc.sass
+@import blueprint/modules/debug.sass
+
+!background_color = #eee
+!dark_background_color = !background_color - #222
+
+=bordered(!width = 2px)
+  border= !width "solid" #777
+  a
+    text-decoration: none
+    border= round(!width / 2) "solid" #eee
+
++blueprint-typography
++blueprint-debug
++blueprint-scaffolding
+
+#container
+  +container
+  +showgrid
+  a
+    +hover-link
+
+
+#header
+  +column(24)
+  position: relative
+  #account_navigation
+    +horizontal-list
+    position: absolute
+    top: 1em
+    right: 0px
+#content
+  +column(17)
+  #statistics
+    +column(17)
+#sidebar
+  +column(7, true)
+
+#unobtrusive
+  +unobtrusive-logo(2em)

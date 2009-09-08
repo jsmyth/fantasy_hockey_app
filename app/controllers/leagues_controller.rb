@@ -63,4 +63,19 @@ class LeaguesController < ApplicationController
     flash[:notice] = "Successfully destroyed league."
     redirect_to leagues_url
   end
+  
+  def draft
+    if params[:id]
+      @league = League.find(params[:id])      
+    elsif @current_league
+      @league = @current_league
+    else
+      flash[:notice] = "We have no record of this league. Go ahead and create one now! :)"
+      redirect_to new_league_team_url
+    end
+    
+    @teams = @league.fantasy_teams
+    
+    @available_players = Player.available_in_league(@league.name)
+  end
 end

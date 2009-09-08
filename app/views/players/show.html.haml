@@ -1,0 +1,25 @@
+%br
+
+#player_picture
+  %img{:src => '/images/sidney_crosby.jpg', :alt => "Sidney Crosby", :class => "left"}
+
+
+#player_details
+  %h3.loud= @player.name + " (" + @player.positions.collect{|p| p.abbreviation}.join('/') + ")"
+  %strong NHL Team:
+  = @player.nhl_team.name
+  
+#clear_after
+
+= link_to 'Edit', edit_player_path(@player)
+|
+= link_to 'View All', players_path
+
+%hr
+
+#statistics.last
+  %h4.prepend-5 Statistics
+  %p
+    %a The statistics table should go here
+
+%hr

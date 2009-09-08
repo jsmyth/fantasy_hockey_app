@@ -1,0 +1,44 @@
+!!! XML
+!!!
+%html{ :lang => "en", 'xml:lang' => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{'http-equiv' => "Content-type", :content => "text/html;charset=UTF-8"}
+    %title= "Fantasy Hockey App - " + controller.action_name 
+    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'print.css', :media => 'print'
+    /[if IE]
+      = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+  %body{body_attributes}
+    #container
+      #header
+        %h1 Fantasy Hockey App
+        %ul#account_navigation
+          - if current_user
+            %li= link_to "Edit Profile", edit_user_path(:current)
+            %li= link_to "Logout", logout_path
+          - else
+            %li= link_to "Register", new_user_path
+            %li= link_to "Login", login_path
+
+      %hr
+
+      #content
+        = yield
+      #sidebar
+        #recent-activity
+          %h3.caps Recent Activity
+          .box
+            %a.quiet Foo
+          .box
+            %a.quiet Bar
+          .box
+            %a.quiet Blah
+        #recent-comments
+          %h3 Recent Comments
+          .box
+            %span.quiet Blah
+            .quiet Foo
+            .quiet Bar
+      %hr
+
+#unobtrusive

@@ -1,0 +1,27 @@
+- title @league.name
+
+%p
+  %strong Trade Deadline:
+  =h @league.trade_deadline
+%br
+  %strong Playoffs Start On:
+  =h @league.playoffs_start_on
+
+%p
+  %strong Teams
+  %br
+  - @teams.each do |f|
+    = link_to f.name, f
+    %br
+
+%p
+  %strong Draft Pool
+  %br
+  - @available_players.each do |p|
+    = link_to "+", :controller => 'roster_assignments', :action => 'create', :id => p.id
+    %a= p.name
+    = p.nhl_team.abbreviation
+    = p.positions.collect{|pos| pos.abbreviation}
+    %br
+
+%p= link_to "View All", leagues_path

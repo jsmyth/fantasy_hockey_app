@@ -22,8 +22,8 @@
 	<% @all_matchups.each_with_index do |weekly_matchups,i| %>
 	  Week #<%= i + 1 %>
 	  <br />
-	  <% weekly_matchups.each do |home| %>
-  	  -> <%= home.name %>
+	  <% weekly_matchups.to_h.each do |home,away| %>
+  	  <%= home.name %> vs <%= away.name %>
   	  <br/>
 	  <% end %>
   <br/>
