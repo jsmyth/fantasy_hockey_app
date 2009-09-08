@@ -6,3 +6,6 @@ drop:
   
 draft:
   name: "Draft"
+  
+trade:
+  name: "Trade"
