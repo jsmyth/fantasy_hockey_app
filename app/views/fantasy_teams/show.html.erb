@@ -2,7 +2,7 @@
 
 <p>
   <strong>League:</strong>
-  <%=h @fantasy_team.league.name %>
+  <%= link_to @fantasy_team.league.name, @fantasy_team.league %>
   <strong>User:</strong>
   <%=h @fantasy_team.user.name %>
 </p>
@@ -14,8 +14,8 @@
 <% @fantasy_team.nhl_players.each do |p| %>
   <tr>
     <td>
+      <%= link_to "-", {:controller => 'roster_assignments', :action => 'destroy', :id => p.id}, :method => :delete, :confirm => "Are you sure you want to remove #{p.name}" %>
       <%= link_to p.name, p rescue nil %>
-      <%= link_to "-", {:controller => 'roster_assignments', :action => 'destroy', :id => p.id}, :method => :delete %>
   	</td>
   </tr>
 <% end %>
@@ -25,6 +25,14 @@
 	<tr>
 		<th>NHL Goalie</th>
 	</tr>
+<% @fantasy_team.players.goalies.each do |p| %>
+  <tr>
+    <td>
+      <%= link_to "-", {:controller => 'roster_assignments', :action => 'destroy', :id => p.id}, :method => :delete, :confirm => "Are you sure you want to remove #{p.name}" %>
+      <%= link_to p.name, p rescue nil %>
+  	</td>
+  </tr>
+<% end %>
 </table>
 
 <table>
@@ -34,8 +42,8 @@
 <% @fantasy_team.minor_leaguers.each do |m| %>
   <tr>
     <td>
+      <%= link_to "-", {:controller => 'roster_assignments', :action => 'destroy', :id => m.id}, :method => :delete, :confirm => "Are you sure you want to remove #{m.name}" %>
       <%= link_to m.name, m %>
-      <%= link_to "-", {:controller => 'roster_assignments', :action => 'destroy', :id => m.id}, :method => :delete %>
     </td>
   </tr>
 <% end %>
@@ -43,6 +51,5 @@
 
 <p>
   <%= link_to "Edit", edit_fantasy_team_path(@fantasy_team) %> |
-  <%= link_to "Destroy", @fantasy_team, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", fantasy_teams_path %>
+  <%= link_to "Destroy", @fantasy_team, :confirm => 'Are you sure?', :method => :delete %>
 </p>
