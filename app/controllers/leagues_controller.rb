@@ -77,5 +77,6 @@ class LeaguesController < ApplicationController
     @teams = @league.fantasy_teams
     
     @available_players = Player.available_in_league(@league.name)
+    render :layout => "draft"
   end
 end
