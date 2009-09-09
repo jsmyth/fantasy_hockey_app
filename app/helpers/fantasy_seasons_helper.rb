@@ -1,0 +1,2 @@
+module FantasySeasonsHelper
+end

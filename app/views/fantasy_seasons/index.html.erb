@@ -1,0 +1,19 @@
+<% title "Fantasy Seasons" %>
+
+<table>
+  <tr>
+    <th>Nhl Season</th>
+    <th>League</th>
+  </tr>
+  <% for fantasy_season in @fantasy_seasons %>
+    <tr>
+      <td><%=h fantasy_season.nhl_season_id %></td>
+      <td><%=h fantasy_season.league_id %></td>
+      <td><%= link_to "Show", fantasy_season %></td>
+      <td><%= link_to "Edit", edit_fantasy_season_path(fantasy_season) %></td>
+      <td><%= link_to "Destroy", fantasy_season, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Fantasy Season", new_fantasy_season_path %></p>

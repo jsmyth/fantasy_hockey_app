@@ -1,0 +1,16 @@
+<% title "Fantasy Season" %>
+
+<p>
+  <strong>Nhl Season:</strong>
+  <%=h @fantasy_season.nhl_season_id %>
+</p>
+<p>
+  <strong>League:</strong>
+  <%=h @fantasy_season.league_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_fantasy_season_path(@fantasy_season) %> |
+  <%= link_to "Destroy", @fantasy_season, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", fantasy_seasons_path %>
+</p>

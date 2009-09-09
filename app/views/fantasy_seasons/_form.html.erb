@@ -1,0 +1,12 @@
+<% form_for @fantasy_season do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :nhl_season_id %><br />
+    <%= f.text_field :nhl_season_id %>
+  </p>
+  <p>
+    <%= f.label :league_id %><br />
+    <%= f.text_field :league_id %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
