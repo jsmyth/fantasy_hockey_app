@@ -1,6 +1,7 @@
 class League < ActiveRecord::Base
   has_and_belongs_to_many :stat_categories
   
+  has_many :fantasy_seasons
   has_many :fantasy_teams
   has_many :role_assignments
   has_many :roles, :through => :role_assignments

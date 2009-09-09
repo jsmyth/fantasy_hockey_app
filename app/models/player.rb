@@ -3,6 +3,7 @@ class Player < ActiveRecord::Base
   
   belongs_to :nhl_team
   
+  has_many :draft_picks
   has_many :stats
   has_many :games, :through => :stats
   has_many :roster_assignments
