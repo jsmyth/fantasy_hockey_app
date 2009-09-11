@@ -17,20 +17,6 @@
 </p>
 
 <p>
-	<strong>Matchups</strong>
-	<br/>
-	<% @all_matchups.each_with_index do |weekly_matchups,i| %>
-	  Week #<%= i + 1 %>
-	  <br />
-	  <% weekly_matchups.to_h.each do |home,away| %>
-  	  <%= home.name %> vs <%= away.name %>
-  	  <br/>
-	  <% end %>
-  <br/>
-	<% end %>
-</p>
-
-<p>
 	<strong>Free Agents</strong>
 	<br/>
 	<% @available_players.each do |p| %>

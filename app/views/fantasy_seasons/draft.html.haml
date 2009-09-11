@@ -1,0 +1,8 @@
+#content
+  %table.requests
+    - @available_players.each do |p|
+      %tr
+        %td PIC
+        %td=h p.positions.collect{|pos| pos.abbreviation}.join('/')
+        %td=h p.name
+        %td= link_to("Select", :controller => 'roster_assignments', :action => 'create', :id => p.id)

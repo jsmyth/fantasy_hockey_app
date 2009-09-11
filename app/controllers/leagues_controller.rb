@@ -1,12 +1,3 @@
-class Array
-  # Converts [[k1,v1],[k2,v2]] into {k1 => v1, k2 => v2}
-  # The opposite of Hash#to_a
-  def to_h
-    a = dup
-    a << nil if a.size % 2 == 1
-    Hash[*a]
-  end
-end
 class LeaguesController < ApplicationController
   
   def index
@@ -62,21 +53,5 @@ class LeaguesController < ApplicationController
     @league.destroy
     flash[:notice] = "Successfully destroyed league."
     redirect_to leagues_url
-  end
-  
-  def draft
-    if params[:id]
-      @league = League.find(params[:id])      
-    elsif @current_league
-      @league = @current_league
-    else
-      flash[:notice] = "We have no record of this league. Go ahead and create one now! :)"
-      redirect_to new_league_team_url
-    end
-    
-    @teams = @league.fantasy_teams
-    
-    @available_players = Player.available_in_league(@league.name)
-    render :layout => "draft"
   end
 end

@@ -1,44 +1,53 @@
-class FantasySeasonsController < ApplicationController
-  def index
-    @fantasy_seasons = FantasySeason.all
-  end
-  
+class FantasySeasonsController < InheritedResources::Base
+  respond_to :html, :xml
+  respond_to :json, :only => :index
+  respond_to :atom, :only => :index
+
   def show
-    @fantasy_season = FantasySeason.find(params[:id])
+    if params[:id]
+      @league = League.find(params[:id])      
+    elsif @current_league
+      @league = @current_league
+    else
+      flash[:notice] = "We have no record of this league. Go ahead and create one now! :)"
+      redirect_to new_league_team_url
+    end
+    
+    @teams = @league.fantasy_teams
+    @all_matchups = @league.matchups
+    
+    @available_players = Player.available_in_league(@league.name)
   end
   
   def new
     @fantasy_season = FantasySeason.new
+    @nhl_seasons = NhlSeason.all
+    @leagues = League.all
   end
-  
-  def create
-    @fantasy_season = FantasySeason.new(params[:fantasy_season])
-    if @fantasy_season.save
-      flash[:notice] = "Successfully created fantasyseason."
-      redirect_to @fantasy_season
+
+  def draft
+    if params[:id]
+      @league = League.find(params[:id])      
+    elsif @current_league
+      @league = @current_league
     else
-      render :action => 'new'
+      flash[:notice] = "We have no record of this league. Go ahead and create one now! :)"
+      redirect_to new_league_team_url
     end
+    
+    @teams = @league.fantasy_teams
+    
+    @available_players = Player.available_in_league(@league.name)
+    render :layout => "draft"
   end
-  
-  def edit
-    @fantasy_season = FantasySeason.find(params[:id])
-  end
-  
-  def update
-    @fantasy_season = FantasySeason.find(params[:id])
-    if @fantasy_season.update_attributes(params[:fantasy_season])
-      flash[:notice] = "Successfully updated fantasyseason."
-      redirect_to @fantasy_season
-    else
-      render :action => 'edit'
-    end
-  end
-  
-  def destroy
-    @fantasy_season = FantasySeason.find(params[:id])
-    @fantasy_season.destroy
-    flash[:notice] = "Successfully destroyed fantasyseason."
-    redirect_to fantasy_seasons_url
+end
+
+class Array
+  # Converts [[k1,v1],[k2,v2]] or [k1, v1, k2, v2] into {k1 => v1, k2 => v2}
+  # The opposite of Hash#to_a
+  def to_h
+    a = dup
+    a << nil if a.size % 2 == 1
+    Hash[*a]
   end
 end

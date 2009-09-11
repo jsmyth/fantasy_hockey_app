@@ -1,6 +1,0 @@
-- @available_players.each do |p|
-  = link_to "+", :controller => 'roster_assignments', :action => 'create', :id => p.id
-  %a= p.name
-  = p.nhl_team.abbreviation
-  = p.positions.collect{|pos| pos.abbreviation}
-  %br
