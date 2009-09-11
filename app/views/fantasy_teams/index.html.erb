@@ -9,7 +9,7 @@
   <% for fantasy_team in @fantasy_teams %>
     <tr>
       <td><%= link_to fantasy_team.name, fantasy_team %></td>
-      <td><%= link_to fantasy_team.league.name, fantasy_team.league  %></td>
+      <td><%= link_to fantasy_team.fantasy_seasons.last.league.name, fantasy_team.fantasy_seasons.last rescue nil  %></td>
       <td><%=h fantasy_team.user.name %></td>
       <td><%= link_to "Edit", edit_fantasy_team_path(fantasy_team) %></td>
       <td><%= link_to "Destroy", fantasy_team, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -2,7 +2,7 @@
 
 <p>
   <strong>League:</strong>
-  <%= link_to @fantasy_team.league.name, @fantasy_team.league %>
+  <%= link_to @fantasy_team.fantasy_seasons.last.league.name, @fantasy_team.league rescue nil %>
   <strong>User:</strong>
   <%=h @fantasy_team.user.name %>
 </p>

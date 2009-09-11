@@ -5,16 +5,15 @@ class FantasySeasonsController < InheritedResources::Base
 
   def show
     if params[:id]
-      @league = League.find(params[:id])      
-    elsif @current_league
-      @league = @current_league
+      @fantasy_season = FantasySeason.find(params[:id])      
     else
       flash[:notice] = "We have no record of this league. Go ahead and create one now! :)"
       redirect_to new_league_team_url
     end
-    
-    @teams = @league.fantasy_teams
-    @all_matchups = @league.matchups
+
+    @league = @fantasy_season.league    
+    @teams = @fantasy_season.fantasy_teams
+    @all_matchups = @fantasy_season.matchups
     
     @available_players = Player.available_in_league(@league.name)
   end

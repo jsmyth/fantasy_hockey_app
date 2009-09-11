@@ -14,8 +14,9 @@ class LeaguesController < ApplicationController
       redirect_to new_league_team_url
     end
     
-    @teams = @league.fantasy_teams
-    @all_matchups = @league.matchups
+    @fantasy_season = @league.fantasy_seasons.last
+    @teams = @league.participations.collect{|p| p.fantasy_team}
+    @all_matchups = @league.fantasy_seasons.last.matchups
     
     @available_players = Player.available_in_league(@league.name)
   end

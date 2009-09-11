@@ -1,0 +1,18 @@
+%table
+  %tr
+    %th Name
+    %th Sub-domain
+    %th Trade Deadline
+    %th Playoffs Start On
+
+  - for league in @leagues
+    %tr
+      %td= link_to league.name, league
+      %td=h league.subdomain
+      %td=h league.fantasy_seasons.last.trade_deadline    rescue nil
+      %td=h league.fantasy_seasons.last.playoffs_start_on rescue nil
+      %td= link_to "Edit", edit_league_path(league)
+      %td= link_to "Destroy", league, :confirm => 'Are you sure?', :method => :delete
+
+%p
+  = link_to "New League", new_league_path

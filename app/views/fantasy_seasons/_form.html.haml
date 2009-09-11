@@ -4,10 +4,10 @@
   %p
     = f.label "NHL Season"
     %br
-    = f.collection_select('id', @nhl_seasons, 'id', 'name')
+    = f.collection_select('nhl_season_id', @nhl_seasons, 'id', 'name')
   %p
     = f.label "League"
     %br
-    = f.collection_select('id', @leagues, 'id', 'name')
+    = f.collection_select('league_id', @leagues, 'id', 'name')
   %p
     = f.submit "Submit"

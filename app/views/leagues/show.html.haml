@@ -1,0 +1,30 @@
+%p
+  %strong Trade Deadline:
+  = @fantasy_season.trade_deadline rescue nil
+%br
+  %strong Playoffs Start On:
+  = @fantasy_season.playoffs_start_on rescue nil
+
+%p
+  %strong Teams
+  %br
+  - @teams.each do |f|
+    = link_to f.name, f
+    %br
+
+%p
+  %strong Free Agents
+  %br
+  - @available_players.each do |p|
+    = link_to "+", {:controller => 'roster_assignments', :action => 'create', :id => p.id }, :confirm => "Really? Are you serious? One last chance to redeem yourself (push cancel)", :method => :post
+    = link_to p.name, p
+    = p.nhl_team.abbreviation
+    = p.positions.collect{|pos| pos.abbreviation}
+    %br
+
+%p
+  = link_to "Edit", edit_league_path(@league)
+  |
+  = link_to "Destroy", @league, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", leagues_path

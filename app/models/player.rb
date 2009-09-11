@@ -51,7 +51,7 @@ class Player < ActiveRecord::Base
   end
 
   def self.available_in_league(league_name)
-    Player.find(:all, :include => [:nhl_team, :positions, {:fantasy_teams => :league}] , :conditions => ["leagues.name IS NULL OR leagues.name != ?", league_name])
+    Player.find(:all, :include => [:nhl_team, :positions, {:fantasy_teams => { :fantasy_seasons => :league} }] , :conditions => ["leagues.name IS NULL OR leagues.name != ?", league_name])
   end
   
   def name
