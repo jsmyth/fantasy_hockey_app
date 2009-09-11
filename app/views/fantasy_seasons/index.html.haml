@@ -1,0 +1,11 @@
+%table.index
+  %tr
+    %th Fantasy Season
+    %th League
+  - @fantasy_seasons.each do |fantasy_season|
+    %tr
+      %td= link_to(fantasy_season.nhl_season.name, fantasy_season)
+      %td= link_to fantasy_season.league.name,     fantasy_season.league rescue nil
+      %td= display_actions(fantasy_season)
+%p
+  = link_to "New Fantasy Season", new_fantasy_season_path
