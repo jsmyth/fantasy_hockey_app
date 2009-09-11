@@ -1,0 +1,26 @@
+- title "Fantasy Season"
+
+%p
+  %strong Nhl Season:
+  =h @fantasy_season.nhl_season_id
+%p
+  %strong League:
+  =h @fantasy_season.league_id
+
+%p
+  = link_to "Edit", edit_fantasy_season_path(@fantasy_season)
+  |
+  = link_to "Destroy", @fantasy_season, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", fantasy_seasons_path
+
+%p
+	%strong Matchups
+	%br
+	- @all_matchups.each_with_index do |weekly_matchups,i|
+	  = "Week #" + (i + 1)
+	  %br
+	  - weekly_matchups.to_h.each do |home,away|
+  	  = "#{home.name} vs #{away.name}"
+  	  %br
+  %br
