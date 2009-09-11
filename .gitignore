@@ -5,3 +5,4 @@ db/*.sqlite3
 db/schema.rb
 db/import/*.xml
 vendor/*
+public/stylesheets/draft.css
