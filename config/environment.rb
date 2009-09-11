@@ -16,8 +16,8 @@ Rails::Initializer.run do |config|
   config.gem 'haml-edge', :lib => 'haml', :version => '>= 2.1.3'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com', :version => '>= 2.2.3'
   config.gem "josevalim-inherited_resources", :lib => "inherited_resources", :version => "0.9.0", :source => "http://gems.github.com"
-  config.gem 'flyerhzm-bullet', :lib => 'bullet', :source => 'http://gems.github.com'
-  config.gem 'ruby-growl'
+  #config.gem 'flyerhzm-bullet', :lib => 'bullet', :source => 'http://gems.github.com'
+  #config.gem 'ruby-growl'
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
