@@ -1,0 +1,23 @@
+@import blueprint/screen.sass
+@import blueprint/modules/scaffolding.sass
+@import compass/reset.sass, compass/utilities.sass, compass/misc.sass
+@import blueprint/modules/debug.sass
+
++blueprint-typography
++blueprint-debug
++blueprint-scaffolding
+
+=bordered(!width = 2px)
+  border= !width "solid" #777
+  a
+    text-decoration: none
+    border= round(!width / 2) "solid" #eee
+
+#container
+  +container
+  a
+    +hover-link
+  #content
+    +column(20)
+  #sidebar
+    +column(4, true)
