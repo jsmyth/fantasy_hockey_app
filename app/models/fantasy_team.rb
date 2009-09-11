@@ -1,6 +1,7 @@
 class FantasyTeam < ActiveRecord::Base
   belongs_to :user
-  belongs_to :league
+  has_many :participations
+  has_many :fantasy_seasons, :through => :participations
   
   has_many :draft_picks
   has_many :roster_assignments

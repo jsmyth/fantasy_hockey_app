@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :fantasy_teams
   has_many :role_assignments
   has_many :roles, :through => :role_assignments
-  has_many :leagues, :through => :role_assignments
+  has_many :fantasy_seasons, :through => :role_assignments
   
   def name
     display_name
