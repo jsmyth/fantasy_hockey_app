@@ -1,29 +1,22 @@
 namespace :db do
   desc "This task imports the seed data."
   task :seed => :environment do
-    require 'active_record/fixtures'
-    Dir.glob(RAILS_ROOT + '/db/fixtures/seed/*.yml').each do |file|
-      base_name = File.basename(file, '.*')
-      print "Loading #{base_name}..."
-      Fixtures.create_fixtures('db/fixtures/seed', base_name)
-      puts "done!"
-    end
+    path_to_seed_factory = RAILS_ROOT + "/db/factories/seed.rb"
+    `#{path_to_seed_factory}`
+  end
+
+  desc "This task imports the dev_data"
+  task :dev_data => :environment do
+    path_to_dev_data_factory = RAILS_ROOT + "/db/factories/dev_data.rb"
+    `#{path_to_dev_data_factory}`
+  end
+
+  desc "Reseed and Load DevData"
+  task :baseline => [:migrate, :seed, :dev_data] do
   end
 
   desc "This drops the db, builds the db, and seeds the data."
   task :reseed => [:environment, 'db:reset', 'db:seed']
-
-  desc "This task imports the dev data."
-  task :dev_data => :environment do
-    require 'active_record/fixtures'
-    Dir.glob(RAILS_ROOT + '/db/fixtures/dev_data/*.yml').each do |file|
-      base_name = File.basename(file, '.*')
-      print "Loading #{base_name}..."
-      Fixtures.create_fixtures('db/fixtures/dev_data', base_name)
-      puts "done!"
-    end
-  end
-
 
   desc "This task imports all of the player and team data."
   task :import => :environment do
