@@ -4,6 +4,8 @@ class FantasyTeamsController < ApplicationController
   end
   
   def show
+    # If a fantasy_team id is offered use that, otherwise use the
+    # current_user's fantasy_team in the current_league.
     @fantasy_team = params[:id] ? FantasyTeam.find(params[:id]) : @current_fantasy_team
   end
   
@@ -14,7 +16,7 @@ class FantasyTeamsController < ApplicationController
   def create
     @fantasy_team = FantasyTeam.new(params[:fantasy_team])
     if @fantasy_team.save
-      flash[:notice] = "Successfully created fantasyteam."
+      flash[:notice] = "Successfully created fantasy team."
       redirect_to @fantasy_team
     else
       render :action => 'new'
@@ -28,7 +30,7 @@ class FantasyTeamsController < ApplicationController
   def update
     @fantasy_team = FantasyTeam.find(params[:id])
     if @fantasy_team.update_attributes(params[:fantasy_team])
-      flash[:notice] = "Successfully updated fantasyteam."
+      flash[:notice] = "Successfully updated fantasy team."
       redirect_to @fantasy_team
     else
       render :action => 'edit'
@@ -38,7 +40,7 @@ class FantasyTeamsController < ApplicationController
   def destroy
     @fantasy_team = FantasyTeam.find(params[:id])
     @fantasy_team.destroy
-    flash[:notice] = "Successfully destroyed fantasyteam."
+    flash[:notice] = "Successfully destroyed fantasy team."
     redirect_to fantasy_teams_url
   end
 end
