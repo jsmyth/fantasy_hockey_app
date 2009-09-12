@@ -27,3 +27,16 @@
     - weekly_matchups.to_h.each do |home,away|
       = display_matchup(home,away)
       %br
+
+
+%p
+  %strong Free Agents
+  %br
+  - @available_players.each do |p|
+    = link_to "+", {:controller => 'roster_assignments', :action => 'create', :id => p.id }, :confirm => "Really? Are you serious? One last chance to redeem yourself (push cancel)", :method => :post
+    = link_to p.name, p
+    = p.nhl_team.abbreviation
+    = p.positions.collect{|pos| pos.abbreviation}
+    %br
+
+%hr

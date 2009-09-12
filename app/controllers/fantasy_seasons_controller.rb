@@ -15,7 +15,7 @@ class FantasySeasonsController < InheritedResources::Base
     @teams = @fantasy_season.fantasy_teams
     @all_matchups = @fantasy_season.matchups
     
-    @available_players = Player.available_in_league(@league.name)
+    @available_players = Player.available_in_fantasy_season(@fantasy_season)
   end
   
   def new
