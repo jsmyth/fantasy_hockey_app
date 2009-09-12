@@ -16,5 +16,5 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource  :user_session
 
-  map.root :controller => 'leagues', :action => 'index'
+  map.root :controller => 'fantasy_teams', :action => 'show', :id => @current_fantasy_team
 end

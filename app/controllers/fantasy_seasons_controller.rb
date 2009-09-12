@@ -11,7 +11,7 @@ class FantasySeasonsController < InheritedResources::Base
       redirect_to new_league_team_url
     end
 
-    @league = @fantasy_season.league    
+    @league = @fantasy_season.league
     @teams = @fantasy_season.fantasy_teams
     @all_matchups = @fantasy_season.matchups
     

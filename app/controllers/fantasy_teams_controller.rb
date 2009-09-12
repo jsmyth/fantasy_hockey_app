@@ -4,7 +4,7 @@ class FantasyTeamsController < ApplicationController
   end
   
   def show
-    @fantasy_team = FantasyTeam.find(params[:id])
+    @fantasy_team = params[:id] ? FantasyTeam.find(params[:id]) : @current_fantasy_team
   end
   
   def new

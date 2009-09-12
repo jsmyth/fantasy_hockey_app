@@ -14,10 +14,14 @@ class ApplicationController < ActionController::Base
   private
 
   def set_current_league
-    @current_league = League.find_by_subdomain!("pchl")
-#    @current_league = League.find_by_subdomain!(request.subdomains.first)
+#  @current_league = League.find_by_subdomain!("pchl")
+    if current_user
+      @current_league = League.find_by_subdomain!(request.subdomains.first)
+      @current_fantasy_season = @current_league.fantasy_seasons.last
+      @current_fantasy_team = @current_user.fantasy_teams.find(:all, :include => :fantasy_seasons, :conditions => {"fantasy_seasons.id" => @current_fantasy_season.id}).last
+    end
   end
-  
+
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
@@ -27,7 +31,7 @@ class ApplicationController < ActionController::Base
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.record
   end
-  
+
   def require_user
     unless current_user
       store_location
@@ -45,7 +49,7 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
-  
+
   def store_location
     session[:return_to] = request.request_uri
   end
