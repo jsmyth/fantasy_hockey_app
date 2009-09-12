@@ -14,7 +14,7 @@ class RosterAssignmentsController < ApplicationController
   def create
     @player = Player.find(params[:id])
     
-    @fantasy_team = FantasyTeam.find(:all, :include => [ :league, :user], :conditions => { 'leagues.id' => @current_league, 'users.id' => current_user } ).last
+    @fantasy_team = @current_fantasy_team
     @roster_assignment = RosterAssignment.new
     @roster_assignment.player = @player
     @roster_assignment.fantasy_team = @fantasy_team
