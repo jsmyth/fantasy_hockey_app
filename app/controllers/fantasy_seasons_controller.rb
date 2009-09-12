@@ -37,7 +37,7 @@ class FantasySeasonsController < InheritedResources::Base
     @league = @fantasy_season.league
     @teams = @fantasy_season.fantasy_teams
     
-    @available_players = Player.available_in_league(@league.name)
+    @available_players = Player.available_in_fantasy_season(@fantasy_season)
     render :layout => "draft"
   end
 end
