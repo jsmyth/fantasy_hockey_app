@@ -26,15 +26,16 @@ class FantasySeasonsController < InheritedResources::Base
 
   def draft
     if params[:id]
-      @league = League.find(params[:id])      
-    elsif @current_league
-      @league = @current_league
+      @fantasy_season = FantasySeason.find(params[:id])      
+    elsif @current_fantasy_season
+      @fantasy_season = @current_fantasy_season
     else
-      flash[:notice] = "We have no record of this league. Go ahead and create one now! :)"
-      redirect_to new_league_team_url
+      flash[:notice] = "We have no record of this fantasy season. Go ahead and create one now! :)"
+      redirect_to new_fantasy_season_url
     end
     
-    @teams = @league.fantasy_teams
+    @league = @fantasy_season.league
+    @teams = @fantasy_season.fantasy_teams
     
     @available_players = Player.available_in_league(@league.name)
     render :layout => "draft"
