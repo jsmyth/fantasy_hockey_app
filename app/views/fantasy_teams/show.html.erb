@@ -6,6 +6,9 @@
   <br />
   <strong>User:</strong>
   <%= link_to @fantasy_team.user.name, @fantasy_team.user %>
+  <br />
+  <strong>Current Season:</strong>
+  <%= link_to @fantasy_team.fantasy_seasons.last.name, @fantasy_team.fantasy_seasons.last %>
 </p>
 
 <table>

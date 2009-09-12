@@ -17,6 +17,9 @@ class FantasySeason < ActiveRecord::Base
 
   belongs_to :league
 
+  def name
+    nhl_season.name
+  end
 
   def assigned_players
     self.fantasy_teams.collect{|f_t| f_t.players}
