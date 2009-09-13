@@ -58,7 +58,16 @@ class FantasySeasonsController < InheritedResources::Base
   end
   
   def draft_order
-    @draft_picks = @current_fantasy_season.draft_order()
+    if params[:id]
+      @fantasy_season = FantasySeason.find(params[:id])      
+    elsif @current_fantasy_season
+      @fantasy_season = @current_fantasy_season
+    else
+      flash[:notice] = "We have no record of this fantasy season. Go ahead and create one now! :)"
+      redirect_to new_fantasy_season_url
+    end
+    @number_of_fantasy_teams = @fantasy_season.fantasy_teams.count
+    @draft_picks = @fantasy_season.draft_order()
   end
 end
 
