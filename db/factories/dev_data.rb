@@ -64,6 +64,8 @@ fantasy_season_08_09_pchl = Factory(:fantasy_season_08_09_pchl, :nhl_season => n
 Factory.define :fantasy_season_08_09_test, :class => FantasySeason do |f|
   f.max_nhl_roster_size '25'
   f.max_minor_roster_size '10'
+  f.max_nhl_keepers '0'
+  f.max_minor_keepers '0'
   f.trade_deadline '2009-02-28'
   f.playoffs_start_on '2009-03-12'
 end
@@ -81,6 +83,8 @@ fantasy_season_09_10_pchl = Factory(:fantasy_season_09_10_pchl, :nhl_season => n
 
 Factory.define :fantasy_season_09_10_dev, :class => FantasySeason do |f|
   f.max_nhl_roster_size '30'
+  f.max_minor_roster_size '0'
+  f.max_minor_keepers '0'
   f.max_nhl_keepers '6'
   f.trade_deadline '2010-02-28'
   f.playoffs_start_on '2010-03-06'
