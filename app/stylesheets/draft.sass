@@ -2,22 +2,27 @@
 @import blueprint/modules/scaffolding.sass
 @import compass/reset.sass, compass/utilities.sass, compass/misc.sass
 @import blueprint/modules/debug.sass
+@import blueprint/modules/fancy_type.sass
 
-+blueprint-typography
-+blueprint-debug
-+blueprint-scaffolding
 
-=bordered(!width = 2px)
-  border= !width "solid" #777
-  a
-    text-decoration: none
-    border= round(!width / 2) "solid" #eee
+body
+  +showgrid
+  font-family: Verdana, sans-serif
+  font-size: 14px
+  line-height: 1.42857em
+  p
+    margin: 1.42857em 0
+  h2
+    font-size: 1.2857em
+    margin: 0.5556em 0 0.5556em
 
 #container
   +container
-  a
-    +hover-link
   #content
     +column(20)
   #sidebar
-    +column(4, true)
+    +column(4)
+    +last
+    p
+      font-size: 0.85714em
+      margin: 1.6667em 0

@@ -10,4 +10,13 @@ module FantasySeasonsHelper
     away_link = link_to away.name, away
     "#{home_link} vs #{away_link}"
   end
+  
+  def player_row(p)
+    positions = p.positions.collect{|pos| pos.abbreviation}.join('/')
+    name = p.name
+    nhl_team = p.nhl_team.abbreviation
+    draft_link = link_to("DRAFT", {:controller => 'roster_assignments', :action => 'create', :id => p.id, :draft_player => true}, :confirm => "Really? Are you serious? One last chance to redeem yourself (push cancel)", :method => :post)
+    
+    "|#{draft_link}| #{positions} #{name} #{nhl_team}"
+  end
 end
