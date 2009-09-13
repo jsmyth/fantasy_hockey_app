@@ -5,4 +5,4 @@
         %td PIC
         %td=h p.positions.collect{|pos| pos.abbreviation}.join('/')
         %td=h p.name
-        %td= link_to("DRAFT", {:controller => 'roster_assignments', :action => 'create', :id => p.id}, :confirm => "Really? Are you serious? One last chance to redeem yourself (push cancel)", :method => :post)
+        %td= link_to("DRAFT", {:controller => 'roster_assignments', :action => 'create', :id => p.id, :draft_player => true}, :confirm => "Really? Are you serious? One last chance to redeem yourself (push cancel)", :method => :post)

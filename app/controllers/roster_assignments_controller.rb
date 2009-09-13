@@ -21,8 +21,13 @@ class RosterAssignmentsController < ApplicationController
     
     
     if @roster_assignment.save
-      flash[:notice] = "Successfully created rosterassignment."
-      redirect_to @fantasy_team
+      if params[:draft_player]
+        flash[:notice] = "Successfully drafter #{@player.name}."
+        redirect_to draft_fantasy_season_url(@current_fantasy_season)
+      else
+        flash[:notice] = "Successfully added #{@player.name}."
+        redirect_to @fantasy_team
+      end
     else
       flash[:error] = "Can't assign that player to your team."
       redirect_to @current_league
