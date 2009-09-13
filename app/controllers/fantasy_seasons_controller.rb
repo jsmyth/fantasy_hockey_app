@@ -58,7 +58,7 @@ class FantasySeasonsController < InheritedResources::Base
   end
   
   def draft_order
-    
+    @draft_picks = @current_fantasy_season.draft_order()
   end
 end
 

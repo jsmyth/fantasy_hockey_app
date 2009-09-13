@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
                 :member => {
                              :draft         => :get,
                              :draft_results => :get,
+                             :draft_order   => :get,
                              :select_player => :put
                            }  
   map.resources :roster_assignments

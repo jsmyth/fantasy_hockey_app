@@ -39,9 +39,6 @@ class FantasySeason < ActiveRecord::Base
     initial_order = fantasy_teams.collect{|ft| ft.id}
 
     number_of_fantasy_teams = fantasy_teams.count
-    max_nhl_keepers       ||= 0
-    max_minor_keepers     ||= 0
-    max_minor_roster_size ||= 0
     keepers_per_team        = max_nhl_keepers       + max_minor_keepers
     max_roster_size         = max_nhl_roster_size   + max_minor_roster_size
     number_of_draft_picks   = max_roster_size       * number_of_fantasy_teams
