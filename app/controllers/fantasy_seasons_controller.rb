@@ -56,6 +56,10 @@ class FantasySeasonsController < InheritedResources::Base
     @unavailable_players = Player.unavailable_in_fantasy_season(@fantasy_season) || ['']
     render :layout => "draft"
   end
+  
+  def draft_order
+    
+  end
 end
 
 class Array
