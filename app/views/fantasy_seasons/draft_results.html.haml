@@ -1,0 +1,8 @@
+#content
+  %table.requests
+    - @unavailable_players.each do |p|
+      %tr
+        %td PIC
+        %td=h p.positions.collect{|pos| pos.abbreviation}.join('/')
+        %td=h p.name
+        %td=h p.nhl_team.abbreviation

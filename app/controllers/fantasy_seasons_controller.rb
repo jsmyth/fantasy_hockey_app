@@ -40,6 +40,22 @@ class FantasySeasonsController < InheritedResources::Base
     @available_players = Player.available_in_fantasy_season(@fantasy_season)
     render :layout => "draft"
   end
+
+  def draft_results
+    if params[:id]
+      @fantasy_season = FantasySeason.find(params[:id])      
+    elsif @current_fantasy_season
+      @fantasy_season = @current_fantasy_season
+    else
+      flash[:notice] = "We have no record of this fantasy season. Go ahead and create one now! :)"
+      redirect_to new_fantasy_season_url
+    end
+    
+    @league = @fantasy_season.league
+    
+    @unavailable_players = Player.unavailable_in_fantasy_season(@fantasy_season) || ['']
+    render :layout => "draft"
+  end
 end
 
 class Array
