@@ -47,15 +47,28 @@ class Player < ActiveRecord::Base
   
   
   def self.unavailable_in_league(league_name)
-    Player.find(:all, :include => [:fantasy_teams => :league] , :conditions => {'leagues.name' => league_name})
+    Player.find(:all,
+      :include    => [:fantasy_teams => :league],
+      :conditions => {'leagues.name' => league_name}
+    )
   end
 
   def self.available_in_league(league_name)
-    Player.find(:all, :include => [:nhl_team, :positions, {:fantasy_teams => { :fantasy_seasons => :league} }] , :conditions => ["leagues.name IS NULL OR leagues.name != ?", league_name])
+    Player.find(:all,
+      :include    => [:nhl_team, :positions, {:fantasy_teams => {:fantasy_seasons => :league} }],
+      :conditions => ["leagues.name IS NULL OR leagues.name != ?", league_name]
+    )
+  end
+
+  def self.unavailable_in_fantasy_season(fantasy_season)
+    Player.find(:all,
+      :include    => [:nhl_team, :positions, {:fantasy_teams => :fantasy_seasons}],
+      :conditions => ["fantasy_seasons.id = ?", fantasy_season.id]
+    )
   end
 
   def self.available_in_fantasy_season(fantasy_season)
-    Player.find(:all, :include => [:nhl_team, :positions, {:fantasy_teams => :fantasy_seasons}] , :conditions => ["fantasy_seasons.id IS NULL OR fantasy_seasons.id != ?", fantasy_season.id])
+    Player.all - self.unavailable_in_fantasy_season(fantasy_season)
   end
 
   def name
