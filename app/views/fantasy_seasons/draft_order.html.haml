@@ -1,6 +1,7 @@
 #content
-  - @draft_picks.enum_slice(8).each_with_index do |group,round_number|
-    = "Round #{round_number + 1}"
+  - @draft_picks.enum_slice(@number_of_fantasy_teams).each_with_index do |group,round_number|
+    %hr
+    %h3= "Round #{round_number + 1}"
     %table.requests
       - group.each_with_index do |fantasy_team, i|
         %tr
