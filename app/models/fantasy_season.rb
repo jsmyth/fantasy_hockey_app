@@ -47,14 +47,14 @@ class FantasySeason < ActiveRecord::Base
     number_of_rounds        = number_of_draft_picks / number_of_fantasy_teams
 
     random_fantasy_teams = fantasy_teams.sort_by{ rand }
-    @draft_picks = Array.new
+    draft_picks = Array.new
     number_of_rounds.times do |round|
-      @draft_picks += round.even? ? random_fantasy_teams : random_fantasy_teams.reverse
+      draft_picks += round.even? ? random_fantasy_teams : random_fantasy_teams.reverse
     end
 
     # Apply trades and such to number_of_draft_picks
 
-    return @draft_picks
+    return draft_picks
   end
 
   private
