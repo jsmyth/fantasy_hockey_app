@@ -69,6 +69,17 @@ class FantasySeasonsController < InheritedResources::Base
     @number_of_fantasy_teams = @fantasy_season.fantasy_teams.count
     @draft_picks = @fantasy_season.draft_order()
   end
+  
+  def sort_fantasy_teams
+    fantasy_season = FantasySeason.find(params[:id])
+    fantasy_teams = fantasy_season.fantasy_teams
+    fantasy_season.participations.each do |participation|
+      participation.position = params['fantasy_team'].index(participation.fantasy_team_id.to_s).to_i + 1
+      participation.save
+    end
+
+    render :nothing => true
+  end
 end
 
 class Array

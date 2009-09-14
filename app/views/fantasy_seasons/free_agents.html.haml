@@ -1,0 +1,31 @@
+%hr
+
+%p
+  %h3 Details
+  = display_actions(@fantasy_season)
+  |
+  = link_to "view all", fantasy_seasons_path
+
+  %p
+    %strong Season:
+    =h @fantasy_season.nhl_season.name
+
+  %p
+    %strong League:
+    = link_to @fantasy_season.league.name, @fantasy_season.league
+
+%br
+
+%hr
+
+%p
+  %strong Free Agents
+  %br
+  - @available_players.each do |p|
+    = link_to "+", {:controller => 'roster_assignments', :action => 'create', :id => p.id }, :confirm => "Really? Are you serious? One last chance to redeem yourself (push cancel)", :method => :post
+    = link_to p.name, p
+    = p.nhl_team.abbreviation
+    = p.positions.collect{|pos| pos.abbreviation}
+    %br
+
+%hr

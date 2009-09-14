@@ -6,7 +6,9 @@ class FantasySeason < ActiveRecord::Base
   has_and_belongs_to_many :stat_categories
   
   has_many :participations
-  has_many :fantasy_teams, :through => :participations
+  has_many :fantasy_teams,
+           :through => :participations,
+           :order   => "position"
   
   has_many :draft_picks
 
@@ -16,6 +18,10 @@ class FantasySeason < ActiveRecord::Base
   has_many :positions, :through => :starting_positions
 
   belongs_to :league
+  
+  class Form < ActiveRecord::Base
+    
+  end
 
   def name
     nhl_season.name
