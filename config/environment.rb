@@ -19,6 +19,7 @@ Rails::Initializer.run do |config|
   config.gem "thoughtbot-factory_girl",
              :lib    => "factory_girl",
              :source => "http://gems.github.com"
+  config.gem 'paperclip'
   #config.gem 'flyerhzm-bullet', :lib => 'bullet', :source => 'http://gems.github.com'
   #config.gem 'ruby-growl'
   # Settings in config/environments/* take precedence over those specified here.

@@ -1,8 +1,8 @@
-<% form_for @player do |f| %>
+<% form_for @player, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :nhl_team_id %><br />
-    <%= f.text_field :nhl_team_id %>
+    <%= f.collection_select :nhl_team_id, @nhl_teams, 'id', 'name' %>
   </p>
   <p>
     <%= f.label :first_name %><br />
@@ -11,6 +11,10 @@
   <p>
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
+  </p>
+  <p>
+    <%= f.label :photo %><br />
+    <%= f.file_field :photo %>
   </p>
   <p><%= f.submit "Submit" %></p>
 <% end %>

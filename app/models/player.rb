@@ -12,6 +12,12 @@ class Player < ActiveRecord::Base
   has_many :position_assignments
   has_many :positions, :through => :position_assignments
   has_many :moves
+
+  has_attached_file :photo,
+    :styles => {
+      :thumb => "40x40#",
+      :small  => "150x150>" }
+
   
   named_scope :skaters,
               :include => :positions, 
