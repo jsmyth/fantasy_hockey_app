@@ -67,7 +67,9 @@ class FantasySeasonsController < InheritedResources::Base
       redirect_to new_fantasy_season_url
     end
     @number_of_fantasy_teams = @fantasy_season.fantasy_teams.count
-    @draft_picks = @fantasy_season.draft_order()
+    
+    @draft_picks = @fantasy_season.draft_picks
+    @draft_picks = @draft_picks.exists? ? @draft_picks : @fantasy_season.draft_order()
   end
   
   def sort_fantasy_teams
@@ -79,6 +81,23 @@ class FantasySeasonsController < InheritedResources::Base
     end
 
     render :nothing => true
+  end
+  
+  def snap_draft
+    if params[:id]
+      @fantasy_season = FantasySeason.find(params[:id])      
+    elsif @current_fantasy_season
+      @fantasy_season = @current_fantasy_season
+    else
+      flash[:notice] = "We have no record of this fantasy season. Go ahead and create one now! :)"
+      redirect_to new_fantasy_season_url
+    end
+    @number_of_fantasy_teams = @fantasy_season.fantasy_teams.count
+    @virtual_draft_picks = @fantasy_season.draft_order()
+    
+    @virtual_draft_picks.each do |virtual_draft_pick|
+      draft_pick = DraftPick.create(:fantasy_season => @fantasy_season, :fantasy_team => virtual_draft_pick)
+    end
   end
 end
 

@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
                              :draft         => :get,
                              :draft_results => :get,
                              :draft_order   => :get,
+                             :snap_draft    => :post,
                              :sort_fantasy_teams   => :post,
                              :select_player => :put
                            }  

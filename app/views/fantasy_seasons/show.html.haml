@@ -15,6 +15,8 @@
   = display_actions(@fantasy_season)
   |
   = link_to "view all", fantasy_seasons_path
+  |
+  = link_to "snap draft", {:controller => 'fantasy_seasons', :action => 'snap_draft', :id => @fantasy_season}, :method => 'post'
 
 %p
   %h4 Teams
