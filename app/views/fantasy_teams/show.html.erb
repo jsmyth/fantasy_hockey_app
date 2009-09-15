@@ -15,7 +15,7 @@
   <tr>
     <th>NHL Players</th>
   </tr>
-<% @fantasy_team.nhl_players.each do |p| %>
+<% @fantasy_team.nhl_skaters.each do |p| %>
   <tr>
     <td>
       <%= link_to "-", {:controller => 'roster_assignments', :action => 'destroy', :id => p.id}, :method => :delete, :confirm => "Are you sure you want to remove #{p.name}" %>
@@ -27,9 +27,9 @@
 
 <table>
 	<tr>
-		<th>NHL Goalie</th>
+		<th>NHL Goalies</th>
 	</tr>
-<% @fantasy_team.players.goalies.each do |p| %>
+<% @fantasy_team.nhl_goalies.each do |p| %>
   <tr>
     <td>
       <%= link_to "-", {:controller => 'roster_assignments', :action => 'destroy', :id => p.id}, :method => :delete, :confirm => "Are you sure you want to remove #{p.name}" %>
