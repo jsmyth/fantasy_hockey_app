@@ -30,7 +30,7 @@ class RosterAssignmentsController < ApplicationController
       end
     else
       flash[:error] = "Can't assign that player to your team."
-      redirect_to @current_league
+      redirect_to @current_fantasy_season
     end
   end
   
@@ -50,7 +50,7 @@ class RosterAssignmentsController < ApplicationController
   
   def destroy
     @player = Player.find(params[:id])
-    @fantasy_team = FantasyTeam.find(:all, :include => [ :league, :user], :conditions => { 'leagues.id' => @current_league, 'users.id' => current_user } ).last
+    @fantasy_team = FantasyTeam.find(:all, :include => [ :fantasy_seasons, :user], :conditions => { 'fantasy_seasons.id' => @current_fantasy_season, 'users.id' => current_user } ).last
     @roster_assignment = RosterAssignment.find(:all, :conditions => { :fantasy_team_id => @fantasy_team, :player_id => @player }).last
     @roster_assignment.destroy
     flash[:notice] = "Successfully removed #{@player.name}."
