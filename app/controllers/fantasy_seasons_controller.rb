@@ -58,6 +58,7 @@ class FantasySeasonsController < InheritedResources::Base
   end
   
   def draft_order
+    @secret_number = 237237
     if params[:id]
       @fantasy_season = FantasySeason.find(params[:id])      
     elsif @current_fantasy_season

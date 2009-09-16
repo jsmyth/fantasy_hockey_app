@@ -1,17 +1,20 @@
 $(document).ready(function() {
+  
+  var url = location.pathname.replace(/draft_order/g, 'update_draft_pick');
+  
   fluid.inlineEdit.dropdown("#draft-pick-1", { 
     useTooltip : true, 
     tooltipDelay : 500, 
     listeners: { 
-      afterFinishEdit: function(newValue, viewNode) {
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
         $.ajax({
-          type: 'post',
-          data: $('#draft-pick-1'),
+          type: 'put',
+          data: 'draft_pick=1&new_value=' + newValue + '&old_value=' + oldValue,
           dataType: 'script',
           complete: function(request){
             $('#draft-pick-1').effect('highlight');
           },
-          url: '/fantasy_seasons/' + viewNode.parent + '/sort_fantasy_teams'
+          url: url
         })
       }
     }
@@ -22,13 +25,13 @@ $(document).ready(function() {
     listeners: { 
       afterFinishEdit: function() {
         $.ajax({
-          type: 'post',
-          data: $('#draft-pick-2').sortable('serialize'),
+          type: 'put',
+          data: $('#draft-pick-2'),
           dataType: 'script',
           complete: function(request){
             $('#draft-pick-2').effect('highlight');
           },
-          url: '/fantasy_seasons/3500/sort_fantasy_teams'
+          url: url
         })
       }
     }
