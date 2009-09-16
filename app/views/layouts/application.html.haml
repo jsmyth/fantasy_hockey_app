@@ -8,7 +8,13 @@
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
-    = javascript_include_tag  "jquery/jquery.min.js", "jquery/jquery-ui-1.7.2.custom.min.js", "application.js"
+    = stylesheet_link_tag "jquery-ui-1.7.2.custom.css"
+    = stylesheet_link_tag "infusion/framework/fss/css/fss-layout.css"
+    = stylesheet_link_tag "infusion/framework/fss/css/fss-theme-mist.css"
+    = stylesheet_link_tag "infusion/tests/manual-tests/lib/jquery/plugins/selectbox/selectbox.css"
+    = stylesheet_link_tag "infusion/components/inlineEdit/css/InlineEdit.css"
+    = javascript_include_tag "jquery/jquery.min.js", "jquery/jquery-ui-1.7.2.custom.min.js"
+    = yield :javascript_includes
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
       
   %body

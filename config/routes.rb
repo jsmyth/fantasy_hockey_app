@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :fantasy_teams
   map.resources :players
   map.resources :leagues
+  map.resources :draft_picks
   map.resources :fantasy_seasons,
                 :member => {
                              :draft         => :get,

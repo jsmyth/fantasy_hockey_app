@@ -66,13 +66,20 @@ class FantasySeasonsController < InheritedResources::Base
       flash[:notice] = "We have no record of this fantasy season. Go ahead and create one now! :)"
       redirect_to new_fantasy_season_url
     end
-    @number_of_fantasy_teams = @fantasy_season.fantasy_teams.count
+    
+    @fantasy_teams = @fantasy_season.fantasy_teams
+    @number_of_fantasy_teams = @fantasy_teams.count
     
     @draft_picks = @fantasy_season.draft_picks
     @draft_picks = @draft_picks.exists? ? @draft_picks : @fantasy_season.draft_order()
+    
+    @draft_pick = DraftPick.new
+    
+    @draft_pick_number = 0
   end
-  
+
   def sort_fantasy_teams
+    #fantasy_season = @current_fantasy_season
     fantasy_season = FantasySeason.find(params[:id])
     fantasy_teams = fantasy_season.fantasy_teams
     fantasy_season.participations.each do |participation|

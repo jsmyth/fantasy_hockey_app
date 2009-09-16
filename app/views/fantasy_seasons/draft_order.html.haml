@@ -1,19 +1,27 @@
-#content
-  - @draft_picks.enum_slice(@number_of_fantasy_teams).each_with_index do |group,round_number|
-    %br
-    %hr
-    %br
-    %h3= "Round #{round_number + 1}"
-    %table
-      - if group.first.class.to_s == 'FantasyTeam'
-        - group.each_with_index do |fantasy_team, i|
-          %tr
-            %td=h i + 1
-            %td=h fantasy_team.name
-            %td=h fantasy_team.user.name
-      - elsif group.first.class.to_s == 'DraftPick'
-        - group.each_with_index do |draft_pick, i|
-          %tr
-            %td=h i + 1
-            %td=h draft_pick.fantasy_team.name
-            %td=h draft_pick.fantasy_team.user.name
+- content_for :javascript_includes do
+  = javascript_include_tag "InfusionAll.js", "jquery.selectbox-0.5.js", "application.js", "draft_order.js"
+
+- @draft_picks.enum_slice(@number_of_fantasy_teams).each_with_index do |group,round_number|
+  %br
+  %hr
+  %br
+  %h3= "Round #{round_number + 1}"
+  %dl
+    - if group.first.class.to_s == 'FantasyTeam'
+      - group.each_with_index do |fantasy_team, i|
+        - @draft_pick_number += 1
+        %dd{:id => "draft-pick-#{@draft_pick_number}"}
+          %span.flc-inlineEdit-text fantasy_team.name
+
+          %span{:class => "flc-inlineEdit-editContainer dropdown"}
+            = collection_select(:draft_pick, :fantasy_team_id, @fantasy_teams, 'id', 'name', { :selected => draft_pick.fantasy_team_id }, :class => 'flc-inlineEdit-edit')
+    - elsif group.first.class.to_s == 'DraftPick'
+      - group.each_with_index do |draft_pick, i|
+        - @draft_pick_number += 1
+        %dd{:id => "draft-pick-#{@draft_pick_number}"}
+          %span.flc-inlineEdit-text= draft_pick.fantasy_team.name
+          %span.flc-inlineEdit-editContainer.dropdown
+            = collection_select(:draft_pick, :fantasy_team_id, @fantasy_teams, 'id', 'name', { :selected => draft_pick.fantasy_team_id }, :class => 'flc-inlineEdit-edit' )
+
+%br
+%br
