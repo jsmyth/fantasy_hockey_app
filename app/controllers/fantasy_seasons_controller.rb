@@ -107,6 +107,21 @@ class FantasySeasonsController < InheritedResources::Base
       draft_pick = DraftPick.create(:fantasy_season => @fantasy_season, :fantasy_team => virtual_draft_pick)
     end
   end
+
+  def update_draft_pick
+    fantasy_season = FantasySeason.find params[:id]
+    fantasy_team_name = params[:new_value]
+    draft_pick_number = params[:draft_pick].to_i - 1
+    
+    fantasy_team = fantasy_season.fantasy_teams.find_by_name fantasy_team_name
+        
+    draft_picks = fantasy_season.draft_picks
+    draft_pick = draft_picks[draft_pick_number]
+    draft_pick.fantasy_team = fantasy_team
+    draft_pick.save
+    
+    render :nothing => true
+  end
 end
 
 class Array

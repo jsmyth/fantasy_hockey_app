@@ -26,7 +26,7 @@ $(document).ready(function() {
       afterFinishEdit: function() {
         $.ajax({
           type: 'put',
-          data: $('#draft-pick-2'),
+          data: 'draft_pick=2&new_value=' + newValue + '&old_value=' + oldValue,
           dataType: 'script',
           complete: function(request){
             $('#draft-pick-2').effect('highlight');
@@ -36,28 +36,380 @@ $(document).ready(function() {
       }
     }
   });
-  fluid.inlineEdit.dropdown("#draft-pick-3");
-  fluid.inlineEdit.dropdown("#draft-pick-4");
-  fluid.inlineEdit.dropdown("#draft-pick-5");
-  fluid.inlineEdit.dropdown("#draft-pick-6");
-  fluid.inlineEdit.dropdown("#draft-pick-7");
-  fluid.inlineEdit.dropdown("#draft-pick-8");
-  fluid.inlineEdit.dropdown("#draft-pick-9");
-  fluid.inlineEdit.dropdown("#draft-pick-10");
-  fluid.inlineEdit.dropdown("#draft-pick-11");
-  fluid.inlineEdit.dropdown("#draft-pick-12");
-  fluid.inlineEdit.dropdown("#draft-pick-13");
-  fluid.inlineEdit.dropdown("#draft-pick-14");
-  fluid.inlineEdit.dropdown("#draft-pick-15");
-  fluid.inlineEdit.dropdown("#draft-pick-16");
-  fluid.inlineEdit.dropdown("#draft-pick-17");
-  fluid.inlineEdit.dropdown("#draft-pick-18");
-  fluid.inlineEdit.dropdown("#draft-pick-19");
-  fluid.inlineEdit.dropdown("#draft-pick-20");
-  fluid.inlineEdit.dropdown("#draft-pick-21");
-  fluid.inlineEdit.dropdown("#draft-pick-22");
-  fluid.inlineEdit.dropdown("#draft-pick-23");
-  fluid.inlineEdit.dropdown("#draft-pick-24");
+  fluid.inlineEdit.dropdown("#draft-pick-3", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=3&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-3').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-4", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=4&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-4').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-5", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=5&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-5').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-6", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=6&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-6').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-7", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=7&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-7').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-8", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=8&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-8').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-9", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=9&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-9').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-10", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=10&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-10').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-11", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=11&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-11').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-12", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=12&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-12').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-13", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=13&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-13').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-14", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=14&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-14').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-15", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=15&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-15').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-16", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=16&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-16').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-17", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=17&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-17').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-18", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=18&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-18').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-19", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=19&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-19').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-20", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=20&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-20').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-21", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=21&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-21').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-22", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=22&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-22').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-23", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=23&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-23').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
+  fluid.inlineEdit.dropdown("#draft-pick-24", { 
+    useTooltip : true, 
+    tooltipDelay : 500, 
+    listeners: { 
+      afterFinishEdit: function(newValue, oldValue, viewNode) {
+        $.ajax({
+          type: 'put',
+          data: 'draft_pick=24&new_value=' + newValue + '&old_value=' + oldValue,
+          dataType: 'script',
+          complete: function(request){
+            $('#draft-pick-24').effect('highlight');
+          },
+          url: url
+        })
+      }
+    }
+  });
   fluid.inlineEdit.dropdown("#draft-pick-25");
   fluid.inlineEdit.dropdown("#draft-pick-26");
   fluid.inlineEdit.dropdown("#draft-pick-27");
