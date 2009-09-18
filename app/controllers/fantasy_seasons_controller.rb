@@ -106,6 +106,7 @@ class FantasySeasonsController < InheritedResources::Base
     @virtual_draft_picks.each do |virtual_draft_pick|
       draft_pick = DraftPick.create(:fantasy_season => @fantasy_season, :fantasy_team => virtual_draft_pick)
     end
+    redirect_to draft_order_fantasy_season_url(@fantasy_season)
   end
 
   def update_draft_pick
