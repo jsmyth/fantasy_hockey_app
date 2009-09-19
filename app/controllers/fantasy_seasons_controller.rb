@@ -112,23 +112,12 @@ class FantasySeasonsController < InheritedResources::Base
   def freeze_draft
     if params[:id]
       @fantasy_season = FantasySeason.find(params[:id])      
-    elsif @current_fantasy_season
-      @fantasy_season = @current_fantasy_season
     else
-      flash[:notice] = "We have no record of this fantasy season. Go ahead and create one now! :)"
+      flash[:error] = "We have no record of this fantasy season. Go ahead and create one now! :)"
       redirect_to new_fantasy_season_url
     end
 
-    #@virtual_draft_picks.each do |virtual_draft_pick|
-    #  draft_pick = DraftPick.create(:fantasy_season => @fantasy_season, :fantasy_team => virtual_draft_pick)
-    #end
-
-    @fantasy_teams = @fantasy_season.fantasy_teams
-    @number_of_fantasy_teams = @fantasy_teams.count
-
-    @draft_picks = @fantasy_season.draft_picks
-
-    #@draft_picks.find_by_fantasy_team_name()
+    @draft_picks    = @fantasy_season.draft_picks
     @original_order = @fantasy_season.fantasy_teams
     
     @roster_fill_out_picks = Array.new
@@ -140,46 +129,35 @@ class FantasySeasonsController < InheritedResources::Base
       number_of_draft_picks_needed = fantasy_team.number_of_draft_picks_needed(@fantasy_season)
       if number_of_draft_picks > number_of_draft_picks_needed
         differential = number_of_draft_picks - number_of_draft_picks_needed
-        puts "#{fantasy_team.name} needs #{differential} fewer pick#{differential > 1 ? 's' : ''}."
-        puts "DRAFT PICKS: #{fantasy_team.draft_picks.count}"
         differential.times{ fantasy_team.draft_picks.last.destroy }
         flash[:notice] += "\n#{fantasy_team.name} (-#{differential})"
       elsif number_of_draft_picks < number_of_draft_picks_needed
         differential = number_of_draft_picks_needed - number_of_draft_picks
-        puts "#{fantasy_team.name} needs #{differential} more pick#{differential > 1 ? 's' : ''}."
-
         differential.times{ @roster_fill_out_picks << fantasy_team.id }
-        highest_number_of_draft_picks = @roster_fill_out_picks.count_of_most_frequent
+        flash[:notice] += "\n#{fantasy_team.name} (+#{differential})"
+      end
+    end
+    
+    highest_number_of_draft_picks = @roster_fill_out_picks.count_of_most_frequent
 
-        flash[:notice] += "\n#{fantasy_team.name} (-#{differential})"
-        
-        highest_number_of_draft_picks.times do |round|
-          if round.even?
-            @original_order.each do |seeded_fantasy_team|
-              if @roster_fill_out_picks.include?(seeded_fantasy_team.id)
-                @roster_fill_out_picks.delete_first(seeded_fantasy_team.id)
-
-                draft_pick = DraftPick.new
-                draft_pick.fantasy_team = seeded_fantasy_team
-                draft_pick.fantasy_season = @fantasy_season
-                draft_pick.save!
-              end
-            end
-          else
-            @original_order.reverse.each do |seeded_fantasy_team|
-              if @roster_fill_out_picks.include?(seeded_fantasy_team.id)
-                @roster_fill_out_picks.delete_first(seeded_fantasy_team.id)
-
-                draft_pick = DraftPick.new
-                draft_pick.fantasy_team = seeded_fantasy_team
-                draft_pick.fantasy_season = @fantasy_season
-                draft_pick.save!
-              end
-            end
+    highest_number_of_draft_picks.times do |round|
+      if round.even?
+        @original_order.each do |seeded_fantasy_team|
+          if @roster_fill_out_picks.include?(seeded_fantasy_team.id)
+            @roster_fill_out_picks.delete_first(seeded_fantasy_team.id)
+            draft_pick = DraftPick.create :fantasy_team => seeded_fantasy_team, :fantasy_season => @fantasy_season
           end
-          #draft_picks += round.even? ? fantasy_teams : fantasy_teams.reverse
+        end
+      else
+        @original_order.reverse.each do |seeded_fantasy_team|
+          if @roster_fill_out_picks.include?(seeded_fantasy_team.id)
+            @roster_fill_out_picks.delete_first(seeded_fantasy_team.id)
+
+            draft_pick = DraftPick.create :fantasy_team => seeded_fantasy_team, :fantasy_season => @fantasy_season
+          end
         end
       end
+      #draft_picks += round.even? ? fantasy_teams : fantasy_teams.reverse
     end
     
     @draft_pick_number = 0
