@@ -8,7 +8,9 @@
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'clocks/retro.css', 'clocks/retro.countdown.css'
     = javascript_include_tag  "jquery/jquery.min.js", "jquery/jquery.epiclock.min.js", "jquery/draft_timer.js", "application.js"
+    = javascript_include_tag  "jquery/epiclock.retro.min.js", "jquery/epiclock.retro.countdown.min.js"
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
   %body
     #container
