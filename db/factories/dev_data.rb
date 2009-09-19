@@ -105,22 +105,22 @@ end
 the_hammer = Factory(:the_hammer, :user => User.find_by_login('testuser1'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
 Factory.define :pw, :class => FantasyTeam do |f|
-  f.name 'P.W.'
+  f.name 'Project Watermelon'
 end
 pw = Factory(:pw, :user => User.find_by_login('testuser2'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
 Factory.define :d12, :class => FantasyTeam do |f|
-  f.name 'D12'
+  f.name 'Dirty Dozen'
 end
 d12 = Factory(:d12, :user => User.find_by_login('testuser3'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
 Factory.define :sb, :class => FantasyTeam do |f|
-  f.name 'S.B.'
+  f.name 'Strange Brew'
 end
 sb = Factory(:sb, :user => User.find_by_login('testuser4'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
 Factory.define :windy, :class => FantasyTeam do |f|
-  f.name 'Windy'
+  f.name 'Windy City Rumblers'
 end
 windy = Factory(:windy, :user => User.find_by_login('testuser5'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
@@ -130,7 +130,7 @@ end
 warriors = Factory(:warriors, :user => User.find_by_login('testuser6'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
 Factory.define :drunk, :class => FantasyTeam do |f|
-  f.name 'Drunk'
+  f.name 'Drunk Zamboni Drivers'
 end
 drunk = Factory(:drunk, :user => User.find_by_login('testuser7'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
