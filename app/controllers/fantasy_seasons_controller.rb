@@ -109,6 +109,24 @@ class FantasySeasonsController < InheritedResources::Base
     redirect_to draft_order_fantasy_season_url(@fantasy_season)
   end
 
+  def freeze_draft
+    if params[:id]
+      @fantasy_season = FantasySeason.find(params[:id])      
+    elsif @current_fantasy_season
+      @fantasy_season = @current_fantasy_season
+    else
+      flash[:notice] = "We have no record of this fantasy season. Go ahead and create one now! :)"
+      redirect_to new_fantasy_season_url
+    end
+    @number_of_fantasy_teams = @fantasy_season.fantasy_teams.count
+    @virtual_draft_picks = @fantasy_season.draft_order()
+    
+    #@virtual_draft_picks.each do |virtual_draft_pick|
+    #  draft_pick = DraftPick.create(:fantasy_season => @fantasy_season, :fantasy_team => virtual_draft_pick)
+    #end
+    redirect_to draft_order_fantasy_season_url(@fantasy_season)
+  end
+
   def update_draft_pick
     fantasy_season = FantasySeason.find params[:id]
     fantasy_team_name = params[:new_value]

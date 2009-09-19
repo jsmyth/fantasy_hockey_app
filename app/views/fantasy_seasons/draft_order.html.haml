@@ -1,6 +1,9 @@
 - content_for :javascript_includes do
   = javascript_include_tag "InfusionAll.js", "jquery.selectbox-0.5.js", "application.js", "draft_order.js"
 
+%hr
+= display_freeze_draft_link(@fantasy_season)
+
 - @draft_picks.enum_slice(@number_of_fantasy_teams).each_with_index do |group,round_number|
   %br
   %hr

@@ -5,6 +5,10 @@ module FantasySeasonsHelper
     "#{edit_action} | #{destroy_action}"
   end
   
+  def display_freeze_draft_link(fantasy_season)
+    link_to "FREEZE DRAFT ORDER", {:controller => 'fantasy_seasons', :action => 'freeze_draft', :id => @fantasy_season}, :confirm => "Are you sure? You can't make any changes to the draft order after the freeze.", :method => :post
+  end
+  
   def display_matchup(home,away)
     home_link = link_to home.name, home
     away_link = link_to away.name, away
