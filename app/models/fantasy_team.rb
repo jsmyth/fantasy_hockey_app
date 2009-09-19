@@ -26,4 +26,13 @@ class FantasyTeam < ActiveRecord::Base
   def nhl_goalies
     self.players.goalies.find(:all, :conditions => ['roster_assignments.minor_league IS NULL'])
   end
+  
+  def number_of_draft_picks_needed(fantasy_season)
+    max_roster_size = fantasy_season.max_nhl_roster_size + fantasy_season.max_minor_roster_size
+    
+    keepers = roster_assignments.find_by_keeper(true)
+    number_of_keepers = keepers ? keepers.count : 0
+    
+    max_roster_size - number_of_keepers
+  end
 end

@@ -118,12 +118,32 @@ class FantasySeasonsController < InheritedResources::Base
       flash[:notice] = "We have no record of this fantasy season. Go ahead and create one now! :)"
       redirect_to new_fantasy_season_url
     end
-    @number_of_fantasy_teams = @fantasy_season.fantasy_teams.count
-    @virtual_draft_picks = @fantasy_season.draft_order()
-    
+
     #@virtual_draft_picks.each do |virtual_draft_pick|
     #  draft_pick = DraftPick.create(:fantasy_season => @fantasy_season, :fantasy_team => virtual_draft_pick)
     #end
+
+    @fantasy_teams = @fantasy_season.fantasy_teams
+    @number_of_fantasy_teams = @fantasy_teams.count
+
+    @draft_picks = @fantasy_season.draft_picks
+
+    @draft_picks.find_by_fantasy_team_name()
+
+    @draft_picks.group_by(&:fantasy_team).each do |fantasy_team, draft_picks|
+      number_of_draft_picks = draft_picks.count
+      number_of_draft_picks_needed = fantasy_team.number_of_draft_picks_needed(@fantasy_season)
+      puts "#{fantasy_team.name}: #{draft_picks.count}"
+      puts "PICKS: #{number_of_draft_picks} | NEED: #{number_of_draft_picks_needed}"
+      if number_of_draft_picks > number_of_draft_picks_needed
+        puts "This one has too many"
+      elsif number_of_draft_picks < number_of_draft_picks_needed
+        puts "This one has too few"        
+      end
+    end
+    
+    @draft_pick_number = 0
+
     redirect_to draft_order_fantasy_season_url(@fantasy_season)
   end
 
