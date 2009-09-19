@@ -20,5 +20,5 @@ $(document).ready(function() {
     settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
   });
   
-  $('#flash_content').pause(3000).slideUp('slow');
+  $('#flash_content').pause(5000).slideUp('slow');
 });
