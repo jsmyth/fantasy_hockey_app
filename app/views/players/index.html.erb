@@ -9,7 +9,7 @@
   <% for player in @players %>
     <tr>
       <td><%= link_to player.name, player %></td>
-      <td><%=h player.nhl_team_abbreviation %></td>
+      <td><%=h player.nhl_team.abbreviation %></td>
       <td><%=h player.positions.name %></td>
       <td><%= link_to "Edit", edit_player_path(player) %></td>
       <td><%= link_to "Destroy", player, :confirm => 'Are you sure?', :method => :delete %></td>
