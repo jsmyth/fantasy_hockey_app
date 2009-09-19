@@ -11,6 +11,11 @@ class FantasyTeam < ActiveRecord::Base
   has_many :players, :through => :roster_assignments
   has_many :starts
   
+  has_attached_file :photo,
+    :styles => {
+      :thumb => "40x40#",
+      :small  => "150x150>" }
+  
   def minor_leaguers
     self.roster_assignments.find(:all, :conditions => {:minor_league => true}).collect {|ra| ra.player}
   end

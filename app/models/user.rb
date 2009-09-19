@@ -10,11 +10,6 @@ class User < ActiveRecord::Base
   has_many :role_assignments
   has_many :roles, :through => :role_assignments
   has_many :fantasy_seasons, :through => :role_assignments
-  
-  has_attached_file :photo,
-    :styles => {
-      :thumb => "40x40#",
-      :small  => "150x150>" }
 
   def name
     display_name
