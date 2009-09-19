@@ -3,7 +3,10 @@
 $.ajaxSetup({ 
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 })
-
+$.fn.pause = function(duration) {
+    $(this).animate({ dummy: 1 }, duration);
+    return this;
+};
 $(document).ready(function() {
   // UJS authenticity token fix: add the authenticy_token parameter
   // expected by any Rails POST request.
@@ -16,4 +19,6 @@ $(document).ready(function() {
     settings.data = settings.data || "";
     settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
   });
+  
+  $('#flash_content').pause(3000).slideUp('slow');
 });

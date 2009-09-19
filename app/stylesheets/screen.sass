@@ -26,7 +26,6 @@ body
     font-size: 21px
     line-height: 40px
 
-
 #container
   +container
   #header
@@ -41,6 +40,30 @@ body
     +column(17)
     #statistics
       +column(17)
+    #flash_content
+      border: 1px solid grey
+      padding: .4em
+      margin: 2em
+      margin-top: 3.8em
+      margin-bottom: 0
+      #error
+        background: #FF6666
+        padding: .2em
+        color: white
+        font-size: 16px
+        letter-spacing: 2px
+      #success
+        background: #B1D632
+        padding: .2em
+        color: white
+        font-size: 16px
+        letter-spacing: 2px
+        border: 0
+    #flash_content.success
+      background: #B1D632
+    #flash_content.error
+      background: #FF6666
+
   #sidebar
     +column(7, true)
     p

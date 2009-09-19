@@ -15,6 +15,7 @@
     = stylesheet_link_tag "infusion/components/inlineEdit/css/InlineEdit.css"
     = javascript_include_tag "jquery/jquery.min.js", "jquery/jquery-ui-1.7.2.custom.min.js"
     = yield :javascript_includes
+    = javascript_include_tag "application.js"
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
       
   %body
@@ -31,6 +32,16 @@
       %hr
       
       #content
+        - if flash[:notice]
+          #flash_content.success
+            %table.upcoming{ :id => "success" }
+              %td.bottom_left{ :id => "success" }
+                = flash[:notice]
+        - if flash[:error]
+          #flash_content.error
+            %table.upcoming{ :id => "error" }
+              %td.bottom_left{ :id => "error" }
+                = flash[:error]
         = yield
       #sidebar
         #recent-activity
