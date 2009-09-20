@@ -75,7 +75,7 @@ class Player < ActiveRecord::Base
   end
 
   def self.available_in_fantasy_season(fantasy_season)
-    Player.all - self.unavailable_in_fantasy_season(fantasy_season)
+    Player.find(:all, :include => [:nhl_team, :positions]) - self.unavailable_in_fantasy_season(fantasy_season)
   end
 
   def name

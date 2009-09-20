@@ -38,6 +38,10 @@ class FantasySeasonsController < InheritedResources::Base
     @teams = @fantasy_season.fantasy_teams
     
     @available_players = Player.available_in_fantasy_season(@fantasy_season)
+    
+    @current_draft_pick = @fantasy_season.draft_picks.find(:all, :conditions => ['player_id IS NULL']).first
+    @next_five_draft_picks = @fantasy_season.draft_picks.find(:all, :conditions => ['player_id IS NULL'])[1..5]
+    @last_two_draft_picks = @fantasy_season.draft_picks.find(:all, :conditions => ['player_id IS NOT NULL'])[0..1]
     render :layout => "draft"
   end
 
