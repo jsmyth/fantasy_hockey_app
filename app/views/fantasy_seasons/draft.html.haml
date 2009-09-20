@@ -15,12 +15,22 @@
   %p
     #liveSearch
   %p
-    #running-picks-list
+    %table#running-picks-list
       - if @last_two_draft_picks
         - @last_two_draft_picks.each do |draft_pick|
-          .previous-pick
-            = draft_pick.fantasy_team.name
-      .current-pick= "#{@current_draft_pick.fantasy_team.name}"
+          %tr
+            %td.previous-pick.fantasy_team_photo
+              = image_tag draft_pick.fantasy_team.photo.url(:thumb)
+            %td.previous-pick
+              = draft_pick.fantasy_team.name
+      %tr
+        %td
+          = image_tag @current_draft_pick.fantasy_team.photo.url(:thumb)
+        %td
+          %a.current-pick= "#{@current_draft_pick.fantasy_team.name}"
       - @next_five_draft_picks.each do |draft_pick|
-        .upcoming-pick
-          = draft_pick.fantasy_team.name
+        %tr
+          %td.upcoming-pick.fantasy_team_photo
+            = image_tag draft_pick.fantasy_team.photo.url(:thumb)
+          %td.upcoming-pick
+            = draft_pick.fantasy_team.name

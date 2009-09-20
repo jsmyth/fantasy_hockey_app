@@ -12,6 +12,7 @@ class FantasyTeam < ActiveRecord::Base
   has_many :starts
   
   has_attached_file :photo,
+    :default_url => "players/missing.jpg",
     :styles => {
       :thumb => "60x60#",
       :small  => "150x150>" }
