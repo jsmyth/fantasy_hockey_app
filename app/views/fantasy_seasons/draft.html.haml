@@ -1,14 +1,16 @@
 #content
-  %h2 Available Players
-  %table
-    - @available_players.each do |p|
-      %tr
-        %td= link_to("DRAFT", {:controller => 'roster_assignments', :action => 'create', :id => p.id, :draft_player => true}, :confirm => "Really? Are you serious? One last chance to redeem yourself (push cancel)", :method => :post)
-        %td= image_tag p.photo.url(:thumb)
-        %td= p.positions.collect{|pos| pos.abbreviation}.join('/')
-        %td= p.name
-        %td= image_tag p.nhl_team.photo.url(:thumb), :class => 'small-photo'
+  %table#table_example
+    %tbody
+      - @available_players.each do |p|
+        %tr
+          %td= link_to("[DRAFT]", {:controller => 'roster_assignments', :action => 'create', :id => p.id, :draft_player => true}, :confirm => "Are you sure? This will draft p.name onto CHANGEME!", :method => :post)
+          %td= image_tag p.photo.url(:thumb)
+          %td= p.positions.collect{|pos| pos.abbreviation}.join('/')
+          %td= p.name
+          %td= image_tag p.nhl_team.photo.url(:thumb), :class => 'small-photo'
 
 #sidebar
   %p
     #epiClock
+  %p
+    #liveSearch

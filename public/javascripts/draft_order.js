@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  
   var url = location.pathname.replace(/draft_order/g, 'update_draft_pick');
   
   fluid.inlineEdit.dropdown("#draft-pick-1", { 
