@@ -6,6 +6,6 @@ class NhlTeam < ActiveRecord::Base
 
   has_attached_file :photo,
     :styles => {
-      :thumb => "20x20#",
+      :thumb => "26x26#",
       :small  => "120x120>" }
 end

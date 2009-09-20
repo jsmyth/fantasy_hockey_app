@@ -45,16 +45,22 @@ namespace :db do
       puts "Loading #{p.first_name} #{p.last_name} (#{p.positions.first.name})."    
       p.save
   
-      t = Hash.new
+      nhl_team_attributes = Hash.new
 
       (statsentry/:team).each do |team|
-        t["beacon_id"]    = (team/'ID').inner_html
-        t["city"]         = (team/'City').inner_html
-        t["name"]         = (team/'Name').inner_html
-        t["abbreviation"] = (team/'Abbreviation').inner_html
+        nhl_team_attributes["beacon_id"]    = (team/'ID').inner_html
+        nhl_team_attributes["city"]         = (team/'City').inner_html
+        nhl_team_attributes["name"]         = (team/'Name').inner_html
+        nhl_team_attributes["abbreviation"] = (team/'Abbreviation').inner_html
+        photo_path = "public/images/players"
+        photo_name = "#{nhl_team_attributes["abbreviation"].downcase}.gif"
+        puts "HERE: #{photo_name}"
+        nhl_team_attributes["photo"]        = File.open("#{photo_path}/#{photo_name}")
       end
       
-      nhl_team = NhlTeam.find_by_beacon_id(t["beacon_id"]) || NhlTeam.create (t)
+      #nhl_team = NhlTeam.find_by_beacon_id(nhl_team_attributes["beacon_id"]) || NhlTeam.create (nhl_team_attributes)
+      
+      nhl_team = NhlTeam.find_or_create_by_beacon_id(nhl_team_attributes)
 
       nhl_team.players << p
       

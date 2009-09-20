@@ -7,7 +7,7 @@
         %td= image_tag p.photo.url(:thumb)
         %td= p.positions.collect{|pos| pos.abbreviation}.join('/')
         %td= p.name
-        %td= image_tag p.nhl_team.photo.url(:thumb)
+        %td= image_tag p.nhl_team.photo.url(:thumb), :class => 'small-photo'
 
 #sidebar
   %p

@@ -7,3 +7,4 @@ db/import/*.xml
 vendor/*
 public/stylesheets/draft.css
 public/stylesheets/screen.css
+public/photos/*

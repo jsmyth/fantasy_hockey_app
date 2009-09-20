@@ -13,7 +13,7 @@ class FantasyTeam < ActiveRecord::Base
   
   has_attached_file :photo,
     :styles => {
-      :thumb => "40x40#",
+      :thumb => "60x60#",
       :small  => "150x150>" }
   
   def minor_leaguers
