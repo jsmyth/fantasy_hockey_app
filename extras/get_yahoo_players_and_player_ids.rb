@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+ENV['RAILS_ENV'] = ARGV.first || ENV['RAILS_ENV'] || 'development'
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+
 require 'rubygems'
 require 'hpricot'  # For parsing HTML
 require 'open-uri' # For downloading the HTML
@@ -25,8 +28,22 @@ player_table.search("tr").each do |tr|
   end
 end
 
+player_photos_path = 'public/images/players'
+
 # Now we loop over the player_links to print out the NHL id and name for the given player
 @player_links.each do |player_link,player_name|
   player_nhl_id = player_link.split('/').last
   puts "  #{player_nhl_id}: #{player_name}"
+  
+  player = Player.find_by_last_name(player_name.split(' ').last) rescue nil
+
+  if player && File.exists?("#{player_photos_path}/#{player_nhl_id}.jpg")
+    File.open("#{player_photos_path}/#{player_nhl_id}.jpg") do |player_photo|
+      player.photo = player_photo
+      player.save
+      puts "Found Player photo for #{player.name}."
+    end
+  else
+    puts "Can't find player photo or missing photo for #{player_name}!"
+  end
 end

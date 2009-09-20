@@ -52,7 +52,7 @@ namespace :db do
         nhl_team_attributes["city"]         = (team/'City').inner_html
         nhl_team_attributes["name"]         = (team/'Name').inner_html
         nhl_team_attributes["abbreviation"] = (team/'Abbreviation').inner_html
-        photo_path = "public/images/players"
+        photo_path = "public/images/nhl_team_logos"
         photo_name = "#{nhl_team_attributes["abbreviation"].downcase}.gif"
         puts "HERE: #{photo_name}"
         nhl_team_attributes["photo"]        = File.open("#{photo_path}/#{photo_name}")

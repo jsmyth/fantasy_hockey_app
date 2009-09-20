@@ -122,7 +122,7 @@ class FantasySeasonsController < InheritedResources::Base
     
     @roster_fill_out_picks = Array.new
 
-    flash[:notice] = "The following changes were made:\n\n"
+    flash[:notice] = "The following changes were made: "
     
     @draft_picks.group_by(&:fantasy_team).each do |fantasy_team, draft_picks|
       number_of_draft_picks = draft_picks.count
@@ -130,11 +130,11 @@ class FantasySeasonsController < InheritedResources::Base
       if number_of_draft_picks > number_of_draft_picks_needed
         differential = number_of_draft_picks - number_of_draft_picks_needed
         differential.times{ fantasy_team.draft_picks.last.destroy }
-        flash[:notice] += "\n#{fantasy_team.name} (-#{differential})"
+        flash[:notice] += "#{fantasy_team.name} (-#{differential})"
       elsif number_of_draft_picks < number_of_draft_picks_needed
         differential = number_of_draft_picks_needed - number_of_draft_picks
         differential.times{ @roster_fill_out_picks << fantasy_team.id }
-        flash[:notice] += "\n#{fantasy_team.name} (+#{differential})"
+        flash[:notice] += "#{fantasy_team.name} (+#{differential})"
       end
     end
     
@@ -152,12 +152,10 @@ class FantasySeasonsController < InheritedResources::Base
         @original_order.reverse.each do |seeded_fantasy_team|
           if @roster_fill_out_picks.include?(seeded_fantasy_team.id)
             @roster_fill_out_picks.delete_first(seeded_fantasy_team.id)
-
             draft_pick = DraftPick.create :fantasy_team => seeded_fantasy_team, :fantasy_season => @fantasy_season
           end
         end
       end
-      #draft_picks += round.even? ? fantasy_teams : fantasy_teams.reverse
     end
     
     @draft_pick_number = 0
