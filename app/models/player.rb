@@ -14,6 +14,7 @@ class Player < ActiveRecord::Base
   has_many :moves
 
   has_attached_file :photo,
+    :default_url => "players/missing.jpg",
     :styles => {
       :thumb => "40x40#",
       :small  => "150x150>" }

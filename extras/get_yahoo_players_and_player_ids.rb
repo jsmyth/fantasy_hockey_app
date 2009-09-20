@@ -35,13 +35,26 @@ player_photos_path = 'public/images/players'
   player_nhl_id = player_link.split('/').last
   puts "  #{player_nhl_id}: #{player_name}"
   
-  player = Player.find_by_last_name(player_name.split(' ').last) rescue nil
-
-  if player && File.exists?("#{player_photos_path}/#{player_nhl_id}.jpg")
-    File.open("#{player_photos_path}/#{player_nhl_id}.jpg") do |player_photo|
-      player.photo = player_photo
-      player.save
-      puts "Found Player photo for #{player.name}."
+  players = Player.find_all_by_last_name(player_name.split(' ', 2).last)
+  @player = ''
+  if players && File.exists?("#{player_photos_path}/#{player_nhl_id}.jpg")
+    if players.count > 1
+      @player = Player.find(:all,
+        :conditions => {
+          :last_name  => player_name.split(' ', 2).last,
+          :first_name => player_name.split(' ').first
+        }
+      ).first rescue nil
+    else
+      @player = players.first
+    end
+    
+    if @player
+      File.open("#{player_photos_path}/#{player_nhl_id}.jpg") do |player_photo|
+        @player.photo = player_photo
+        @player.save
+        puts "Found Player photo for #{@player.name}."
+      end
     end
   else
     puts "Can't find player photo or missing photo for #{player_name}!"
