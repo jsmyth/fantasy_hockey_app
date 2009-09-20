@@ -8,6 +8,7 @@ $(document).ready(function() {
     position: 'before',
     attached: '#liveSearch',
     stripeRowClass: ['odd', 'even'],
-    labelText: ''
+    labelText: '',
+    delay: 100
   });
 });
