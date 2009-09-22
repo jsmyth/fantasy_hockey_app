@@ -42,7 +42,6 @@ namespace :db do
         pos = Position.find_or_create_by_abbreviation position
         p.positions << pos
       end
-      puts "Loading #{p.first_name} #{p.last_name} (#{p.positions.first.name})."    
       p.save
   
       nhl_team_attributes = Hash.new
@@ -54,17 +53,14 @@ namespace :db do
         nhl_team_attributes["abbreviation"] = (team/'Abbreviation').inner_html
         photo_path = "public/images/nhl_team_logos"
         photo_name = "#{nhl_team_attributes["abbreviation"].downcase}.gif"
-        puts "HERE: #{photo_name}"
         nhl_team_attributes["photo"]        = File.open("#{photo_path}/#{photo_name}")
       end
-      
-      #nhl_team = NhlTeam.find_by_beacon_id(nhl_team_attributes["beacon_id"]) || NhlTeam.create (nhl_team_attributes)
       
       nhl_team = NhlTeam.find_or_create_by_beacon_id(nhl_team_attributes)
 
       nhl_team.players << p
       
-      puts "Loading #{nhl_team.city} #{nhl_team.name} (#{nhl_team.abbreviation})."
+      puts "| #{p.first_name} #{p.last_name} - #{p.positions.first.abbreviation} - #{nhl_team.abbreviation} |"    
   
       s = Stat.new
       (statsentry/:playerstats).each do |playerstats|
