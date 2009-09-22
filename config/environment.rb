@@ -20,6 +20,7 @@ Rails::Initializer.run do |config|
              :lib    => "factory_girl",
              :source => "http://gems.github.com"
   config.gem 'paperclip'
+  config.gem 'rubyist-aasm', :lib => 'aasm', :source => "http://gems.github.com"
   #config.gem 'ryanb-acts-as-list', :lib => "acts_as_list", :source => 'http://gems.github.com'
   #config.gem 'flyerhzm-bullet', :lib => 'bullet', :source => 'http://gems.github.com'
   #config.gem 'ruby-growl'

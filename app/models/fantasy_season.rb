@@ -1,4 +1,6 @@
 class FantasySeason < ActiveRecord::Base
+  include AASM
+  
   has_many :role_assignments
   has_many :roles, :through => :role_assignments
   has_many :users, :through => :role_assignments
@@ -20,37 +22,38 @@ class FantasySeason < ActiveRecord::Base
   belongs_to :league
   
   # State Machine States
-  acts_as_state_machine :initial => :pre_season
-  state :pre_season
-  state :draft_snapped
-  state :draft_frozen
-  state :regular_season
-  state :post_season
-  state :off_season
+  aasm_column :state
+  aasm_initial_state :pre_season
+  aasm_state :pre_season
+  aasm_state :draft_snapped
+  aasm_state :draft_frozen
+  aasm_state :regular_season
+  aasm_state :post_season
+  aasm_state :off_season
   
   # State Machine Events
 
-  event :snap_draft do
+  aasm_event :snap_draft do
     transitions :from => :pre_season, :to => :draft_snapped
   end
   
-  event :freeze_draft do
+  aasm_event :freeze_draft do
     transitions :from => :draft_snapped, :to => :draft_frozen
   end
   
-  event :start_season do
+  aasm_event :start_season do
     transitions :from => :draft_frozen, :to => :regular_season
   end
   
-  event :start_post_season do
+  aasm_event :start_post_season do
     transitions :from => :regular_season, :to => :post_season
   end
   
-  event :start_off_season do
+  aasm_event :start_off_season do
     transitions :from => :post_season, :to => :off_season
   end
   
-  event :start_pre_season do
+  aasm_event :start_pre_season do
     transitions :from => :off_season, :to => :pre_season
   end
 
