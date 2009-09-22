@@ -93,6 +93,7 @@ fantasy_season_09_10_dev = Factory(:fantasy_season_09_10_dev, :nhl_season => nhl
 
 
 ### Fantasy Teams ###
+fantasy_team_photos_path = 'public/images/fantasy_teams'
 
 Factory.define :shamrocks, :class => FantasyTeam do |f|
   f.name 'Shamrocks'
@@ -101,6 +102,7 @@ shamrocks = Factory(:shamrocks, :user => User.find_by_login('testuser8'), :fanta
 
 Factory.define :the_hammer, :class => FantasyTeam do |f|
   f.name 'theHammer'
+  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'theHammer.jpg'), 'image/jpg') }
 end
 the_hammer = Factory(:the_hammer, :user => User.find_by_login('testuser1'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
@@ -114,8 +116,10 @@ Factory.define :d12, :class => FantasyTeam do |f|
 end
 d12 = Factory(:d12, :user => User.find_by_login('testuser3'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
+### STRANGE BREW ###
 Factory.define :sb, :class => FantasyTeam do |f|
   f.name 'Strange Brew'
+  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'StrangeBrew.jpg'), 'image/jpg') }
 end
 sb = Factory(:sb, :user => User.find_by_login('testuser4'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 

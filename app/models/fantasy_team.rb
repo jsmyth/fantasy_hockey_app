@@ -14,8 +14,8 @@ class FantasyTeam < ActiveRecord::Base
   has_attached_file :photo,
     :default_url => "players/missing.jpg",
     :styles => {
-      :thumb => "60x60#",
-      :small  => "150x150>" }
+      :thumb => "30x30#",
+      :small  => "40x40#" }
   
   def minor_leaguers
     self.roster_assignments.find(:all, :conditions => {:minor_league => true}).collect {|ra| ra.player}
