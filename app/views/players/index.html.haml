@@ -14,6 +14,7 @@
           %td.add-player= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id}, :confirm => "Are you sure? This will draft #{player.name} onto CHANGEME!", :method => :post)
           %td.player-name= player.name
           %td.nhl-team-photo= image_tag player.nhl_team.photo.url(:thumb), :class => 'small-photo'
+          %td.nhl-team-photo= link_to image_tag("icons/yahoo.gif"), "http://sports.yahoo.com/nhl/players/#{player.id}"
 
 #sidebar
   #liveSearch
