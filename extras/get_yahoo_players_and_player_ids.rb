@@ -33,7 +33,7 @@ player_photos_path = 'public/images/players'
 # Now we loop over the player_links to print out the NHL id and name for the given player
 @player_links.each do |player_link,player_name|
   player_nhl_id = player_link.split('/').last
-  puts "  #{player_nhl_id}: #{player_name}"
+  print "#{player_name} (#{player_nhl_id}) -> "
   
   players = Player.find_all_by_last_name(player_name.split(' ', 2).last)
   @player = ''
