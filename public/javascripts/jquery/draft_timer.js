@@ -4,7 +4,7 @@ $(document).ready(function() {
     $.epiclock();                // Starts all the clocks you've created
   });
   
-  $('table#table_example tbody tr').quicksearch({
+  $('table#draft_table tbody tr').quicksearch({
     position: 'before',
     attached: '#liveSearch',
     stripeRowClass: ['odd', 'even'],
