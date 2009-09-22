@@ -4,6 +4,7 @@ $(document).ready(function() {
     attached: '#liveSearch',
     stripeRowClass: ['odd', 'even'],
     labelText: '',
-    delay: 100
+    delay: 100,
+    loaderText: ''
   });
 });
