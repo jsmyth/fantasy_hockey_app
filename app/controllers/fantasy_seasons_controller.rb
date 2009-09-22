@@ -58,6 +58,7 @@ class FantasySeasonsController < InheritedResources::Base
     @league = @fantasy_season.league
     
     @unavailable_players = Player.unavailable_in_fantasy_season(@fantasy_season) || ['']
+    @draft_picks = @fantasy_season.draft_picks.find(:all, :conditions => ['draft_picks.player_id IS NOT NULL'])
     render :layout => "draft"
   end
   

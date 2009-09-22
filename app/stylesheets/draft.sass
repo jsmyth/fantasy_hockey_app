@@ -51,6 +51,9 @@ body
       width: 300px
     td.nhl-team-photo
       width: 20px
+    td.row-number
+      width: 40px
+      text-align: center
 
 #sidebar
   text-align: center
@@ -73,9 +76,12 @@ body
 
 #container
   +container
+  hr
+    margin: 9px 0 9px
   #header
     +column(24)
     position: relative
+
     #title
       letter-spacing: 15px
       font-style: italic

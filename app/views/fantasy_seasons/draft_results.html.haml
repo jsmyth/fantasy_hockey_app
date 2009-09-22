@@ -1,8 +1,23 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "jquery/jquery.quicksearch.js", "quick_search.js"
+
+%br
+%hr
+
 #content
-  %table.requests
-    - @unavailable_players.each do |p|
-      %tr
-        %td PIC
-        %td=h p.positions.collect{|pos| pos.abbreviation}.join('/')
-        %td=h p.name
-        %td=h p.nhl_team.abbreviation
+  %table#draft_table
+    %tbody
+      - @draft_picks.each_with_index do |draft_pick,index|
+        %tr.row
+          %td.row-number= image_tag "numbers/#{index + 1}.png"
+          %td.add-player= image_tag draft_pick.fantasy_team.photo.url(:small) rescue nil
+          %td.player-name= draft_pick.fantasy_team.name
+          %td.player-photo= image_tag draft_pick.player.photo.url(:thumb)
+          %td.player-positions= draft_pick.player.positions.collect{|position| position.abbreviation}.join('/')
+          %td.player-name= draft_pick.player.name
+          %td.nhl-team-photo= image_tag draft_pick.player.nhl_team.photo.url(:thumb), :class => 'small-photo'
+          %td.nhl-team-photo= link_to image_tag("icons/yahoo.gif"), "http://sports.yahoo.com/nhl/players/#{draft_pick.id}"
+
+#sidebar
+  #liveSearch
+  %p= link_to "New Player", new_player_path
