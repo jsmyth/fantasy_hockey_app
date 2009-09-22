@@ -1,0 +1,21 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "jquery/jquery.quicksearch.js", "quick_search.js"
+
+%br
+%hr
+
+#content
+  %table#draft_table
+    %tbody
+      - @players.each do |player|
+        %tr.row
+          %td.player-photo= image_tag player.photo.url(:thumb)
+          %td.player-positions= player.positions.collect{|position| position.abbreviation}.join('/')
+          %td.add-player= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id}, :confirm => "Are you sure? This will draft #{player.name} onto CHANGEME!", :method => :post)
+          %td.player-name= player.name
+          %td.nhl-team-photo= image_tag player.nhl_team.photo.url(:thumb), :class => 'small-photo'
+
+#sidebar
+  #liveSearch
+  %hr
+  %p= link_to "New Player", new_player_path

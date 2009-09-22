@@ -36,10 +36,76 @@ body
   #running-picks-list
     .current-pick
       font-weight: bold
+    .previous-pick
+      color: grey
   
+  #draft_table
+    td.player-photo
+      width: 40px
+
+#sidebar
+  text-align: center
+  .epiclock
+    text-align: center
+    align: center
+  #epiClock
+    width: 69%
+    margin: auto
+  .loader
+    postion: absolute
+    top:3px
+    left:5px
+    z-index:1
+    color:#999
+    
+  h3
+    text-align: center
+    font-size: 15px  
 
 #container
   +container
+  #header
+    +column(24)
+    position: relative
+    #title
+      letter-spacing: 15px
+      font-style: italic
+      font-size: 18px
+      color: #505050
+      position: absolute
+      top: 3px
+      left: 2px
+    #account_navigation
+      +horizontal-list
+      font-size: 14px
+      a
+        text-decoration: none
+      position: absolute
+      top: 2px
+      right: 0px
+  #flash_content
+    border: 1px solid grey
+    padding: .4em
+    margin: 2em
+    margin-top: 3.8em
+    margin-bottom: 0
+    #error
+      background: #FF6666
+      padding: .2em
+      color: white
+      font-size: 16px
+      letter-spacing: 2px
+    #success
+      background: #B1D632
+      padding: .2em
+      color: white
+      font-size: 16px
+      letter-spacing: 2px
+      border: 0
+  #flash_content.success
+    background: #B1D632
+  #flash_content.error
+    background: #FF6666
   #content
     +column(17)
   #sidebar

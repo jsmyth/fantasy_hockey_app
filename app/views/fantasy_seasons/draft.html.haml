@@ -1,36 +1,43 @@
+%br
+%hr
+
 #content
-  %table#table_example
+  %table#draft_table
     %tbody
-      - @available_players.each do |p|
+      - @available_players.each do |player|
         %tr.row
-          %td= image_tag p.photo.url(:thumb)
-          %td= p.positions.collect{|pos| pos.abbreviation}.join('/')
-          %td= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => p.id, :draft_player => true}, :confirm => "Are you sure? This will draft #{p.name} onto CHANGEME!", :method => :post)
-          %td= p.name
-          %td= image_tag p.nhl_team.photo.url(:thumb), :class => 'small-photo'
+          %td= image_tag player.photo.url(:thumb)
+          %td= player.positions.collect{|pos| pos.abbreviation}.join('/')
+          - if @current_draft_pick
+            %td= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id, :draft_player => true, :draft_pick => @current_draft_pick.id}, :confirm => "Are you sure? This will draft #{player.name} onto CHANGEME!", :method => :post)
+          %td= player.name
+          %td= image_tag player.nhl_team.photo.url(:thumb), :class => 'small-photo'
 
 #sidebar
+  %h3 F A N T A S Y  &nbsp; H O C K E Y &nbsp;  A P P
+  %hr
   %p
     #epiClock
   %p
     #liveSearch
-  %p
-    %table#running-picks-list
-      - if @last_two_draft_picks
-        - @last_two_draft_picks.each do |draft_pick|
-          %tr
-            %td.previous-pick.fantasy_team_photo
-              = image_tag draft_pick.fantasy_team.photo.url(:thumb)
-            %td.previous-pick
-              = draft_pick.fantasy_team.name
-      %tr
-        %td
-          = image_tag @current_draft_pick.fantasy_team.photo.url(:thumb)
-        %td
-          %a.current-pick= "#{@current_draft_pick.fantasy_team.name}"
-      - @next_five_draft_picks.each do |draft_pick|
+  - if @current_draft_pick
+    %p
+      %table#running-picks-list
+        - if @previous_draft_picks
+          - @previous_draft_picks.each do |draft_pick|
+            %tr
+              %td.previous-pick.fantasy_team_photo
+                = image_tag draft_pick.fantasy_team.photo.url(:thumb)
+              %td.previous-pick
+                = draft_pick.fantasy_team.name
         %tr
-          %td.upcoming-pick.fantasy_team_photo
-            = image_tag draft_pick.fantasy_team.photo.url(:thumb)
-          %td.upcoming-pick
-            = draft_pick.fantasy_team.name
+          %td 
+            = image_tag @current_draft_pick.fantasy_team.photo.url(:small)
+          %td
+            %a.current-pick= "#{@current_draft_pick.fantasy_team.name}"
+        - @upcoming_draft_picks.each do |draft_pick|
+          %tr
+            %td.upcoming-pick.fantasy_team_photo
+              = image_tag draft_pick.fantasy_team.photo.url(:thumb)
+            %td.upcoming-pick
+              = draft_pick.fantasy_team.name

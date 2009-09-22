@@ -4,7 +4,7 @@
   %head
     %meta{'http-equiv' => "Content-type", :content => "text/html;charset=UTF-8"}
     %title= "Fantasy Hockey App - " + controller.action_name 
-    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'draft.css', :media => 'screen, projection'
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
@@ -12,52 +12,40 @@
     = stylesheet_link_tag "infusion/framework/fss/css/fss-layout.css"
     = stylesheet_link_tag "infusion/framework/fss/css/fss-theme-mist.css"
     = stylesheet_link_tag "infusion/tests/manual-tests/lib/jquery/plugins/selectbox/selectbox.css"
+    = yield :stylesheet_includes
     = stylesheet_link_tag "infusion/components/inlineEdit/css/InlineEdit.css"
     = javascript_include_tag "jquery/jquery.min.js", "jquery/jquery-ui-1.7.2.custom.min.js"
     = yield :javascript_includes
-    = javascript_include_tag "application.js"
+    = javascript_include_tag "jquery/jquery.quicksearch.js", "application.js"
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
       
   %body
     #container
       #header
-        %h1 Fantasy Hockey App
+        #title FANTASY HOCKEY APP
         %ul#account_navigation
           - if current_user
-            %li= link_to "Edit Profile", edit_user_path(:current)
-            %li= link_to "Logout", logout_path
+            %li
+              |
+            %li= link_to "profile", edit_user_path(:current)
+            %li
+              |
+            %li= link_to "logout", logout_path
+            %li
+              |
           - else
-            %li= link_to "Register", new_user_path
-            %li= link_to "Login", login_path
-      %hr
+            %li= link_to "register", new_user_path
+            |
+            %li= link_to "login", login_path
       
-      #content
-        - if flash[:notice]
-          #flash_content.success
-            %table.upcoming{ :id => "success" }
-              %td.bottom_left{ :id => "success" }
-                = flash[:notice]
-        - if flash[:error]
-          #flash_content.error
-            %table.upcoming{ :id => "error" }
-              %td.bottom_left{ :id => "error" }
-                = flash[:error]
-        = yield
-      #sidebar
-        #recent-activity
-          %h3 Recent Activity
-          .box
-            %a Foo
-          .box
-            %a Bar
-          .box
-            %a Blah
-        #recent-comments
-          %h3 Recent Comments
-          .box
-            %span Blah
-            Foo
-            Bar
-      %hr
-
-#unobtrusive
+      - if flash[:notice]
+        #flash_content.success
+          %table.upcoming{ :id => "success" }
+            %td.bottom_left{ :id => "success" }
+              = flash[:notice]
+      - if flash[:error]
+        #flash_content.error
+          %table.upcoming{ :id => "error" }
+            %td.bottom_left{ :id => "error" }
+              = flash[:error]
+      = yield
