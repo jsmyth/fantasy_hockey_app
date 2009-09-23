@@ -21,4 +21,16 @@ $(document).ready(function() {
   });
   
   $('#flash_content').pause(5000).slideUp('slow');
+  
+  $("tr.row").hover(
+   function()
+   {
+    new_src = $(this).find("img").attr("src").replace(/normal/, 'reverse');
+    $(this).find("img.number").attr("src", new_src)
+   },
+   function()
+   {
+    new_src = $(this).find("img").attr("src").replace(/reverse/, 'normal');
+    $(this).find("img.number").attr("src", new_src)   }
+  );
 });

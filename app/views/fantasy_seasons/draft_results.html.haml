@@ -9,7 +9,7 @@
     %tbody
       - @draft_picks.each_with_index do |draft_pick,index|
         %tr.row
-          %td.row-number= image_tag "numbers/#{index + 1}.png"
+          %td.row-number= image_tag "numbers/#{index + 1}-normal.png", :class => 'number'
           %td.add-player= image_tag draft_pick.fantasy_team.photo.url(:small) rescue nil
           %td.player-name= draft_pick.fantasy_team.name
           %td.player-photo= image_tag draft_pick.player.photo.url(:thumb)
@@ -19,5 +19,8 @@
           %td.nhl-team-photo= link_to image_tag("icons/yahoo.gif"), "http://sports.yahoo.com/nhl/players/#{draft_pick.id}"
 
 #sidebar
-  #liveSearch
+  %h3 F A N T A S Y  &nbsp; H O C K E Y &nbsp;  A P P
+  %hr
+  %p
+    #liveSearch
   %p= link_to "New Player", new_player_path
