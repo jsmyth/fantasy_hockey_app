@@ -59,7 +59,6 @@ class FantasySeasonsController < InheritedResources::Base
     
     @unavailable_players = Player.unavailable_in_fantasy_season(@fantasy_season) || ['']
     @draft_picks = @fantasy_season.draft_picks.find(:all, :conditions => ['draft_picks.player_id IS NOT NULL'])
-    render :layout => "draft"
   end
   
   def draft_order
@@ -111,7 +110,6 @@ class FantasySeasonsController < InheritedResources::Base
     @virtual_draft_picks.each do |virtual_draft_pick|
       draft_pick = DraftPick.create(:fantasy_season => @fantasy_season, :fantasy_team => virtual_draft_pick)
     end
-    @fantasy_season.snap_draft!
     redirect_to draft_order_fantasy_season_url(@fantasy_season)
   end
 
@@ -166,7 +164,6 @@ class FantasySeasonsController < InheritedResources::Base
     
     @draft_pick_number = 0
 
-    @fantasy_season.freeze_draft!
     redirect_to draft_order_fantasy_season_url(@fantasy_season)
   end
 

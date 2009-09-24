@@ -1,3 +1,9 @@
 [submodule "vendor/plugins/acts_as_list"]
 	path = vendor/plugins/acts_as_list
 	url = git://github.com/rails/acts_as_list.git
+[submodule "vendor/plugins/spreadsheet_on_rails"]
+	path = vendor/plugins/spreadsheet_on_rails
+	url = git://github.com/10to1/spreadsheet_on_rails.git
+[submodule "vendor/plugins/prawnto"]
+	path = vendor/plugins/prawnto
+	url = git://github.com/thorny-sun/prawnto.git
