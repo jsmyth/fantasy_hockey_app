@@ -97,6 +97,7 @@ fantasy_team_photos_path = 'public/images/fantasy_teams'
 
 Factory.define :shamrocks, :class => FantasyTeam do |f|
   f.name 'Shamrocks'
+  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'Shamrocks.jpg'), 'image/jpg') }
 end
 shamrocks = Factory(:shamrocks, :user => User.find_by_login('testuser8'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
@@ -108,11 +109,14 @@ the_hammer = Factory(:the_hammer, :user => User.find_by_login('testuser1'), :fan
 
 Factory.define :pw, :class => FantasyTeam do |f|
   f.name 'Project Watermelon'
+  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'ProjectWatermelon.jpg'), 'image/jpg') }
+  
 end
 pw = Factory(:pw, :user => User.find_by_login('testuser2'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
 Factory.define :d12, :class => FantasyTeam do |f|
   f.name 'Dirty Dozen'
+  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'DirtyDozen.jpg'), 'image/jpg') }
 end
 d12 = Factory(:d12, :user => User.find_by_login('testuser3'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
@@ -125,6 +129,7 @@ sb = Factory(:sb, :user => User.find_by_login('testuser4'), :fantasy_seasons => 
 
 Factory.define :windy, :class => FantasyTeam do |f|
   f.name 'Windy City Rumblers'
+  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'WindyCityRumblers.jpg'), 'image/jpg') }
 end
 windy = Factory(:windy, :user => User.find_by_login('testuser5'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
@@ -136,6 +141,7 @@ warriors = Factory(:warriors, :user => User.find_by_login('testuser6'), :fantasy
 
 Factory.define :drunk, :class => FantasyTeam do |f|
   f.name 'Drunk Zamboni Drivers'
+  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'DrunkZamboniDrivers.jpg'), 'image/jpg') }
 end
 drunk = Factory(:drunk, :user => User.find_by_login('testuser7'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
