@@ -130,6 +130,7 @@ windy = Factory(:windy, :user => User.find_by_login('testuser5'), :fantasy_seaso
 
 Factory.define :warriors, :class => FantasyTeam do |f|
   f.name 'Warriors'
+  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'Warriors.jpg'), 'image/jpg') }
 end
 warriors = Factory(:warriors, :user => User.find_by_login('testuser6'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
