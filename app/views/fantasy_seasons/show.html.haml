@@ -20,7 +20,7 @@
   |
   = link_to "snap draft", {:controller => 'fantasy_seasons', :action => 'snap_draft', :id => @fantasy_season}, :method => 'post'
   |
-  = link_to "enter draft", {:controller => 'fantasy_seasons', :action => 'draft', :id => @fantasy_season}
+  = link_to "enter draft", draft_fantasy_season_path(@fantasy_season)
 
 %p
   %h4 Teams
