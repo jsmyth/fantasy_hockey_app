@@ -13,31 +13,35 @@ class RosterAssignmentsController < ApplicationController
   
   def create
     @player = Player.find(params[:id])
-    
-    @fantasy_team = @current_fantasy_team
     @roster_assignment = RosterAssignment.new
     @roster_assignment.player = @player
-    @roster_assignment.fantasy_team = @fantasy_team
     
-    
-    if @roster_assignment.save
-      if params[:draft_player]
-        @draft_pick = DraftPick.find params[:draft_pick]
-        @draft_pick.player = @player
-        if @draft_pick.save
-          flash[:notice] = "Successfully drafter #{@player.name}."
+    # If we're drafting
+    if params[:draft_player]
+      @draft_pick = DraftPick.find params[:draft_pick]
+      @draft_pick.player = @player
+      if @draft_pick.save
+        @roster_assignment.fantasy_team = @draft_pick.fantasy_team
+        if @roster_assignment.save
+          flash[:notice] = "Successfully drafted #{@player.name}."
           redirect_to draft_fantasy_season_url(@current_fantasy_season)
         else
-          flash[:error] = "Can't draft #{@player.name} to your team."
+          flash[:error] = "Can't assign #{@player.name} to your team."
           redirect_to draft_fantasy_season_url(@current_fantasy_season)
         end
       else
+        flash[:error] = "Can't draft #{@player.name}!"
+        redirect_to draft_fantasy_season_url(@current_fantasy_season)
+      end
+    else # Not drafting
+      @roster_assignment.fantasy_team = @current_fantasy_team
+      if @roster_assignment.save
         flash[:notice] = "Successfully added #{@player.name}."
         redirect_to @fantasy_team
+      else
+        flash[:error] = "Can't add #{@player.name} to your team."
+        redirect_to @fantasy_team
       end
-    else
-      flash[:error] = "Can't assign that player to your team."
-      redirect_to @current_fantasy_season
     end
   end
   
