@@ -30,11 +30,11 @@
                 = image_tag draft_pick.fantasy_team.photo.url(:thumb)
               %td.previous-pick
                 = draft_pick.fantasy_team.name
-        %tr
-          %td 
+        %tr.current-pick
+          %td.border-left
             = image_tag @current_draft_pick.fantasy_team.photo.url(:small)
-          %td
-            %a.current-pick= "#{@current_draft_pick.fantasy_team.name}"
+          %td.border-right
+            %a= "#{@current_draft_pick.fantasy_team.name}"
         - @upcoming_draft_picks.each do |draft_pick|
           %tr
             %td.upcoming-pick.fantasy_team_photo
