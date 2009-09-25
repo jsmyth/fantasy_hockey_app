@@ -6,12 +6,12 @@
     %tbody
       - @available_players.each do |player|
         %tr.row
-          %td= image_tag player.photo.url(:thumb)
-          %td= player.positions.collect{|pos| pos.abbreviation}.join('/')
+          %td.player-photo= image_tag player.photo.url(:thumb)
+          %td.player-positions= player.positions.collect{|pos| pos.abbreviation}.join('/')
           - if @current_draft_pick
-            %td= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id, :draft_player => true, :draft_pick => @current_draft_pick.id}, :confirm => "Are you sure? This will draft #{player.name} onto #{@current_draft_pick.fantasy_team.name}!", :method => :post)
-          %td= player.name
-          %td= image_tag player.nhl_team.photo.url(:thumb), :class => 'small-photo'
+            %td.add-player= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id, :draft_player => true, :draft_pick => @current_draft_pick.id}, :confirm => "Are you sure? This will draft #{player.name} onto #{@current_draft_pick.fantasy_team.name}!", :method => :post)
+          %td.player-name= player.name
+          %td.nhl-team-photo= image_tag player.nhl_team.photo.url(:thumb), :class => 'small-photo'
 
 #sidebar
   %h3 F A N T A S Y  &nbsp; H O C K E Y &nbsp;  A P P
