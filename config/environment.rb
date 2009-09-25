@@ -5,6 +5,8 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
+require File.join(File.dirname(__FILE__), '../lib/PlayerSpreadsheet.rb')
+require File.join(File.dirname(__FILE__), '../lib/writeexcel.rb')
 
 Rails::Initializer.run do |config|
   config.gem 'authlogic'
@@ -21,6 +23,9 @@ Rails::Initializer.run do |config|
              :source => "http://gems.github.com"
   config.gem 'paperclip'
   config.gem 'rubyist-aasm', :lib => 'aasm', :source => "http://gems.github.com"
+  config.gem 'prawn'
+  config.gem 'spreadsheet'
+  
   #config.gem 'ryanb-acts-as-list', :lib => "acts_as_list", :source => 'http://gems.github.com'
   #config.gem 'flyerhzm-bullet', :lib => 'bullet', :source => 'http://gems.github.com'
   #config.gem 'ruby-growl'

@@ -22,21 +22,21 @@
   %body
     #container
       #header
-        #title FANTASY HOCKEY APP
-        %ul#account_navigation
-          - if current_user
-            %li
-              |
-            %li= link_to "profile", edit_user_path(:current)
-            %li
-              |
-            %li= link_to "logout", logout_path
-            %li
-              |
-          - else
-            %li= link_to "register", new_user_path
+        %ul#main_navigation
+          %li
             |
-            %li= link_to "login", login_path
+          %li= current_fantasy_season_state_path()
+          %li
+            |
+          %li= link_to "#{@current_fantasy_season.league.name} #{@current_fantasy_season.name}", fantasy_season_path(@current_fantasy_season)
+          %li
+            |
+          %li= link_to @current_fantasy_team.name, fantasy_team_path(@current_fantasy_team)
+          %li
+            |
+          %li= link_to "Players", players_path
+          %li
+            |
       
       - if flash[:notice]
         #flash_content.success

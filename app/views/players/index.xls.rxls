@@ -1,0 +1,55 @@
+sheet = workbook.create_worksheet
+sheet.name = "#{@current_fantasy_season.name} - #{@current_fantasy_season.nhl_season.name} - All Players"
+
+header = Spreadsheet::Format.new :color => :black,
+                                 :weight => :bold,
+                                 :size => 16
+
+mine =  Spreadsheet::Format.new :pattern_bg_color => :black,
+                                :pattern_fg_color => :black,
+                                :pattern => 1,
+                                :color => :white,
+                                :size => 14
+
+watching = Spreadsheet::Format.new :color => :black,
+                                   :weight => :bold,
+                                   :size => 14
+
+normal = Spreadsheet::Format.new :color => :black,
+                                 :cross_down => :bottom,
+                                 :size => 14
+
+unavailable = Spreadsheet::Format.new :color => :gray,
+                                      :strikeout => 1,
+                                      :size => 14
+
+id_field_format = Spreadsheet::Format.new :horizontal_align => :right,
+                                          :vertical_align   => :center
+
+
+sheet.row(0).default_format = header
+sheet.row(0).insert 0, "BID"
+sheet.row(0).insert 1, "Player Name"
+sheet.row(0).insert 2, "NHL Team"
+sheet.row(0).insert 3, "Owned By"
+
+sheet.column(0).default_format = id_field_format
+sheet.column(0).width = 10
+sheet.column(1).width = 35
+sheet.column(2).width = 20
+sheet.column(3).width = 30
+
+@players.each_with_index do |player,index|
+  if owned_by(player) == @current_fantasy_team.name
+    sheet.row(index + 1).default_format = mine
+  elsif owned_by(player) != 'FA'
+    sheet.row(index + 1).default_format = unavailable
+  else
+    sheet.row(index + 1).default_format = normal
+  end
+  sheet.row(index + 1).height = 20
+  sheet.row(index + 1).insert 0, player.beacon_id
+  sheet.row(index + 1).insert 1, player.name
+  sheet.row(index + 1).insert 2, player.nhl_team.name
+  sheet.row(index + 1).insert 3, owned_by(player)
+end

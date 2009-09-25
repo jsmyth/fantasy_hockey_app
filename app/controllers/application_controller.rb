@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
     if current_user
       @current_league = League.find_by_subdomain!(request.subdomains.first)
       @current_fantasy_season = @current_league.fantasy_seasons.last
+      @current_state = @current_fantasy_season.state
       @current_fantasy_team = @current_user.fantasy_teams.find(:all, :include => :fantasy_seasons, :conditions => {"fantasy_seasons.id" => @current_fantasy_season.id}).last
     end
   end
