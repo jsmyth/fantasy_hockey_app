@@ -1,33 +1,62 @@
 - content_for :javascript_includes do
   - if @current_state == 'draft_snapped'
+    = stylesheet_link_tag "infusion/framework/fss/css/fss-layout.css"
+    = stylesheet_link_tag "infusion/framework/fss/css/fss-theme-mist.css"
+    = stylesheet_link_tag "infusion/tests/manual-tests/lib/jquery/plugins/selectbox/selectbox.css"
+    = stylesheet_link_tag "infusion/components/inlineEdit/css/InlineEdit.css"
+
+- content_for :javascript_includes do
+  - if @current_state == 'draft_snapped'
     = javascript_include_tag "InfusionAll.js", "jquery.selectbox-0.5.js", "draft_order.js"
   = javascript_include_tag "application.js",
 
+%br
 %hr
-= display_freeze_draft_link(@fantasy_season)
-
-- @draft_picks.enum_slice(@number_of_fantasy_teams).each_with_index do |group,round_number|
+#content
   %br
+  - @draft_picks.enum_slice(@number_of_fantasy_teams).each_with_index do |group,round_number|
+    %h3= "Round #{round_number + 1}"
+    %dl
+      - if group.first.class.to_s == 'FantasyTeam'
+        - group.each_with_index do |fantasy_team, i|
+          - @draft_pick_number += 1
+          %dd{:id => "draft-pick-#{@draft_pick_number}"}
+            %span.flc-inlineEdit-text fantasy_team.name
+            - if @current_state == 'draft_snapped'
+              %span{:class => "flc-inlineEdit-editContainer dropdown"}
+                = collection_select(:draft_pick, :fantasy_team_id, @fantasy_teams, 'id', 'name', { :selected => draft_pick.fantasy_team_id }, :class => 'flc-inlineEdit-edit')
+      - elsif group.first.class.to_s == 'DraftPick'
+        - group.each_with_index do |draft_pick, i|
+          - @draft_pick_number += 1
+          %dd{:id => "draft-pick-#{@draft_pick_number}"}
+            %span.flc-inlineEdit-text= draft_pick.fantasy_team.name
+            - if @current_state == 'draft_snapped'
+              %span.flc-inlineEdit-editContainer.dropdown
+                = collection_select(:draft_pick, :fantasy_team_id, @fantasy_teams, 'id', 'name', { :selected => draft_pick.fantasy_team_id }, :class => 'flc-inlineEdit-edit' )
+    %br
+    %hr
+    %br
+
+#sidebar
+  %h3 F A N T A S Y  &nbsp; H O C K E Y &nbsp;  A P P
   %hr
-  %br
-  %h3= "Round #{round_number + 1}"
-  %dl
-    - if group.first.class.to_s == 'FantasyTeam'
-      - group.each_with_index do |fantasy_team, i|
-        - @draft_pick_number += 1
-        %dd{:id => "draft-pick-#{@draft_pick_number}"}
-          %span.flc-inlineEdit-text fantasy_team.name
-          - if @current_state == 'draft_snapped'
-            %span{:class => "flc-inlineEdit-editContainer dropdown"}
-              = collection_select(:draft_pick, :fantasy_team_id, @fantasy_teams, 'id', 'name', { :selected => draft_pick.fantasy_team_id }, :class => 'flc-inlineEdit-edit')
-    - elsif group.first.class.to_s == 'DraftPick'
-      - group.each_with_index do |draft_pick, i|
-        - @draft_pick_number += 1
-        %dd{:id => "draft-pick-#{@draft_pick_number}"}
-          %span.flc-inlineEdit-text= draft_pick.fantasy_team.name
-          - if @current_state == 'draft_snapped'
-            %span.flc-inlineEdit-editContainer.dropdown
-              = collection_select(:draft_pick, :fantasy_team_id, @fantasy_teams, 'id', 'name', { :selected => draft_pick.fantasy_team_id }, :class => 'flc-inlineEdit-edit' )
-
-%br
-%br
+  %ul#account_navigation
+    - if current_user
+      %li
+        |
+      %li= link_to "new league", new_league_path
+      %li
+        |
+      %li= link_to "account", logout_path
+      %li
+        |
+      %li= link_to "log out", edit_user_path(:current)
+      %li
+        |
+    - else
+      %li= link_to "register", new_user_path
+      |
+      %li= link_to "login", login_path
+  %hr
+  %p
+    #liveSearch

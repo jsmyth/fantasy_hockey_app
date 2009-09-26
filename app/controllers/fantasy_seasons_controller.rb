@@ -49,7 +49,6 @@ class FantasySeasonsController < InheritedResources::Base
     else 
       @previous_draft_picks = []
     end
-    render :layout => "draft"
   end
 
   def draft_results

@@ -21,6 +21,23 @@
 #sidebar
   %h3 F A N T A S Y  &nbsp; H O C K E Y &nbsp;  A P P
   %hr
+  %ul#account_navigation
+    - if current_user
+      %li
+        |
+      %li= link_to "new league", new_league_path
+      %li
+        |
+      %li= link_to "account", logout_path
+      %li
+        |
+      %li= link_to "log out", edit_user_path(:current)
+      %li
+        |
+    - else
+      %li= link_to "register", new_user_path
+      |
+      %li= link_to "login", login_path
+  %hr
   %p
     #liveSearch
-  %p= link_to "New Player", new_player_path
