@@ -53,9 +53,6 @@ class FantasySeason < ActiveRecord::Base
     transitions :from => :post_season, :to => :off_season
   end
   
-  aasm_event :start_pre_season do
-    transitions :from => :off_season, :to => :pre_season
-  end
 
   def name
     nhl_season.name
