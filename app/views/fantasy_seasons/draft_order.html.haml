@@ -1,5 +1,7 @@
 - content_for :javascript_includes do
-  = javascript_include_tag "InfusionAll.js", "jquery.selectbox-0.5.js", "application.js", "draft_order.js"
+  - if @current_state == 'draft_snapped'
+    = javascript_include_tag "InfusionAll.js", "jquery.selectbox-0.5.js", "draft_order.js"
+  = javascript_include_tag "application.js",
 
 %hr
 = display_freeze_draft_link(@fantasy_season)
@@ -15,16 +17,17 @@
         - @draft_pick_number += 1
         %dd{:id => "draft-pick-#{@draft_pick_number}"}
           %span.flc-inlineEdit-text fantasy_team.name
-
-          %span{:class => "flc-inlineEdit-editContainer dropdown"}
-            = collection_select(:draft_pick, :fantasy_team_id, @fantasy_teams, 'id', 'name', { :selected => draft_pick.fantasy_team_id }, :class => 'flc-inlineEdit-edit')
+          - if @current_state == 'draft_snapped'
+            %span{:class => "flc-inlineEdit-editContainer dropdown"}
+              = collection_select(:draft_pick, :fantasy_team_id, @fantasy_teams, 'id', 'name', { :selected => draft_pick.fantasy_team_id }, :class => 'flc-inlineEdit-edit')
     - elsif group.first.class.to_s == 'DraftPick'
       - group.each_with_index do |draft_pick, i|
         - @draft_pick_number += 1
         %dd{:id => "draft-pick-#{@draft_pick_number}"}
           %span.flc-inlineEdit-text= draft_pick.fantasy_team.name
-          %span.flc-inlineEdit-editContainer.dropdown
-            = collection_select(:draft_pick, :fantasy_team_id, @fantasy_teams, 'id', 'name', { :selected => draft_pick.fantasy_team_id }, :class => 'flc-inlineEdit-edit' )
+          - if @current_state == 'draft_snapped'
+            %span.flc-inlineEdit-editContainer.dropdown
+              = collection_select(:draft_pick, :fantasy_team_id, @fantasy_teams, 'id', 'name', { :selected => draft_pick.fantasy_team_id }, :class => 'flc-inlineEdit-edit' )
 
 %br
 %br
