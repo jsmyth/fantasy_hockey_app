@@ -24,7 +24,7 @@ class RosterAssignmentsController < ApplicationController
         @roster_assignment.fantasy_team = @draft_pick.fantasy_team
         if @roster_assignment.save
           flash[:notice] = "Successfully drafted #{@player.name}."
-          if @current_fantasy_season.draft_picks.find(:all, :conditions => ['draft_picks.player_id = NULL']).count == 0
+          if @current_fantasy_season.draft_picks.find(:all, :conditions => {:player_id => nil}).count == 0
             @current_fantasy_season.start_season!
             redirect_to draft_results_fantasy_season_url(@current_fantasy_season)
           else
