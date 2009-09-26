@@ -25,6 +25,9 @@ namespace :db do
 
     require 'rubygems'
     require 'hpricot'
+    require 'yaml'
+    # get the yahoo_ids from the YAML file
+    yahoo_id_for = YAML.load_file("#{RAILS_ROOT}/extras/yahoo-beacon-map.yaml")
 
     xml_file = File.expand_path(File.dirname(__FILE__) + "/../../db/import") + "/PLAYER_STATS_OVERALL_TOTALS-NHL-20090412.xml"
     doc = Hpricot.XML(open(xml_file))
@@ -41,6 +44,7 @@ namespace :db do
         position   = (player/'Position').inner_html
         pos = Position.find_or_create_by_abbreviation position
         p.positions << pos
+        p.yahoo_id = yahoo_id_for[p.beacon_id]
       end
       p.save
   
@@ -60,7 +64,7 @@ namespace :db do
 
       nhl_team.players << p
       
-      puts "| #{p.first_name} #{p.last_name} - #{p.positions.first.abbreviation} - #{nhl_team.abbreviation} |"    
+      puts "| #{p.first_name} #{p.last_name} - #{p.positions.first.abbreviation} - #{nhl_team.abbreviation} - B:#{p.beacon_id} -Y:#{p.yahoo_id} |"    
   
       s = Stat.new
       (statsentry/:playerstats).each do |playerstats|
