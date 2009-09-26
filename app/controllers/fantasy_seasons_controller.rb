@@ -110,6 +110,7 @@ class FantasySeasonsController < InheritedResources::Base
     @virtual_draft_picks.each do |virtual_draft_pick|
       draft_pick = DraftPick.create(:fantasy_season => @fantasy_season, :fantasy_team => virtual_draft_pick)
     end
+    @fantasy_season.snap_draft!
     redirect_to draft_order_fantasy_season_url(@fantasy_season)
   end
 
@@ -164,6 +165,7 @@ class FantasySeasonsController < InheritedResources::Base
     
     @draft_pick_number = 0
 
+    @fantasy_season.freeze_draft!
     redirect_to draft_order_fantasy_season_url(@fantasy_season)
   end
 
