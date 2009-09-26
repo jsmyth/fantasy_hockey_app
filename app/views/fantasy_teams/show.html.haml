@@ -1,0 +1,81 @@
+%br
+%hr
+
+#content
+  %br
+  %strong League:
+  = link_to @fantasy_team.fantasy_seasons.last.league.name, @fantasy_team.fantasy_seasons.last rescue nil
+  %br
+  %strong User:
+  = link_to @fantasy_team.user.name, @fantasy_team.user
+  %br
+  %strong Current Season:
+  = link_to @fantasy_team.fantasy_seasons.last.name, @fantasy_team.fantasy_seasons.last
+
+  %br
+  %br
+  %hr
+  
+  %table#draft_table
+    %h2 NHL Players
+    %tbody
+      - @fantasy_team.nhl_skaters.each do |player|
+        %tr.row
+          %td.player-photo= image_tag player.photo.url(:thumb)
+          %td.player-positions= player.positions.collect{|position| position.abbreviation}.join('/')
+          %td.player-name= link_to player.name, player
+          %td.nhl-team-photo= image_tag player.nhl_team.photo.url(:thumb), :class => 'small-photo'
+          %td.nhl-team-photo= link_to image_tag("icons/yahoo.gif"), "http://sports.yahoo.com/nhl/players/#{player.id}"
+
+  %br
+  %hr
+
+  %h2 NHL Goalies
+  %table#draft_table
+    %tbody
+      - @fantasy_team.nhl_goalies.each do |p|
+        %tr.row
+          %td
+            = link_to "-", {:controller => 'roster_assignments', :action => 'destroy', :id => p.id}, :method => :delete, :confirm => "Are you sure you want to remove #{p.name}"
+            = link_to p.name, p rescue nil
+
+  %br
+  %hr
+
+  %h2 Minor Leaguers
+  %table#draft_table
+    %tbody
+      - @fantasy_team.minor_leaguers.each do |player|
+        %tr.row
+          %td.player-photo= image_tag player.photo.url(:thumb)
+          %td.player-positions= player.positions.collect{|position| position.abbreviation}.join('/')
+          %td.player-name= link_to player.name, player
+          %td.nhl-team-photo= image_tag player.nhl_team.photo.url(:thumb), :class => 'small-photo'
+          %td.nhl-team-photo= link_to image_tag("icons/yahoo.gif"), "http://sports.yahoo.com/nhl/players/#{player.id}"
+
+  %br
+  %hr
+
+#sidebar
+  %h3 F A N T A S Y  &nbsp; H O C K E Y &nbsp;  A P P
+  %hr
+  %ul#account_navigation
+    - if current_user
+      %li
+        |
+      %li= link_to "new league", new_league_path
+      %li
+        |
+      %li= link_to "account", logout_path
+      %li
+        |
+      %li= link_to "log out", edit_user_path(:current)
+      %li
+        |
+    - else
+      %li= link_to "register", new_user_path
+      |
+      %li= link_to "login", login_path
+  %hr
+  %p
+    #liveSearch
