@@ -41,7 +41,14 @@ class FantasySeasonsController < InheritedResources::Base
     
     @current_draft_pick = @fantasy_season.draft_picks.find(:all, :conditions => ['player_id IS NULL']).first
     @upcoming_draft_picks = @fantasy_season.draft_picks.find(:all, :conditions => ['player_id IS NULL'])[1..7]
-    @previous_draft_picks = @fantasy_season.draft_picks.find(:all, :conditions => ['player_id IS NOT NULL'])[-2..-1]
+    @previous_draft_picks = @fantasy_season.draft_picks.find(:all, :conditions => ['player_id IS NOT NULL'])
+    if @previous_draft_picks.count == 1
+      # Do nothing
+    elsif @previous_draft_picks.count > 1
+      @previous_draft_picks = @previous_draft_picks[-2..-1]
+    else 
+      @previous_draft_picks = []
+    end
     render :layout => "draft"
   end
 
