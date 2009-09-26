@@ -122,6 +122,11 @@ class FantasySeasonsController < InheritedResources::Base
   end
 
   def freeze_draft
+    unless @current_state == 'draft_snapped'
+      flash[:error] = "Your draft must be snapped in order to freeze draft."
+      redirect_to fantasy_season_url(@current_fantasy_season) and return
+    end
+    
     if params[:id]
       @fantasy_season = FantasySeason.find(params[:id])      
     else
