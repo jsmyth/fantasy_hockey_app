@@ -1,5 +1,7 @@
 - content_for :javascript_includes do
-  = javascript_include_tag "application.js", "fantasy_season.js"
+  = javascript_include_tag "application.js"
+  - if @current_state == 'pre_season'
+    = javascript_include_tag "fantasy_season.js"
 
 %p
   %h4 Details
@@ -27,7 +29,8 @@
   %ul#fantasy-teams-list
     - @fantasy_season.fantasy_teams.each_with_index do |fantasy_team,i|
       %li{:id => "fantasy_team_#{fantasy_team.id}"}
-        %span.handle [drag]
+        - if @current_state == 'pre_season'
+          %span.handle [drag]
         %span.name= fantasy_team.name
 
 
