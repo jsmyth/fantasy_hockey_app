@@ -24,7 +24,12 @@ class RosterAssignmentsController < ApplicationController
         @roster_assignment.fantasy_team = @draft_pick.fantasy_team
         if @roster_assignment.save
           flash[:notice] = "Successfully drafted #{@player.name}."
-          redirect_to draft_fantasy_season_url(@current_fantasy_season)
+          if @current_fantasy_season.draft_picks.find(:all, :conditions => ['draft_picks.player_id = NULL']).count == 0
+            @current_fantasy_season.start_season!
+            redirect_to draft_results_fantasy_season_url(@current_fantasy_season)
+          else
+            redirect_to draft_fantasy_season_url(@current_fantasy_season)
+          end
         else
           flash[:error] = "Can't assign #{@player.name} to your team."
           redirect_to draft_fantasy_season_url(@current_fantasy_season)
