@@ -1,5 +1,5 @@
 sheet = workbook.create_worksheet
-sheet.name = "#{@current_fantasy_season.name} - #{@current_fantasy_season.nhl_season.name} - All Players"
+sheet.name = "#{@current_fantasy_season.league.name} - #{@current_fantasy_season.name} - All Players"
 
 header = Spreadsheet::Format.new :color => :black,
                                  :weight => :bold,
