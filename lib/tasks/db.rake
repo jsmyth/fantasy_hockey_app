@@ -12,7 +12,7 @@ namespace :db do
   end
 
   desc "Reseed and Load DevData"
-  task :baseline => [:migrate, :import, :seed, :dev_data] do
+  task :baseline => [:migrate, :seed, :import, :dev_data] do
   end
 
   desc "This drops the db, builds the db, and seeds the data."
