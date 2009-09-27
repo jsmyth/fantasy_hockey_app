@@ -15,7 +15,7 @@
 #content
   %br
   - @draft_picks.enum_slice(@number_of_fantasy_teams).each_with_index do |group,round_number|
-    %h3= "Round #{round_number + 1}"
+    %h2= "Round #{round_number + 1}"
     %dl
       - if group.first.class.to_s == 'FantasyTeam'
         - group.each_with_index do |fantasy_team, i|
