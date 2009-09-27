@@ -25,7 +25,7 @@
           %td.player-positions= player.positions.collect{|position| position.abbreviation}.join('/')
           %td.player-name= link_to player.name, player
           %td.nhl-team-photo= image_tag player.nhl_team.photo.url(:thumb), :class => 'small-photo'
-          %td.nhl-team-photo= link_to image_tag("icons/yahoo.gif"), "http://sports.yahoo.com/nhl/players/#{player.id}"
+          %td.nhl-team-photo= link_to image_tag("icons/yahoo.gif"), "http://sports.yahoo.com/nhl/players/#{player.yahoo_id}"
 
   %br
   %hr
@@ -51,7 +51,7 @@
           %td.player-positions= player.positions.collect{|position| position.abbreviation}.join('/')
           %td.player-name= link_to player.name, player
           %td.nhl-team-photo= image_tag player.nhl_team.photo.url(:thumb), :class => 'small-photo'
-          %td.nhl-team-photo= link_to image_tag("icons/yahoo.gif"), "http://sports.yahoo.com/nhl/players/#{player.id}"
+          %td.nhl-team-photo= link_to image_tag("icons/yahoo.gif"), "http://sports.yahoo.com/nhl/players/#{player.yahoo_id}"
 
   %br
   %hr
