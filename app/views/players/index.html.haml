@@ -5,29 +5,21 @@
 %hr
 
 #content
-  %br
-  %table#draft_table
+  %table#draft_table.photo-table
     %tbody
       %tr.row-header
         %td.player-photo
         %td.player-positions
         %td.add-player
         %td.player-name
-          %h2 Player Name
-        %td.player-stat
-          %h2 G 
-        %td.player-stat
-          %h2 A 
-        %td.player-stat
-          %h2 +/- 
-        %td.player-stat
-          %h2 PIM 
-        %td.player-stat
-          %h2 PPP 
-        %td.player-stat
-          %h2 SHP 
-        %td.player-stat
-          %h2 HITS 
+        %td.player-stat.display-none G 
+        %td.player-stat.display-none A 
+        %td.player-stat.display-none +/- 
+        %td.player-stat.display-none PIM 
+        %td.player-stat.display-none PPP 
+        %td.player-stat.display-none SHP 
+        %td.player-stat.display-none H
+        %td.nhl-team-name.display-none
         %td.nhl-team-photo
         %td.nhl-team-photo
       - @players.each do |player|
@@ -36,16 +28,19 @@
           %td.player-positions= player.positions.collect{|position| position.abbreviation}.join('/')
           %td.add-player= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id}, :confirm => "Are you sure? This will add #{player.name} onto #{@current_fantasy_team.name}!", :method => :post)
           %td.player-name= player.name
-          %td.player-stat= player.stats.last.goals
-          %td.player-stat= player.stats.last.assists
-          %td.player-stat= player.stats.last.plus_minus
-          %td.player-stat= player.stats.last.penalty_minutes
-          %td.player-stat= player.stats.last.powerplay_points
-          %td.player-stat= player.stats.last.shorthanded_points
-          %td.player-stat= player.stats.last.hits
+          %td.player-stat.display-none= player.stats.last.goals
+          %td.player-stat.display-none= player.stats.last.assists
+          %td.player-stat.display-none= player.stats.last.plus_minus
+          %td.player-stat.display-none= player.stats.last.penalty_minutes
+          %td.player-stat.display-none= player.stats.last.powerplay_points
+          %td.player-stat.display-none= player.stats.last.shorthanded_points
+          %td.player-stat.display-none= player.stats.last.hits
+          %td.nhl-team-name.display-none= player.nhl_team.abbreviation
           %td.nhl-team-photo= image_tag player.nhl_team.photo.url(:thumb), :class => 'small-photo'
           - if player.yahoo_id
             %td.nhl-team-photo= link_to image_tag("icons/yahoo.gif"), "http://sports.yahoo.com/nhl/players/#{player.yahoo_id}"
+          - else
+            %td.nhl-team-photo
 
 #sidebar
   %h3 F A N T A S Y  &nbsp; H O C K E Y &nbsp;  A P P
@@ -70,4 +65,4 @@
   %hr
   %p
     #liveSearch
-  %p= link_to "New Player", new_player_path
+  %p= link_to "Switch View", '#', :class => 'switch-view'

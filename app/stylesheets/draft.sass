@@ -16,15 +16,23 @@ body
     margin: 9px 0 9px
   tr.row:hover
     background-color: lightgrey
+  td.player-stat
+    text-align: center
+  td.player-positions
+    text-align: center
+  td.player-stat:hover
+    background-color: lightgrey
+
   tr.row
     td
       padding: 0 5px 0 5px
       border-bottom: 2px solid lightgrey
       font-size: 14px
       line-height: 18px
-  tr.row-header
-    td
-      border-bottom: 1px solid black
+  tr.row-header td
+    text-decoration: underline
+    text-align: center
+    font-weight: bold
   img.small-photo
     margin: 16px 0 16px
   .qs_input
@@ -51,13 +59,16 @@ body
       color: grey
   
   #draft_table
+    width: 100%
+  
+  %table.photo-table
     td.player-photo
       width: 40px
     td.player-positions
       width: 20px
       text-align: center
     td.player-stat
-      width: 20px
+      width: 40px
       text-align: center
     td.add-player
       width: 20px
@@ -68,6 +79,16 @@ body
     td.row-number
       width: 60px
       text-align: center
+
+  .display-none
+    display: none
+  tr.small-row
+    td
+      font-size: 14px
+      padding: 5px 10px 5px 10px
+      border: 0
+      img
+        margin: 0px
 
 #sidebar
   text-align: center
