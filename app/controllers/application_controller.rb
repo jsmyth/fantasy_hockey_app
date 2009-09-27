@@ -41,6 +41,15 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+  
+  def commissioner?
+    current_user.role_assignments.find(:all,
+      :conditions => {
+        :fantasy_season_id => @current_fantasy_season.id,
+        :role_id           => Role.find_by_name('Commissioner')
+      }
+    )
+  end
 
   def require_no_user
     if current_user
