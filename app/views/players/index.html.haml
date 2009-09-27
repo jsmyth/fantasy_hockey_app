@@ -26,7 +26,7 @@
         %tr.row
           %td.player-photo= image_tag player.photo.url(:thumb)
           %td.player-positions= player.positions.collect{|position| position.abbreviation}.join('/')
-          %td.add-player= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id}, :confirm => "Are you sure? This will add #{player.name} onto #{@current_fantasy_team.name}!", :method => :post)
+          %td.add-player= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id}, :confirm => "Are you sure? This will add #{player.name} to #{@current_fantasy_team.name}!", :method => :post)
           %td.player-name= player.name
           %td.player-stat.display-none= player.stats.last.goals
           %td.player-stat.display-none= player.stats.last.assists

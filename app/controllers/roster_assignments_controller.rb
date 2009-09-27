@@ -39,13 +39,18 @@ class RosterAssignmentsController < ApplicationController
         redirect_to draft_fantasy_season_url(@current_fantasy_season)
       end
     else # Not drafting
-      @roster_assignment.fantasy_team = @current_fantasy_team
-      if @roster_assignment.save
-        flash[:notice] = "Successfully added #{@player.name}."
-        redirect_to @fantasy_team
+      if @current_state == 'regular_season'
+        @roster_assignment.fantasy_team = @current_fantasy_team
+        if @roster_assignment.save
+          flash[:notice] = "Successfully added #{@player.name} to #{@current_fantasy_team.name}."
+          redirect_to @current_fantasy_team
+        else
+          flash[:error] = "Can't add #{@player.name} to #{@current_fantasy_team.name}."
+          redirect_to @current_fantasy_team
+        end
       else
-        flash[:error] = "Can't add #{@player.name} to your team."
-        redirect_to @fantasy_team
+        flash[:error] = "Can't add #{@player.name} to #{@current_fantasy_team.name}: You can only add players to your team during the regular season."
+        redirect_to @current_fantasy_team
       end
     end
   end
