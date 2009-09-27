@@ -752,3 +752,12 @@ Factory.define :pchl_drunk_shawn_matthias, :class => RosterAssignment do |f|
   f.keeper true
 end
 pchl_drunk_shawn_matthias = Factory(:pchl_drunk_shawn_matthias)
+
+### Role Assignments ###
+
+Factory.define :pchl_commissioner, :class => RoleAssignment do |f|
+  f.user_id 31
+  f.role_id 2
+  f.fantasy_season_id 3
+end
+pchl_commissioner = Factory(:pchl_commissioner)
