@@ -12,6 +12,8 @@
         %td.player-positions
         %td.add-player
         %td.player-name
+        %td.player-stat O-R 
+        %td.player-stat Y-R 
         %td.player-stat.display-none G 
         %td.player-stat.display-none A 
         %td.player-stat.display-none +/- 
@@ -28,6 +30,8 @@
           %td.player-positions= player.positions.collect{|position| position.abbreviation}.join('/')
           %td.add-player= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id}, :confirm => "Are you sure? This will add #{player.name} to #{@current_fantasy_team.name}!", :method => :post)
           %td.player-name= player.name
+          %td.player-stat= display_rank(player.yahoo_orank) rescue nil
+          %td.player-stat= display_rank(player.yahoo_rank)  rescue nil
           %td.player-stat.display-none= player.stats.last.goals rescue nil
           %td.player-stat.display-none= player.stats.last.assists rescue nil
           %td.player-stat.display-none= player.stats.last.plus_minus rescue nil

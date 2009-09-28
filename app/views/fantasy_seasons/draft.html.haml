@@ -13,6 +13,8 @@
     %tbody
       - @available_players.each do |player|
         %tr.row
+          %td.player-positions= player.yahoo_orank
+          %td.player-positions= player.yahoo_rank
           %td.player-photo= image_tag player.photo.url(:thumb)
           %td.player-positions= player.positions.collect{|pos| pos.abbreviation}.join('/')
           - if @current_draft_pick

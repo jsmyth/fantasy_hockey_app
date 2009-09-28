@@ -26,7 +26,9 @@ namespace :db do
     require 'hpricot'
     require 'yaml'
     # get the yahoo_ids from the YAML file
-    yahoo_id_for = YAML.load_file("#{RAILS_ROOT}/extras/yahoo-beacon-map.yaml")
+    yahoo_id_for = YAML.load_file("#{RAILS_ROOT}/extras/yahoo-beacon-player-map.yaml")
+    yahoo_rank_for  = YAML.load_file("#{RAILS_ROOT}/extras/yahoo_id-yahoo_rank.yaml")
+    yahoo_orank_for = YAML.load_file("#{RAILS_ROOT}/extras/yahoo_id-yahoo_orank.yaml")
 
     xml_file = File.expand_path(File.dirname(__FILE__) + "/../../db/import") + "/ACTIVE_PLAYERS-NHL-REGULAR-20090927.xml"
     doc = Hpricot.XML(open(xml_file))
@@ -46,7 +48,9 @@ namespace :db do
       end
       
       player = Player.find_or_create_by_beacon_id(player_attributes)
-      player.yahoo_id = yahoo_id_for[player.beacon_id]
+      player.yahoo_id    = yahoo_id_for[player.beacon_id]
+      player.yahoo_rank  = yahoo_rank_for[player.yahoo_id]  if player.yahoo_id
+      player.yahoo_orank = yahoo_orank_for[player.yahoo_id] if player.yahoo_id
       player.save
       player.positions << Position.find_or_create_by_abbreviation(position)
         
@@ -66,7 +70,7 @@ namespace :db do
 
       nhl_team.players << player
       
-      puts "| #{player.first_name} #{player.last_name} - #{player.positions.first.abbreviation} - #{nhl_team.abbreviation} - B:#{player.beacon_id} -Y:#{player.yahoo_id} |"
+      puts "| #{player.first_name} #{player.last_name} - #{player.positions.first.abbreviation} - #{nhl_team.abbreviation} - O:#{player.yahoo_orank} - R:#{player.yahoo_rank} - B:#{player.beacon_id} - Y:#{player.yahoo_id} |"
     end
   end
 
@@ -79,7 +83,9 @@ namespace :db do
     require 'hpricot'
     require 'yaml'
     # get the yahoo_ids from the YAML file
-    yahoo_id_for = YAML.load_file("#{RAILS_ROOT}/extras/yahoo-beacon-map.yaml")
+    yahoo_id_for = YAML.load_file("#{RAILS_ROOT}/extras/yahoo-beacon-player-map.yaml")
+    yahoo_rank_for  = YAML.load_file("#{RAILS_ROOT}/extras/yahoo_id-yahoo_rank.yaml")
+    yahoo_orank_for = YAML.load_file("#{RAILS_ROOT}/extras/yahoo_id-yahoo_orank.yaml")
 
     xml_file = File.expand_path(File.dirname(__FILE__) + "/../../db/import") + "/PLAYER_STATS_OVERALL_TOTALS-NHL-20090412.xml"
     doc = Hpricot.XML(open(xml_file))
@@ -100,6 +106,8 @@ namespace :db do
       
       player = Player.find_or_create_by_beacon_id(player_attributes)
       player.yahoo_id = yahoo_id_for[player.beacon_id]
+      player.yahoo_rank  = yahoo_rank_for[player.yahoo_id]  if player.yahoo_id
+      player.yahoo_orank = yahoo_orank_for[player.yahoo_id] if player.yahoo_id
       player.save
       player.positions << Position.find_or_create_by_abbreviation(position)
   
@@ -119,7 +127,7 @@ namespace :db do
 
       nhl_team.players << player
       
-      puts "| #{player.first_name} #{player.last_name} - #{player.positions.first.abbreviation} - #{nhl_team.abbreviation} - B:#{player.beacon_id} -Y:#{player.yahoo_id} |"    
+      puts "| #{player.first_name} #{player.last_name} - #{player.positions.first.abbreviation} - #{nhl_team.abbreviation} - O:#{player.yahoo_orank} - R:#{player.yahoo_rank} - B:#{player.beacon_id} - Y:#{player.yahoo_id} |"
   
       s = Stat.new
       (statsentry/:playerstats).each do |playerstats|

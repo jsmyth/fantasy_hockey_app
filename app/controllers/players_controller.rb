@@ -4,7 +4,7 @@ class PlayersController < InheritedResources::Base
   respond_to :atom, :only => :index
   
   def index
-    @players = Player.find(:all, :include => [:positions, :nhl_team, :stats])
+    @players = Player.find(:all, :order => :yahoo_orank, :include => [:positions, :nhl_team, :stats])
     respond_to do |format|
       format.html 
       format.xml  { render :xml    => @players }

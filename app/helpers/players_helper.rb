@@ -6,5 +6,9 @@ module PlayersHelper
     ).name rescue nil
 
     owned_by ||= 'FA'
-  end  
+  end
+  
+  def display_rank(rank)
+    rank == 99999 ? 'NA' : rank
+  end
 end
