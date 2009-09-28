@@ -17,9 +17,10 @@
           %td.player-positions= player.yahoo_rank
           %td.player-photo= image_tag player.photo.url(:thumb)
           %td.player-positions= player.positions.collect{|pos| pos.abbreviation}.join('/')
-          - if @current_draft_pick
-            %td.add-player= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id, :draft_player => true, :draft_pick => @current_draft_pick.id}, :confirm => "Are you sure? This will draft #{player.name} onto #{@current_draft_pick.fantasy_team.name}!", :method => :post)
-            %td.add-player= link_to(image_tag("icons/add_to_minor_roster.jpg"), {:controller => 'roster_assignments', :action => 'create', :id => player.id, :draft_player => true, :minor_league => true, :draft_pick => @current_draft_pick.id}, :confirm => "Are you sure? This will draft #{player.name} onto the minor league roster for #{@current_draft_pick.fantasy_team.name}!", :method => :post)
+          - if commissioner?
+            - if @current_draft_pick
+              %td.add-player= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id, :draft_player => true, :draft_pick => @current_draft_pick.id}, :confirm => "Are you sure? This will draft #{player.name} onto #{@current_draft_pick.fantasy_team.name}!", :method => :post)
+              %td.add-player= link_to(image_tag("icons/add_to_minor_roster.jpg"), {:controller => 'roster_assignments', :action => 'create', :id => player.id, :draft_player => true, :minor_league => true, :draft_pick => @current_draft_pick.id}, :confirm => "Are you sure? This will draft #{player.name} onto the minor league roster for #{@current_draft_pick.fantasy_team.name}!", :method => :post)
             
           
           %td.player-name= player.name
