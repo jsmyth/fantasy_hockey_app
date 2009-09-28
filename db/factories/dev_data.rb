@@ -624,23 +624,23 @@ Factory.define :pchl_windy_derick_brassard, :class => RosterAssignment do |f|
 end
 pchl_windy_derick_brassard = Factory(:pchl_windy_derick_brassard)
 
-david_tanabe = Player.find_by_beacon_id 562
-Factory.define :pchl_windy_david_tanabe, :class => RosterAssignment do |f|
-  f.player_id david_tanabe.id
+john_tavares = Player.find_by_beacon_id 4680
+Factory.define :pchl_windy_john_tavares, :class => RosterAssignment do |f|
+  f.player_id john_tavares.id
   f.fantasy_team_id 6
   f.minor_league true
   f.keeper true
 end
-pchl_windy_david_tanabe = Factory(:pchl_windy_david_tanabe)
+pchl_windy_john_tavares = Factory(:pchl_windy_john_tavares)
 
-jan_hejda = Player.find_by_beacon_id 4098
-Factory.define :pchl_windy_jan_hejda, :class => RosterAssignment do |f|
-  f.player_id jan_hejda.id
+victor_hedman = Player.find_by_beacon_id 4685
+Factory.define :pchl_windy_victor_hedman, :class => RosterAssignment do |f|
+  f.player_id victor_hedman.id
   f.fantasy_team_id 6
   f.minor_league true
   f.keeper true
 end
-pchl_windy_jan_hejda = Factory(:pchl_windy_jan_hejda)
+pchl_windy_victor_hedman = Factory(:pchl_windy_victor_hedman)
 
 
 jeff_carter = Player.find_by_beacon_id 3488

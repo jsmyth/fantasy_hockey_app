@@ -12,14 +12,66 @@ namespace :db do
   end
 
   desc "Reseed and Load DevData"
-  task :baseline => [:migrate, :seed, :import, :dev_data] do
-  end
+  task :baseline => [:migrate, :seed, :import, :dev_data]
 
   desc "This drops the db, builds the db, and seeds the data."
   task :reseed => [:environment, 'db:reset', 'db:seed']
-
+  
   desc "This task imports all of the player and team data."
-  task :import => :environment do
+  task :import_players => :environment do
+    ENV['RAILS_ENV'] = ARGV.first || ENV['RAILS_ENV'] || 'development'
+    require File.expand_path(File.dirname(__FILE__) + "/../../config/environment")
+
+    require 'rubygems'
+    require 'hpricot'
+    require 'yaml'
+    # get the yahoo_ids from the YAML file
+    yahoo_id_for = YAML.load_file("#{RAILS_ROOT}/extras/yahoo-beacon-map.yaml")
+
+    xml_file = File.expand_path(File.dirname(__FILE__) + "/../../db/import") + "/ACTIVE_PLAYERS-NHL-REGULAR-20090927.xml"
+    doc = Hpricot.XML(open(xml_file))
+
+    SECTIONS = %w{ player team playerstats }
+
+    puts "Loading players from #{xml_file}."
+    (doc/:playerentry).each do |playerentry|
+      
+      player_attributes = Hash.new
+      position = ''
+      (playerentry/:player).each do |player|
+        player_attributes["beacon_id"]  = (player/'ID').inner_html
+        player_attributes["first_name"] = (player/'FirstName').inner_html
+        player_attributes["last_name"]  = (player/'LastName').inner_html
+        position   = (player/'Position').inner_html
+      end
+      
+      player = Player.find_or_create_by_beacon_id(player_attributes)
+      player.yahoo_id = yahoo_id_for[player.beacon_id]
+      player.save
+      player.positions << Position.find_or_create_by_abbreviation(position)
+        
+      nhl_team_attributes = Hash.new
+
+      (playerentry/:team).each do |team|
+        nhl_team_attributes["beacon_id"]    = (team/'ID').inner_html
+        nhl_team_attributes["city"]         = (team/'City').inner_html
+        nhl_team_attributes["name"]         = (team/'Name').inner_html
+        nhl_team_attributes["abbreviation"] = (team/'Abbreviation').inner_html
+        photo_path = "public/images/nhl_team_logos"
+        photo_name = "#{nhl_team_attributes["abbreviation"].downcase}.gif"
+        nhl_team_attributes["photo"]        = File.open("#{photo_path}/#{photo_name}")
+      end
+      
+      nhl_team = NhlTeam.find_or_create_by_beacon_id(nhl_team_attributes)
+
+      nhl_team.players << player
+      
+      puts "| #{player.first_name} #{player.last_name} - #{player.positions.first.abbreviation} - #{nhl_team.abbreviation} - B:#{player.beacon_id} -Y:#{player.yahoo_id} |"
+    end
+  end
+
+  desc "This task imports all of the player stats for the 2008-2009 season."
+  task :import_0809_stats => :environment do
     ENV['RAILS_ENV'] = ARGV.first || ENV['RAILS_ENV'] || 'development'
     require File.expand_path(File.dirname(__FILE__) + "/../../config/environment")
 
@@ -36,17 +88,20 @@ namespace :db do
 
     puts "Loading players from #{xml_file}."
     (doc/:statsentry).each do |statsentry|
-      p = Player.new
+      
+      player_attributes = Hash.new
+      position = ''
       (statsentry/:player).each do |player|
-        p.beacon_id  = (player/'ID').inner_html
-        p.first_name = (player/'FirstName').inner_html
-        p.last_name  = (player/'LastName').inner_html
+        player_attributes["beacon_id"]  = (player/'ID').inner_html
+        player_attributes["first_name"] = (player/'FirstName').inner_html
+        player_attributes["last_name"]  = (player/'LastName').inner_html
         position   = (player/'Position').inner_html
-        pos = Position.find_or_create_by_abbreviation position
-        p.positions << pos
-        p.yahoo_id = yahoo_id_for[p.beacon_id]
       end
-      p.save
+      
+      player = Player.find_or_create_by_beacon_id(player_attributes)
+      player.yahoo_id = yahoo_id_for[player.beacon_id]
+      player.save
+      player.positions << Position.find_or_create_by_abbreviation(position)
   
       nhl_team_attributes = Hash.new
 
@@ -62,9 +117,9 @@ namespace :db do
       
       nhl_team = NhlTeam.find_or_create_by_beacon_id(nhl_team_attributes)
 
-      nhl_team.players << p
+      nhl_team.players << player
       
-      puts "| #{p.first_name} #{p.last_name} - #{p.positions.first.abbreviation} - #{nhl_team.abbreviation} - B:#{p.beacon_id} -Y:#{p.yahoo_id} |"    
+      puts "| #{player.first_name} #{player.last_name} - #{player.positions.first.abbreviation} - #{nhl_team.abbreviation} - B:#{player.beacon_id} -Y:#{player.yahoo_id} |"    
   
       s = Stat.new
       (statsentry/:playerstats).each do |playerstats|
