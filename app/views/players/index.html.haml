@@ -28,13 +28,13 @@
           %td.player-positions= player.positions.collect{|position| position.abbreviation}.join('/')
           %td.add-player= link_to(image_tag("icons/add_to_roster.png"), {:controller => 'roster_assignments', :action => 'create', :id => player.id}, :confirm => "Are you sure? This will add #{player.name} to #{@current_fantasy_team.name}!", :method => :post)
           %td.player-name= player.name
-          %td.player-stat.display-none= player.stats.last.goals
-          %td.player-stat.display-none= player.stats.last.assists
-          %td.player-stat.display-none= player.stats.last.plus_minus
-          %td.player-stat.display-none= player.stats.last.penalty_minutes
-          %td.player-stat.display-none= player.stats.last.powerplay_points
-          %td.player-stat.display-none= player.stats.last.shorthanded_points
-          %td.player-stat.display-none= player.stats.last.hits
+          %td.player-stat.display-none= player.stats.last.goals rescue nil
+          %td.player-stat.display-none= player.stats.last.assists rescue nil
+          %td.player-stat.display-none= player.stats.last.plus_minus rescue nil
+          %td.player-stat.display-none= player.stats.last.penalty_minutes rescue nil
+          %td.player-stat.display-none= player.stats.last.powerplay_points rescue nil
+          %td.player-stat.display-none= player.stats.last.shorthanded_points rescue nil
+          %td.player-stat.display-none= player.stats.last.hits rescue nil
           %td.nhl-team-name.display-none= player.nhl_team.abbreviation
           %td.nhl-team-photo= image_tag player.nhl_team.photo.url(:thumb), :class => 'small-photo'
           - if player.yahoo_id

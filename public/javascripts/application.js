@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $('a[rel*=facebox]').facebox();
+  
   $('#flash_content').pause(5000).slideUp('slow');
   
   $("tr.row").hover(

@@ -1,0 +1,21 @@
+- form_for @player, :html => { :multipart => true } do |f|
+  = f.error_messages
+  %p
+    = f.label :nhl_team_id
+    = f.collection_select :nhl_team_id, @nhl_teams, 'id', 'name'
+  %p
+    = f.label :first_name
+    = f.text_field :first_name
+  %p
+    = f.label :last_name
+    = f.text_field :last_name
+  %p
+    = f.label :photo
+    = f.file_field :photo
+  %p
+    - @positions.each do |position|
+      = check_box_tag "player[position_ids][]", position.id, @player.positions.include?(position)
+      = position.name
+      %br
+  %p
+    = f.submit "Submit"
