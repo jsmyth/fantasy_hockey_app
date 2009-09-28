@@ -60,5 +60,6 @@
   %hr
   %p
     #liveSearch
-  %p
-    %h2=link_to '** FREEZE DRAFT **', {:controller => 'fantasy_seasons', :id => @current_fantasy_season, :action => 'freeze_draft'}, :confirm => "Are you sure? This will finalize the draft order for the #{@current_fantasy_season.league.name} #{@current_fantasy_season.name} draft. What's done can't be undone son.", :method => :post
+  - if commissioner?
+    %p
+      %h2=link_to '** FREEZE DRAFT **', {:controller => 'fantasy_seasons', :id => @current_fantasy_season, :action => 'freeze_draft'}, :confirm => "Are you sure? This will finalize the draft order for the #{@current_fantasy_season.league.name} #{@current_fantasy_season.name} draft. What's done can't be undone son.", :method => :post
