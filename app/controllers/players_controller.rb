@@ -29,7 +29,19 @@ class PlayersController < InheritedResources::Base
     
     render :layout => false
   end
-  
+
+  def create
+    @player = Player.new(params[:player])
+    
+    if @player.save
+      flash[:notice] = "Successfully created player."
+    else
+      flash[:error] = "Can't create player!"
+    end
+
+    redirect_to request.referer ? :back : players_url
+  end
+    
   def edit
     @player = Player.find params[:id]
     @nhl_teams = NhlTeam.all
