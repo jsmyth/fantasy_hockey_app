@@ -22,6 +22,7 @@ class RosterAssignmentsController < ApplicationController
       @draft_pick.player = @player
       if @draft_pick.save
         @roster_assignment.fantasy_team = @draft_pick.fantasy_team
+        @roster_assignment.minor_league = true if params[:minor_league]
         if @roster_assignment.save
           flash[:notice] = "Successfully drafted #{@player.name}."
           if @current_fantasy_season.draft_picks.find(:all, :conditions => {:player_id => nil}).count == 0
