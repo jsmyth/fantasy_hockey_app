@@ -1,5 +1,5 @@
-rake db:reset         \
-  && rake db:seed     \
-  && rake db:import   \
-  && rake db:dev_data \
+rake db:reset                 \
+  && rake db:seed             \
+  && rake db:import_players   \
+  && rake db:dev_data         \
   && extras/get_yahoo_players_and_player_ids.rb
