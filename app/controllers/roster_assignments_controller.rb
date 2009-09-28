@@ -18,6 +18,10 @@ class RosterAssignmentsController < ApplicationController
     
     # If we're drafting
     if params[:draft_player]
+      unless @current_state == 'draft_frozen' && commissioner?
+        flash[:error] = "Your draft must be frozen in order to draft."
+        redirect_to fantasy_season_url(@current_fantasy_season) and return
+      end
       @draft_pick = DraftPick.find params[:draft_pick]
       @draft_pick.player = @player
       if @draft_pick.save

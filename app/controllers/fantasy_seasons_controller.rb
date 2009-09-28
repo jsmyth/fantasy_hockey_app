@@ -102,7 +102,7 @@ class FantasySeasonsController < InheritedResources::Base
   end
   
   def snap_draft
-    unless @current_state == 'pre_season'
+    unless @current_state == 'pre_season' && commissioner?
       flash[:error] = "You must be in the pre-season to snap your draft."
       redirect_to fantasy_season_url(@current_fantasy_season) and return
     end
@@ -128,7 +128,7 @@ class FantasySeasonsController < InheritedResources::Base
   end
 
   def freeze_draft
-    unless @current_state == 'draft_snapped'
+    unless @current_state == 'draft_snapped' && commissioner?
       flash[:error] = "Your draft must be snapped in order to freeze draft."
       redirect_to fantasy_season_url(@current_fantasy_season) and return
     end
@@ -189,6 +189,11 @@ class FantasySeasonsController < InheritedResources::Base
   end
 
   def update_draft_pick
+    unless @current_state == 'draft_snapped' && commissioner?
+      flash[:error] = "Your draft must be snapped in order to freeze draft."
+      redirect_to fantasy_season_url(@current_fantasy_season) and return
+    end
+    
     fantasy_season = FantasySeason.find params[:id]
     fantasy_team_name = params[:new_value]
     draft_pick_number = params[:draft_pick].to_i - 1
