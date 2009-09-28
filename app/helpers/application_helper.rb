@@ -11,4 +11,8 @@ module ApplicationHelper
       return link_to "** DRAFT RESULTS **", draft_results_fantasy_season_path(@current_fantasy_season)
     end
   end
+  
+  def commissioner?
+    return false unless @commissioner
+  end
 end

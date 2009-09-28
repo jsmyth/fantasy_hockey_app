@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
       @current_fantasy_season = @current_league.fantasy_seasons.last
       @current_state = @current_fantasy_season.state
       @current_fantasy_team = @current_user.fantasy_teams.find(:all, :include => :fantasy_seasons, :conditions => {"fantasy_seasons.id" => @current_fantasy_season.id}).last
+      @commissioner = commissioner?
     end
   end
 
@@ -43,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
   
   def commissioner?
-    current_user.role_assignments.find(:all,
+    commissioner_roles = current_user.role_assignments.find(:all,
       :conditions => {
         :fantasy_season_id => @current_fantasy_season.id,
         :role_id           => Role.find_by_name('Commissioner')

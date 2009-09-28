@@ -22,6 +22,14 @@ class PlayersController < InheritedResources::Base
     end
   end
   
+  def new
+    @player = Player.new
+    @nhl_teams = NhlTeam.all
+    @positions = Position.all
+    
+    render :layout => false
+  end
+  
   def edit
     @player = Player.find params[:id]
     @nhl_teams = NhlTeam.all

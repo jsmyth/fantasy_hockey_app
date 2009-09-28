@@ -20,7 +20,7 @@
   |
   = link_to "view all", fantasy_seasons_path
   |
-  if commissioner?
+  - unless @commissioner.empty?
     = link_to "snap draft", {:controller => 'fantasy_seasons', :action => 'snap_draft', :id => @fantasy_season}, :method => 'post'
     |
   = link_to "enter draft", draft_fantasy_season_path(@fantasy_season)
