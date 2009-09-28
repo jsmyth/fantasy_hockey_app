@@ -13,6 +13,6 @@ module ApplicationHelper
   end
   
   def commissioner?
-    return false unless @commissioner
+    return true unless @commissioner.empty?
   end
 end
