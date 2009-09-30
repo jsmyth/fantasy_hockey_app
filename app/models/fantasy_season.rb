@@ -94,6 +94,15 @@ class FantasySeason < ActiveRecord::Base
     return draft_picks
   end
 
+  def owner_of_player(player)
+    owned_by = fantasy_teams.find(:all,
+      :include    => :players,
+      :conditions => ["players.id = ?", player.id]
+    ).first.name rescue nil
+
+    owned_by ||= 'FA'
+  end
+  
   private
   
   def matchup_for_week(week_number)

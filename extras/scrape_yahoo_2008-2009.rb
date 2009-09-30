@@ -9,8 +9,8 @@ include Spreadsheet
 debug = false
 verbose = false
 
-yahoo_login = "CHANGEME"
-yahoo_password = 'CHANGEME'
+yahoo_login = "theaduiolounge"
+yahoo_password = '@#7$%*^&9'
 
 number_of_pages = ARGV[0] ? ARGV[0].to_i : 1
 number_of_players = number_of_pages * 25
@@ -34,8 +34,9 @@ yahoo_data = Scrubyt::Extractor.define(:agent => :firefox) do
 
   fetch "http://hockey.fantasysports.yahoo.com/hockey/#{league_number}/players/"
   
-  select_option('stat1', '08-09 Season (total)')
-  select_option('status', 'All Players')
+  select_option('stat1',  '08-09 Season (total)')
+  select_option('pos',    'All Goaltenders'     )
+  select_option('status', 'All Players'         )
   submit
 
   player '//body/div/div/div/div/table/tbody/tr' do

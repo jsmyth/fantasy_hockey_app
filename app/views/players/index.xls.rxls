@@ -28,10 +28,23 @@ id_field_format = Spreadsheet::Format.new :horizontal_align => :right,
 
 
 sheet.row(0).default_format = header
-sheet.row(0).insert 0, "BID"
-sheet.row(0).insert 1, "Player Name"
-sheet.row(0).insert 2, "NHL Team"
-sheet.row(0).insert 3, "Owned By"
+sheet.row(0).insert 0,  "BID"
+sheet.row(0).insert 1,  "Player Name"
+sheet.row(0).insert 2,  "NHL Team"
+sheet.row(0).insert 3,  "Owned By"
+sheet.row(0).insert 4,  "POS"
+sheet.row(0).insert 5,  "O-R"
+sheet.row(0).insert 6,  "R"
+sheet.row(0).insert 7,  "P"
+sheet.row(0).insert 8,  "G"
+sheet.row(0).insert 9,  "A"
+sheet.row(0).insert 10, "+/-"
+sheet.row(0).insert 11, "PIM"
+sheet.row(0).insert 12, "PPP"
+sheet.row(0).insert 13, "SHP"
+sheet.row(0).insert 14, "FOW"
+sheet.row(0).insert 15, "H"
+sheet.row(0).insert 16, "GP"
 
 sheet.column(0).default_format = id_field_format
 sheet.column(0).width = 10
@@ -47,9 +60,23 @@ sheet.column(3).width = 30
   else
     sheet.row(index + 1).default_format = normal
   end
+  
   sheet.row(index + 1).height = 20
-  sheet.row(index + 1).insert 0, player.beacon_id
-  sheet.row(index + 1).insert 1, player.name
-  sheet.row(index + 1).insert 2, player.nhl_team.name
-  sheet.row(index + 1).insert 3, owned_by(player)
+  sheet.row(index + 1).insert 0,  player.beacon_id
+  sheet.row(index + 1).insert 1,  player.name
+  sheet.row(index + 1).insert 2,  player.nhl_team.name rescue nil
+  sheet.row(index + 1).insert 3,  owned_by(player)
+  sheet.row(index + 1).insert 4,  player.positions.collect(&:name).to_a.join(',') rescue nil
+  sheet.row(index + 1).insert 5,  player.yahoo_orank
+  sheet.row(index + 1).insert 6,  player.yahoo_rank
+  sheet.row(index + 1).insert 7,  player.stats.last.points rescue nil
+  sheet.row(index + 1).insert 8,  player.stats.last.goals rescue nil
+  sheet.row(index + 1).insert 9,  player.stats.last.assists rescue nil
+  sheet.row(index + 1).insert 10, player.stats.last.plus_minus rescue nil
+  sheet.row(index + 1).insert 11, player.stats.last.penalty_minutes rescue nil
+  sheet.row(index + 1).insert 12, player.stats.last.powerplay_points rescue nil
+  sheet.row(index + 1).insert 13, player.stats.last.shorthanded_points rescue nil
+  sheet.row(index + 1).insert 14, player.stats.last.faceoff_wins rescue nil
+  sheet.row(index + 1).insert 15, player.stats.last.hits rescue nil
+  sheet.row(index + 1).insert 16, player.stats.last.games_played rescue nil
 end

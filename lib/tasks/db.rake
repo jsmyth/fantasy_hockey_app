@@ -130,8 +130,11 @@ namespace :db do
           player.yahoo_rank  = yahoo_rank_for[player.yahoo_id]  if player.yahoo_id
           player.yahoo_orank = yahoo_orank_for[player.yahoo_id] if player.yahoo_id
           player.save
-          player.positions << Position.find_or_create_by_abbreviation(position)
-  
+          
+          unless player.positions.find_by_abbreviation(position)
+            player.positions << Position.find_by_abbreviation(position)
+          end
+          
           nhl_team_attributes = Hash.new
 
           (statsentry/:team).each do |team|
@@ -146,7 +149,7 @@ namespace :db do
       
           nhl_team = NhlTeam.find_or_create_by_beacon_id(nhl_team_attributes)
 
-          nhl_team.players << player
+          #nhl_team.players << player
       
           puts "| #{player.first_name} #{player.last_name} - #{player.positions.first.abbreviation} - #{nhl_team.abbreviation} - O:#{player.yahoo_orank} - R:#{player.yahoo_rank} - B:#{player.beacon_id} - Y:#{player.yahoo_id} |"
   
@@ -181,7 +184,7 @@ namespace :db do
             s.shootout_goal_percentage = (playerstats/'ShootoutGoalPct').inner_html
             #puts ", #{games_played}, #{goals}, #{assists}, #{points}"
           end
-          s.player = p
+          s.player = player
           s.save
         end
       end

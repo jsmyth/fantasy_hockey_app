@@ -6,7 +6,8 @@ class FantasyTeamsController < ApplicationController
   def show
     # If a fantasy_team id is offered use that, otherwise use the
     # current_user's fantasy_team in the current_league.
-    @fantasy_team = params[:id] ? FantasyTeam.find(params[:id]) : @current_fantasy_team
+    fantasy_team_id = params[:id] ? params[:id] : @current_fantasy_team.id
+    @fantasy_team = FantasyTeam.find(fantasy_team_id, :include => {:players => [:nhl_team, :positions]})
   end
   
   def new

@@ -78,6 +78,15 @@ class Player < ActiveRecord::Base
     Player.find(:all, :order => :yahoo_orank, :include => [:nhl_team, :positions]) - self.unavailable_in_fantasy_season(fantasy_season)
   end
 
+  def owner_in_fantasy_season(fantasy_season=@current_fantasy_season)
+    owned_by = fantasy_teams.find(:all,
+      :include    => :fantasy_seasons,
+      :conditions => ["fantasy_seasons.id = ?", fantasy_season.id]
+    ).first.name rescue nil
+
+    owned_by ||= 'FA'
+  end
+  
   def name
     "#{first_name} #{last_name}"
   end
