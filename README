@@ -1,6 +1,6 @@
 rake db:migrate:reset                 \
   && rake db:seed                     \
-  && rake db:import:players           \
+  && rake db:import:players:beacon    \
   && rake db:import:nhl_team_updates  \
   && rake db:dev_data                 \
   && extras/get_yahoo_players_and_player_ids.rb
