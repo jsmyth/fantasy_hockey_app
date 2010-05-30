@@ -30,7 +30,7 @@
             %li= link_to "#{@current_fantasy_season.league.name} #{@current_fantasy_season.name}", fantasy_season_path(@current_fantasy_season)
             %li
               |
-            %li= link_to @current_fantasy_team.name, fantasy_team_path(@current_fantasy_team)
+            %li= link_to @current_fantasy_team.name, fantasy_team_path(@current_fantasy_team) rescue nil
             %li
               |
             %li= link_to "Players", players_path
