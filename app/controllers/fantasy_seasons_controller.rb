@@ -19,9 +19,24 @@ class FantasySeasonsController < InheritedResources::Base
   end
   
   def new
-    @fantasy_season = FantasySeason.new
+    @last_season_attributes = @current_league.fantasy_seasons.last.attributes.to_hash
+    @fantasy_season = FantasySeason.new(@last_season_attributes)
     @nhl_seasons = NhlSeason.all
     @leagues = League.all
+  end
+  
+  def create
+    @fantasy_season = FantasySeason.new(params[:fantasy_season])
+    @last_season = @fantasy_season.league.fantasy_seasons.last
+    @last_season.fantasy_teams.each do |team|
+      @fantasy_season.fantasy_teams << team
+    end
+    if @fantasy_season.save
+      flash[:notice] = "Successfully created fantasy season."
+      redirect_to @fantasy_season
+    else
+      render :action => 'new'
+    end
   end
 
   def draft

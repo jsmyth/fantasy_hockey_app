@@ -1,6 +1,7 @@
 - form_for @fantasy_season do |f|
   = f.error_messages
 
+  %br
   %p
     = f.label "NHL Season"
     %br
@@ -10,4 +11,29 @@
     %br
     = f.collection_select('league_id', @leagues, 'id', 'name')
   %p
+    = f.label "Max NHL Roster Size"
+    %br
+    = f.text_field :max_nhl_roster_size, :size => 5
+  %p
+    = f.label "Max Minor Roster Size"
+    %br
+    = f.text_field :max_minor_roster_size, :size => 5
+  %p
+    = f.label "Max NHL Keepers"
+    %br
+    = f.text_field :max_nhl_keepers, :size => 5
+  %p
+    = f.label "Max Minor Keepers"
+    %br
+    = f.text_field :max_minor_keepers, :size => 5
+  %p
+    = f.label "Trade Deadline"
+    %br
+    = f.text_field :trade_deadline, :size => 15
+  %p
+    = f.label "Playoffs Start On"
+    %br
+    = f.text_field :playoffs_start_on, :size => 15
+  %p
     = f.submit "Submit"
+    
