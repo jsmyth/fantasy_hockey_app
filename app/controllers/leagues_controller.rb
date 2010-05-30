@@ -15,7 +15,7 @@ class LeaguesController < ApplicationController
     end
     
     @fantasy_season = @league.fantasy_seasons.last
-    @teams = @league.participations.collect{|p| p.fantasy_team}
+    @teams = @league.participations.sort_by{|p| p.fantasy_season_id}.collect{|p| "[#{p.fantasy_season.name}] #{p.fantasy_team.name}" }
     @all_matchups = @league.fantasy_seasons.last.matchups
     
     @available_players = Player.available_in_league(@league.name)

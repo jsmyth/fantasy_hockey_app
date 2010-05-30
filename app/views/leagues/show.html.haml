@@ -8,8 +8,8 @@
 %p
   %strong Teams
   %br
-  - @teams.each do |f|
-    = link_to f.name, f
+  - @teams.each do |team|
+    = link_to team
     %br
 
 %p
@@ -17,8 +17,8 @@
   %br
   - @available_players.each do |p|
     = link_to "+", {:controller => 'roster_assignments', :action => 'create', :id => p.id }, :confirm => "Really? Are you serious? One last chance to redeem yourself (push cancel)", :method => :post
+    = "[#{p.nhl_team.abbreviation}]"
     = link_to p.name, p
-    = p.nhl_team.abbreviation
     = p.positions.collect{|pos| pos.abbreviation}
     %br
 
