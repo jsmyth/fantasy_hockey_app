@@ -4,3 +4,5 @@ rake db:migrate:reset                 \
   && rake db:import:nhl_team_updates  \
   && rake db:dev_data                 \
   && extras/get_yahoo_players_and_player_ids.rb
+
+A diagram of the data model can be found in the extras/ directory.
