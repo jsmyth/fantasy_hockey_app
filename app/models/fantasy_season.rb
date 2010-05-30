@@ -65,7 +65,10 @@ class FantasySeason < ActiveRecord::Base
   def matchups
     all_matchups = Array.new
     
-    fantasy_teams.count.times do |week_number|
+    end_regular_season = playoffs_start_on
+    begin_season = nhl_season.begins_on
+    season_in_weeks = (end_regular_season - begin_season).to_i / 7
+    season_in_weeks.times do |week_number|
       all_matchups.push matchup_for_week(week_number)
     end
     
