@@ -1,8 +1,16 @@
-rake db:migrate:reset                 \
-  && rake db:seed                     \
-  && rake db:import:players:beacon    \
-  && rake db:import:nhl_team_updates  \
-  && rake db:dev_data                 \
-  && extras/get_yahoo_players_and_player_ids.rb
+REQUIRES:
+  - Rails 2.3.5
+  - Imagemagick
 
-A diagram of the data model can be found in the extras/ directory.
+INSTALLATION:
+  git clone git://github.com/jsmyth/fantasy_hockey_app.git
+  cd fantasy_hockey_app
+  rake db:migrate:reset                 \
+    && rake db:seed                     \
+    && rake db:import:players:beacon    \
+    && rake db:import:nhl_team_updates  \
+    && rake db:dev_data                 \
+    && extras/get_yahoo_players_and_player_ids.rb
+
+MISC.
+  A diagram of the data model can be found in the extras/ directory.
