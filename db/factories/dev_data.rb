@@ -95,6 +95,11 @@ Factory.define :nhl_season_09_10, :class => NhlSeason do |f|
 end
 nhl_season_09_10 = Factory(:nhl_season_09_10)
 
+Factory.define :nhl_season_08_09, :class => NhlSeason do |f|
+  f.begins_on '2008-10-07'
+end
+nhl_season_10_11 = Factory(:nhl_season_10_11)
+
 ### Leagues ###
 
 Factory.define :pchl_league, :class => League do |f|
