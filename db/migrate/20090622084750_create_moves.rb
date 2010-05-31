@@ -3,6 +3,7 @@ class CreateMoves < ActiveRecord::Migration
     create_table :moves do |t|
       t.integer :fantasy_team_id
       t.integer :player_id
+      t.integer :operation_id
       t.timestamps
     end
   end
