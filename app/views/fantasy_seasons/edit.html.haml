@@ -1,6 +1,6 @@
-- title "New Fantasy Season"
+- title "Edit Fantasy Season"
 
-- form_for @fantasy_season do |f|
+- form_for @fantasy_season, :url => { :action => :update }, :html => {:method => :put } do |f|
   = f.error_messages
 
   %br

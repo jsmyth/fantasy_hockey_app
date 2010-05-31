@@ -1,7 +1,4 @@
-class FantasySeasonsController < InheritedResources::Base
-  respond_to :html, :xml
-  respond_to :json, :only => :index
-  respond_to :atom, :only => :index
+class FantasySeasonsController < ApplicationController
 
   def show
     if params[:id]
@@ -20,6 +17,9 @@ class FantasySeasonsController < InheritedResources::Base
   
   def new
     @last_season_attributes = @current_league.fantasy_seasons.last.attributes.to_hash
+    @last_season_attributes["playoffs_start_on"] = @last_season_attributes["playoffs_start_on"] + 1.year
+    @last_season_attributes["trade_deadline"]    = @last_season_attributes["trade_deadline"]    + 1.year
+    @last_season_attributes["nhl_season_id"]     = @last_season_attributes["nhl_season_id"]     + 1
     @fantasy_season = FantasySeason.new(@last_season_attributes)
     @nhl_seasons = NhlSeason.all
     @leagues = League.all
@@ -36,6 +36,25 @@ class FantasySeasonsController < InheritedResources::Base
       redirect_to @fantasy_season
     else
       render :action => 'new'
+    end
+  end
+  
+  def edit
+    @fantasy_season = FantasySeason.find(params[:id])
+    @league = @fantasy_season.league
+    @last_season_attributes = @league.fantasy_seasons.last.attributes.to_hash
+    @fantasy_season = FantasySeason.new(@last_season_attributes)
+    @nhl_seasons = NhlSeason.all
+    @leagues = League.all
+  end
+  
+  def update
+    @fantasy_season = FantasySeason.find(params[:id])
+    if @fantasy_season.update_attributes(params[:fantasy_season])
+      flash[:notice] = "Successfully updated the \"#{@fantasy_season.league.name} #{@fantasy_season.name}\" fantasy season."
+      redirect_to @fantasy_season
+    else
+      render :action => 'edit'
     end
   end
 
