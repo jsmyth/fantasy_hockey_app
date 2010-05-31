@@ -10,6 +10,7 @@ class FantasyTeam < ActiveRecord::Base
   has_many :roster_assignments
   has_many :players, :through => :roster_assignments
   has_many :starts
+  has_many :moves
   
   has_attached_file :photo,
     :default_url => "players/missing.jpg",

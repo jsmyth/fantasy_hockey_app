@@ -62,6 +62,10 @@ class FantasySeason < ActiveRecord::Base
     self.fantasy_teams.collect{|f_t| f_t.players}
   end
   
+  def moves
+    self.fantasy_teams.collect{|f_t| f_t.moves}
+  end
+  
   def matchups
     all_matchups = Array.new
     
