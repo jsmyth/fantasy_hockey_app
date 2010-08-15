@@ -242,6 +242,18 @@ Factory.define :drunk, :class => FantasyTeam do |f|
 end
 drunk = Factory(:drunk, :user => User.find_by_login('dan'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
+Factory.define :mikey_team, :class => FantasyTeam do |f|
+  f.name 'Mikey Team'
+  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'DrunkZamboniDrivers.jpg'), 'image/jpg') }
+end
+mikey_team = Factory(:mikey_team, :user => User.find_by_login('mikey'), :fantasy_seasons => [fantasy_season_10_11_pchl])
+
+Factory.define :chris_team, :class => FantasyTeam do |f|
+  f.name 'Chris Team'
+  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'DrunkZamboniDrivers.jpg'), 'image/jpg') }
+end
+chris_team = Factory(:chris_team, :user => User.find_by_login('chris'), :fantasy_seasons => [fantasy_season_10_11_pchl])
+
 Factory.define :bulls, :class => FantasyTeam do |f|
   f.name 'Bulls'
 end
