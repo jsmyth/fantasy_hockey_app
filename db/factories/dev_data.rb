@@ -83,6 +83,22 @@ Factory.define :dan, :class => User do |f|
 end
 dan = Factory(:dan)
 
+Factory.define :mikey, :class => User do |f|
+  f.display_name 'Mike Byers'
+  f.login 'mikey'
+  f.password 'password'
+  f.password_confirmation { |u| u.password }
+end
+mikey = Factory(:mikey)
+
+Factory.define :chris, :class => User do |f|
+  f.display_name 'Chris Gilbertson'
+  f.login 'chris'
+  f.password 'password'
+  f.password_confirmation { |u| u.password }
+end
+chris = Factory(:chris)
+
 ### NHL Seasons ###
 
 Factory.define :nhl_season_08_09, :class => NhlSeason do |f|
