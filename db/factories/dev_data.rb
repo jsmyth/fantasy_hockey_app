@@ -178,6 +178,16 @@ Factory.define :fantasy_season_09_10_dev, :class => FantasySeason do |f|
 end
 fantasy_season_09_10_dev = Factory(:fantasy_season_09_10_dev, :nhl_season => nhl_season_09_10, :league => dev_league)
 
+Factory.define :fantasy_season_10_11_pchl, :class => FantasySeason do |f|
+  f.max_nhl_roster_size '20'
+  f.max_minor_roster_size '5'
+  f.max_nhl_keepers '3'
+  f.max_minor_keepers '3'
+  f.trade_deadline '2011-02-07'
+  f.playoffs_start_on '2011-03-06'
+end
+fantasy_season_10_11_pchl = Factory(:fantasy_season_10_11_pchl, :nhl_season => nhl_season_10_11, :league => pchl_league)
+
 
 ### Fantasy Teams ###
 fantasy_team_photos_path = 'public/images/fantasy_teams'
