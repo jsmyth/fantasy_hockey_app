@@ -196,50 +196,50 @@ Factory.define :shamrocks, :class => FantasyTeam do |f|
   f.name 'Shamrocks'
   f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'Shamrocks.jpg'), 'image/jpg') }
 end
-shamrocks = Factory(:shamrocks, :user => User.find_by_login('jim'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
+shamrocks = Factory(:shamrocks, :user => User.find_by_login('jim'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl, fantasy_season_10_11_pchl])
 
 Factory.define :the_hammer, :class => FantasyTeam do |f|
   f.name 'theHammer'
   f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'theHammer.jpg'), 'image/jpg') }
 end
-the_hammer = Factory(:the_hammer, :user => User.find_by_login('jeremy'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
+the_hammer = Factory(:the_hammer, :user => User.find_by_login('jeremy'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl, fantasy_season_10_11_pchl])
 
 Factory.define :pw, :class => FantasyTeam do |f|
   f.name 'Project Watermelon'
   f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'ProjectWatermelon.jpg'), 'image/jpg') }
 end
-pw = Factory(:pw, :user => User.find_by_login('chris'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
+pw = Factory(:pw, :user => User.find_by_login('chris'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl, fantasy_season_10_11_pchl])
 
 Factory.define :d12, :class => FantasyTeam do |f|
   f.name 'Dirty Dozen'
   f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'DirtyDozen.jpg'), 'image/jpg') }
 end
-d12 = Factory(:d12, :user => User.find_by_login('rich'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
+d12 = Factory(:d12, :user => User.find_by_login('rich'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl, fantasy_season_10_11_pchl])
 
 ### STRANGE BREW ###
 Factory.define :sb, :class => FantasyTeam do |f|
   f.name 'Strange Brew'
   f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'StrangeBrew.jpg'), 'image/jpg') }
 end
-sb = Factory(:sb, :user => User.find_by_login('erik'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
+sb = Factory(:sb, :user => User.find_by_login('erik'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl, fantasy_season_10_11_pchl])
 
 Factory.define :windy, :class => FantasyTeam do |f|
   f.name 'Windy City Rumblers'
   f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'WindyCityRumblers.jpg'), 'image/jpg') }
 end
-windy = Factory(:windy, :user => User.find_by_login('mike'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
+windy = Factory(:windy, :user => User.find_by_login('mike'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl, fantasy_season_10_11_pchl])
 
 Factory.define :warriors, :class => FantasyTeam do |f|
   f.name 'Warriors'
   f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'Warriors.jpg'), 'image/jpg') }
 end
-warriors = Factory(:warriors, :user => User.find_by_login('rob'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
+warriors = Factory(:warriors, :user => User.find_by_login('rob'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl, fantasy_season_10_11_pchl])
 
 Factory.define :drunk, :class => FantasyTeam do |f|
   f.name 'Drunk Zamboni Drivers'
   f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'DrunkZamboniDrivers.jpg'), 'image/jpg') }
 end
-drunk = Factory(:drunk, :user => User.find_by_login('dan'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
+drunk = Factory(:drunk, :user => User.find_by_login('dan'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl, fantasy_season_10_11_pchl])
 
 Factory.define :mikey_team, :class => FantasyTeam do |f|
   f.name 'Mikey Team'
