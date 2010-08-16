@@ -91,13 +91,13 @@ Factory.define :mikey, :class => User do |f|
 end
 mikey = Factory(:mikey)
 
-Factory.define :chris, :class => User do |f|
+Factory.define :gilby, :class => User do |f|
   f.display_name 'Chris Gilbertson'
-  f.login 'chris'
+  f.login 'gilby'
   f.password 'password'
   f.password_confirmation { |u| u.password }
 end
-chris = Factory(:chris)
+gilby = Factory(:gilby)
 
 ### NHL Seasons ###
 
@@ -207,7 +207,6 @@ the_hammer = Factory(:the_hammer, :user => User.find_by_login('jeremy'), :fantas
 Factory.define :pw, :class => FantasyTeam do |f|
   f.name 'Project Watermelon'
   f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'ProjectWatermelon.jpg'), 'image/jpg') }
-  
 end
 pw = Factory(:pw, :user => User.find_by_login('chris'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl])
 
@@ -248,11 +247,11 @@ Factory.define :mikey_team, :class => FantasyTeam do |f|
 end
 mikey_team = Factory(:mikey_team, :user => User.find_by_login('mikey'), :fantasy_seasons => [fantasy_season_10_11_pchl])
 
-Factory.define :chris_team, :class => FantasyTeam do |f|
-  f.name 'Chris Team'
+Factory.define :gilby_team, :class => FantasyTeam do |f|
+  f.name 'Gilby Team'
   f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'DrunkZamboniDrivers.jpg'), 'image/jpg') }
 end
-chris_team = Factory(:chris_team, :user => User.find_by_login('chris'), :fantasy_seasons => [fantasy_season_10_11_pchl])
+gilby_team = Factory(:gilby_team, :user => User.find_by_login('gilby'), :fantasy_seasons => [fantasy_season_10_11_pchl])
 
 Factory.define :bulls, :class => FantasyTeam do |f|
   f.name 'Bulls'
