@@ -17,7 +17,7 @@ $(document).ready(function() {
           complete: function(request){
             $('#fantasy-teams-list').effect('highlight');
           },
-          url: '/fantasy_seasons/3/sort_fantasy_teams'
+          url: '/fantasy_seasons/5/sort_fantasy_teams'
         })
       }
     }
