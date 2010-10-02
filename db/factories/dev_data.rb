@@ -242,17 +242,17 @@ Factory.define :drunk, :class => FantasyTeam do |f|
 end
 drunk = Factory(:drunk, :user => User.find_by_login('dan'), :fantasy_seasons => [fantasy_season_08_09_pchl, fantasy_season_09_10_pchl, fantasy_season_10_11_pchl])
 
-Factory.define :mikey_team, :class => FantasyTeam do |f|
-  f.name 'Mikey Team'
+Factory.define :the_deposits, :class => FantasyTeam do |f|
+  f.name 'The Deposits'
   f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'DrunkZamboniDrivers.jpg'), 'image/jpg') }
 end
-mikey_team = Factory(:mikey_team, :user => User.find_by_login('mikey'), :fantasy_seasons => [fantasy_season_10_11_pchl])
+the_deposits = Factory(:the_deposits, :user => User.find_by_login('mikey'), :fantasy_seasons => [fantasy_season_10_11_pchl])
 
-Factory.define :chris_team, :class => FantasyTeam do |f|
-  f.name 'Chris Team'
-  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'DrunkZamboniDrivers.jpg'), 'image/jpg') }
+Factory.define :orthopedic_shoes, :class => FantasyTeam do |f|
+  f.name 'Orthopedic Shoes'
+  f.photo { ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, fantasy_team_photos_path, 'WindyCityRumblers.jpg'), 'image/jpg') }
 end
-chris_team = Factory(:chris_team, :user => User.find_by_login('chris'), :fantasy_seasons => [fantasy_season_10_11_pchl])
+orthopedic_shoes = Factory(:orthopedic_shoes, :user => User.find_by_login('gilby'), :fantasy_seasons => [fantasy_season_10_11_pchl])
 
 Factory.define :bulls, :class => FantasyTeam do |f|
   f.name 'Bulls'
@@ -342,14 +342,6 @@ Factory.define :pchl_shamrocks_ilya_kovalchuk, :class => RosterAssignment do |f|
 end
 pchl_shamrocks_ilya_kovalchuk = Factory(:pchl_shamrocks_ilya_kovalchuk)
 
-rick_nash = Player.find_by_beacon_id 319
-Factory.define :pchl_shamrocks_rick_nash, :class => RosterAssignment do |f|
-  f.player_id rick_nash.id
-  f.fantasy_team_id 1
-  f.keeper true
-end
-pchl_shamrocks_rick_nash = Factory(:pchl_shamrocks_rick_nash)
-
 bobby_ryan = Player.find_by_beacon_id 4270
 Factory.define :pchl_shamrocks_bobby_ryan, :class => RosterAssignment do |f|
   f.player_id bobby_ryan.id
@@ -357,6 +349,24 @@ Factory.define :pchl_shamrocks_bobby_ryan, :class => RosterAssignment do |f|
   f.keeper true
 end
 pchl_shamrocks_bobby_ryan = Factory(:pchl_shamrocks_bobby_ryan)
+
+brayden_schenn = Player.find_by_beacon_id 4712
+Factory.define :pchl_shamrocks_brayden_schenn, :class => RosterAssignment do |f|
+  f.player_id brayden_schenn.id
+  f.fantasy_team_id 1
+  f.minor_league true
+  f.keeper true
+end
+pchl_shamrocks_brayden_schenn = Factory(:pchl_shamrocks_brayden_schenn)
+
+nazem_kadri = Player.find_by_beacon_id 4766
+Factory.define :pchl_shamrocks_nazem_kadri, :class => RosterAssignment do |f|
+  f.player_id nazem_kadri.id
+  f.fantasy_team_id 1
+  f.minor_league true
+  f.keeper true
+end
+pchl_shamrocks_nazem_kadri = Factory(:pchl_shamrocks_nazem_kadri)
 
 jonas_gustavsson = Player.find_by_beacon_id 4687
 Factory.define :pchl_shamrocks_jonas_gustavsson, :class => RosterAssignment do |f|
@@ -366,7 +376,6 @@ Factory.define :pchl_shamrocks_jonas_gustavsson, :class => RosterAssignment do |
   f.keeper true
 end
 pchl_shamrocks_jonas_gustavsson = Factory(:pchl_shamrocks_jonas_gustavsson)
-
 
 sidney_crosby = Player.find_by_beacon_id 3490
 Factory.define :pchl_thehammer_sidney_crosby, :class => RosterAssignment do |f|
@@ -392,14 +401,6 @@ Factory.define :pchl_thehammer_niklas_backstrom, :class => RosterAssignment do |
 end
 pchl_thehammer_niklas_backstrom = Factory(:pchl_thehammer_niklas_backstrom)
 
-marian_gaborik = Player.find_by_beacon_id 736
-Factory.define :pchl_thehammer_marian_gaborik, :class => RosterAssignment do |f|
-  f.player_id marian_gaborik.id
-  f.fantasy_team_id 2
-  f.keeper true
-end
-pchl_thehammer_marian_gaborik = Factory(:pchl_thehammer_marian_gaborik)
-
 nikita_filatov = Player.find_by_beacon_id 4496
 Factory.define :pchl_thehammer_nikita_filatov, :class => RosterAssignment do |f|
   f.player_id nikita_filatov.id
@@ -418,6 +419,14 @@ Factory.define :pchl_thehammer_james_vanriemsdyk, :class => RosterAssignment do 
 end
 pchl_thehammer_james_vanriemsdyk = Factory(:pchl_thehammer_james_vanriemsdyk)
 
+tyler_seguin = Player.find_by_beacon_id 4875
+Factory.define :pchl_thehammer_tyler_seguin, :class => RosterAssignment do |f|
+  f.player_id tyler_seguin.id
+  f.fantasy_team_id 2
+  f.minor_league true
+  f.keeper true
+end
+pchl_thehammer_tyler_seguin = Factory(:pchl_thehammer_tyler_seguin)
 
 patrick_kane = Player.find_by_beacon_id 4265
 Factory.define :pchl_pw_patrick_kane, :class => RosterAssignment do |f|
@@ -427,14 +436,6 @@ Factory.define :pchl_pw_patrick_kane, :class => RosterAssignment do |f|
 end
 pchl_pw_patrick_kane = Factory(:pchl_pw_patrick_kane)
 
-vincent_lecavalier = Player.find_by_beacon_id 443
-Factory.define :pchl_pw_vincent_lecavalier, :class => RosterAssignment do |f|
-  f.player_id vincent_lecavalier.id
-  f.fantasy_team_id 3
-  f.keeper true
-end
-pchl_pw_vincent_lecavalier = Factory(:pchl_pw_vincent_lecavalier)
-
 martin_stlouis = Player.find_by_beacon_id 458
 Factory.define :pchl_pw_martin_stlouis, :class => RosterAssignment do |f|
   f.player_id martin_stlouis.id
@@ -443,14 +444,6 @@ Factory.define :pchl_pw_martin_stlouis, :class => RosterAssignment do |f|
 end
 pchl_pw_martin_stlouis = Factory(:pchl_pw_martin_stlouis)
 
-daniel_sedin = Player.find_by_beacon_id 438
-Factory.define :pchl_pw_daniel_sedin, :class => RosterAssignment do |f|
-  f.player_id daniel_sedin.id
-  f.fantasy_team_id 3
-  f.keeper true
-end
-pchl_pw_daniel_sedin = Factory(:pchl_pw_daniel_sedin)
-
 henrik_sedin = Player.find_by_beacon_id 439
 Factory.define :pchl_pw_henrik_sedin, :class => RosterAssignment do |f|
   f.player_id henrik_sedin.id
@@ -458,23 +451,6 @@ Factory.define :pchl_pw_henrik_sedin, :class => RosterAssignment do |f|
   f.keeper true
 end
 pchl_pw_henrik_sedin = Factory(:pchl_pw_henrik_sedin)
-
-patrick_marleau = Player.find_by_beacon_id 376
-Factory.define :pchl_pw_patrick_marleau, :class => RosterAssignment do |f|
-  f.player_id patrick_marleau.id
-  f.fantasy_team_id 3
-  f.keeper true
-end
-pchl_pw_patrick_marleau = Factory(:pchl_pw_patrick_marleau)
-
-torrey_mitchell = Player.find_by_beacon_id 4283
-Factory.define :pchl_pw_torrey_mitchell, :class => RosterAssignment do |f|
-  f.player_id torrey_mitchell.id
-  f.fantasy_team_id 3
-  f.minor_league true
-  f.keeper true
-end
-pchl_pw_torrey_mitchell = Factory(:pchl_pw_torrey_mitchell)
 
 jordan_eberle = Player.find_by_beacon_id 4505
 Factory.define :pchl_pw_jordan_eberle, :class => RosterAssignment do |f|
@@ -485,6 +461,23 @@ Factory.define :pchl_pw_jordan_eberle, :class => RosterAssignment do |f|
 end
 pchl_pw_jordan_eberle = Factory(:pchl_pw_jordan_eberle)
 
+thomas_hickey = Player.find_by_beacon_id 4511
+Factory.define :pchl_pw_thomas_hickey, :class => RosterAssignment do |f|
+  f.player_id thomas_hickey.id
+  f.fantasy_team_id 3
+  f.minor_league true
+  f.keeper true
+end
+pchl_pw_thomas_hickey = Factory(:pchl_pw_thomas_hickey)
+
+logan_couture = Player.find_by_beacon_id 4715
+Factory.define :pchl_pw_logan_couture, :class => RosterAssignment do |f|
+  f.player_id logan_couture.id
+  f.fantasy_team_id 3
+  f.minor_league true
+  f.keeper true
+end
+pchl_pw_logan_couture = Factory(:pchl_pw_logan_couture)
 
 evgeni_malkin = Player.find_by_beacon_id 3652
 Factory.define :pchl_d12_evgeni_malkin, :class => RosterAssignment do |f|
@@ -493,14 +486,6 @@ Factory.define :pchl_d12_evgeni_malkin, :class => RosterAssignment do |f|
   f.keeper true
 end
 pchl_d12_evgeni_malkin = Factory(:pchl_d12_evgeni_malkin)
-
-mike_green = Player.find_by_beacon_id 925
-Factory.define :pchl_d12_mike_green, :class => RosterAssignment do |f|
-  f.player_id mike_green.id
-  f.fantasy_team_id 4
-  f.keeper true
-end
-pchl_d12_mike_green = Factory(:pchl_d12_mike_green)
 
 alexander_semin = Player.find_by_beacon_id 622
 Factory.define :pchl_d12_alexander_semin, :class => RosterAssignment do |f|
@@ -527,23 +512,23 @@ Factory.define :pchl_d12_colin_wilson, :class => RosterAssignment do |f|
 end
 pchl_d12_colin_wilson = Factory(:pchl_d12_colin_wilson)
 
-sergei_kostitsyn = Player.find_by_beacon_id 4340
-Factory.define :pchl_d12_sergei_kostitsyn, :class => RosterAssignment do |f|
-  f.player_id sergei_kostitsyn.id
+lars_eller = Player.find_by_beacon_id 4723
+Factory.define :pchl_d12_lars_eller, :class => RosterAssignment do |f|
+  f.player_id lars_eller.id
   f.fantasy_team_id 4
   f.minor_league true
   f.keeper true
 end
-pchl_d12_sergei_kostitsyn = Factory(:pchl_d12_sergei_kostitsyn)
+pchl_d12_lars_eller = Factory(:pchl_d12_lars_eller)
 
-
-jarome_iginla = Player.find_by_beacon_id 411
-Factory.define :pchl_sb_jarome_iginla, :class => RosterAssignment do |f|
-  f.player_id jarome_iginla.id
-  f.fantasy_team_id 5
+mikael_backlund = Player.find_by_beacon_id 4609
+Factory.define :pchl_d12_mikael_backlund, :class => RosterAssignment do |f|
+  f.player_id mikael_backlund.id
+  f.fantasy_team_id 4
+  f.minor_league true
   f.keeper true
 end
-pchl_sb_jarome_iginla = Factory(:pchl_sb_jarome_iginla)
+pchl_d12_mikael_backlund = Factory(:pchl_d12_mikael_backlund)
 
 marian_hossa = Player.find_by_beacon_id 219
 Factory.define :pchl_sb_marian_hossa, :class => RosterAssignment do |f|
@@ -570,14 +555,6 @@ Factory.define :pchl_sb_zdeno_chara, :class => RosterAssignment do |f|
 end
 pchl_sb_zdeno_chara = Factory(:pchl_sb_zdeno_chara)
 
-joe_pavelski = Player.find_by_beacon_id 4136
-Factory.define :pchl_sb_joe_pavelski, :class => RosterAssignment do |f|
-  f.player_id joe_pavelski.id
-  f.fantasy_team_id 5
-  f.keeper true
-end
-pchl_sb_joe_pavelski = Factory(:pchl_sb_joe_pavelski)
-
 tyler_myers = Player.find_by_beacon_id 4659
 Factory.define :pchl_sb_tyler_myers, :class => RosterAssignment do |f|
   f.player_id tyler_myers.id
@@ -587,15 +564,23 @@ Factory.define :pchl_sb_tyler_myers, :class => RosterAssignment do |f|
 end
 pchl_sb_tyler_myers = Factory(:pchl_sb_tyler_myers)
 
-bryan_little = Player.find_by_beacon_id 4297
-Factory.define :pchl_sb_bryan_little, :class => RosterAssignment do |f|
-  f.player_id bryan_little.id
+jamie_benn = Player.find_by_beacon_id 4707
+Factory.define :pchl_sb_jamie_benn, :class => RosterAssignment do |f|
+  f.player_id jamie_benn.id
   f.fantasy_team_id 5
   f.minor_league true
   f.keeper true
 end
-pchl_sb_bryan_little = Factory(:pchl_sb_bryan_little)
+pchl_sb_jamie_benn = Factory(:pchl_sb_jamie_benn)
 
+erik_karlsson = Player.find_by_beacon_id 4660
+Factory.define :pchl_sb_erik_karlsson, :class => RosterAssignment do |f|
+  f.player_id erik_karlsson.id
+  f.fantasy_team_id 5
+  f.minor_league true
+  f.keeper true
+end
+pchl_sb_erik_karlsson = Factory(:pchl_sb_erik_karlsson)
 
 joe_thornton = Player.find_by_beacon_id 82
 Factory.define :pchl_windy_joe_thornton, :class => RosterAssignment do |f|
@@ -604,14 +589,6 @@ Factory.define :pchl_windy_joe_thornton, :class => RosterAssignment do |f|
   f.keeper true
 end
 pchl_windy_joe_thornton = Factory(:pchl_windy_joe_thornton)
-
-phil_kessel = Player.find_by_beacon_id 4008
-Factory.define :pchl_windy_phil_kessel, :class => RosterAssignment do |f|
-  f.player_id phil_kessel.id
-  f.fantasy_team_id 6
-  f.keeper true
-end
-pchl_windy_phil_kessel = Factory(:pchl_windy_phil_kessel)
 
 paul_stastny = Player.find_by_beacon_id 4019
 Factory.define :pchl_windy_paul_stastny, :class => RosterAssignment do |f|
@@ -628,15 +605,6 @@ Factory.define :pchl_windy_anze_kopitar, :class => RosterAssignment do |f|
   f.keeper true
 end
 pchl_windy_anze_kopitar = Factory(:pchl_windy_anze_kopitar)
-
-derick_brassard = Player.find_by_beacon_id 4354
-Factory.define :pchl_windy_derick_brassard, :class => RosterAssignment do |f|
-  f.player_id derick_brassard.id
-  f.fantasy_team_id 6
-  f.minor_league true
-  f.keeper true
-end
-pchl_windy_derick_brassard = Factory(:pchl_windy_derick_brassard)
 
 john_tavares = Player.find_by_beacon_id 4680
 Factory.define :pchl_windy_john_tavares, :class => RosterAssignment do |f|
@@ -656,6 +624,14 @@ Factory.define :pchl_windy_victor_hedman, :class => RosterAssignment do |f|
 end
 pchl_windy_victor_hedman = Factory(:pchl_windy_victor_hedman)
 
+taylor_hall = Player.find_by_beacon_id 4846
+Factory.define :pchl_windy_taylor_hall, :class => RosterAssignment do |f|
+  f.player_id taylor_hall.id
+  f.fantasy_team_id 6
+  f.minor_league true
+  f.keeper true
+end
+pchl_windy_taylor_hall = Factory(:pchl_windy_taylor_hall)
 
 jeff_carter = Player.find_by_beacon_id 3488
 Factory.define :pchl_warriors_jeff_carter, :class => RosterAssignment do |f|
@@ -672,14 +648,6 @@ Factory.define :pchl_warriors_mike_richards, :class => RosterAssignment do |f|
   f.keeper true
 end
 pchl_warriors_mike_richards = Factory(:pchl_warriors_mike_richards)
-
-eric_staal = Player.find_by_beacon_id 247
-Factory.define :pchl_warriors_eric_staal, :class => RosterAssignment do |f|
-  f.player_id eric_staal.id
-  f.fantasy_team_id 7
-  f.keeper true
-end
-pchl_warriors_eric_staal = Factory(:pchl_warriors_eric_staal)
 
 zach_parise = Player.find_by_beacon_id 3502
 Factory.define :pchl_warriors_zach_parise, :class => RosterAssignment do |f|
@@ -698,15 +666,23 @@ Factory.define :pchl_warriors_evander_kane, :class => RosterAssignment do |f|
 end
 pchl_warriors_evander_kane = Factory(:pchl_warriors_evander_kane)
 
-patrick_berglund = Player.find_by_beacon_id 4545
-Factory.define :pchl_warriors_patrick_berglund, :class => RosterAssignment do |f|
-  f.player_id patrick_berglund.id
+matt_duchene = Player.find_by_beacon_id 4663
+Factory.define :pchl_warriors_matt_duchene, :class => RosterAssignment do |f|
+  f.player_id matt_duchene.id
   f.fantasy_team_id 7
   f.minor_league true
   f.keeper true
 end
-pchl_warriors_patrick_berglund = Factory(:pchl_warriors_patrick_berglund)
+pchl_warriors_matt_duchene = Factory(:pchl_warriors_matt_duchene)
 
+john_carlson = Player.find_by_beacon_id 4735
+Factory.define :pchl_warriors_john_carlson, :class => RosterAssignment do |f|
+  f.player_id john_carlson.id
+  f.fantasy_team_id 7
+  f.minor_league true
+  f.keeper true
+end
+pchl_warriors_john_carlson = Factory(:pchl_warriors_john_carlson)
 
 dany_heatley = Player.find_by_beacon_id 912
 Factory.define :pchl_drunk_dany_heatley, :class => RosterAssignment do |f|
@@ -724,14 +700,6 @@ Factory.define :pchl_drunk_pavel_datsyuk, :class => RosterAssignment do |f|
 end
 pchl_drunk_pavel_datsyuk = Factory(:pchl_drunk_pavel_datsyuk)
 
-jason_spezza = Player.find_by_beacon_id 228
-Factory.define :pchl_drunk_jason_spezza, :class => RosterAssignment do |f|
-  f.player_id jason_spezza.id
-  f.fantasy_team_id 8
-  f.keeper true
-end
-pchl_drunk_jason_spezza = Factory(:pchl_drunk_jason_spezza)
-
 ryan_getzlaf = Player.find_by_beacon_id 3623
 Factory.define :pchl_drunk_ryan_getzlaf, :class => RosterAssignment do |f|
   f.player_id ryan_getzlaf.id
@@ -740,23 +708,80 @@ Factory.define :pchl_drunk_ryan_getzlaf, :class => RosterAssignment do |f|
 end
 pchl_drunk_ryan_getzlaf = Factory(:pchl_drunk_ryan_getzlaf)
 
-fabian_brunnstrom = Player.find_by_beacon_id 4498
-Factory.define :pchl_drunk_fabian_brunnstrom, :class => RosterAssignment do |f|
-  f.player_id fabian_brunnstrom.id
+jason_demers = Player.find_by_beacon_id 4699
+Factory.define :pchl_drunk_jason_demers, :class => RosterAssignment do |f|
+  f.player_id jason_demers.id
   f.fantasy_team_id 8
   f.minor_league true
   f.keeper true
 end
-pchl_drunk_fabian_brunnstrom = Factory(:pchl_drunk_fabian_brunnstrom)
+pchl_drunk_jason_demers = Factory(:pchl_drunk_jason_demers)
 
-shawn_matthias = Player.find_by_beacon_id 4353
-Factory.define :pchl_drunk_shawn_matthias, :class => RosterAssignment do |f|
-  f.player_id shawn_matthias.id
+matt_carkner = Player.find_by_beacon_id 3868
+Factory.define :pchl_drunk_matt_carkner, :class => RosterAssignment do |f|
+  f.player_id matt_carkner.id
   f.fantasy_team_id 8
   f.minor_league true
   f.keeper true
 end
-pchl_drunk_shawn_matthias = Factory(:pchl_drunk_shawn_matthias)
+pchl_drunk_matt_carkner = Factory(:pchl_drunk_matt_carkner)
+
+ryan_stoa = Player.find_by_beacon_id 4747
+Factory.define :pchl_drunk_ryan_stoa, :class => RosterAssignment do |f|
+  f.player_id ryan_stoa.id
+  f.fantasy_team_id 8
+  f.minor_league true
+  f.keeper true
+end
+pchl_drunk_ryan_stoa = Factory(:pchl_drunk_ryan_stoa)
+
+marian_gaborik = Player.find_by_beacon_id 736
+Factory.define :pchl_the_deposits_marian_gaborik, :class => RosterAssignment do |f|
+  f.player_id marian_gaborik.id
+  f.fantasy_team_id 9
+  f.keeper true
+end
+pchl_the_deposits_marian_gaborik = Factory(:pchl_the_deposits_marian_gaborik)
+
+jarome_iginla = Player.find_by_beacon_id 411
+Factory.define :pchl_the_deposits_jarome_iginla, :class => RosterAssignment do |f|
+  f.player_id jarome_iginla.id
+  f.fantasy_team_id 9
+  f.keeper true
+end
+pchl_the_deposits_jarome_iginla = Factory(:pchl_the_deposits_jarome_iginla)
+
+eric_staal = Player.find_by_beacon_id 247
+Factory.define :pchl_the_deposits_eric_staal, :class => RosterAssignment do |f|
+  f.player_id eric_staal.id
+  f.fantasy_team_id 9
+  f.keeper true
+end
+pchl_the_deposits_eric_staal = Factory(:pchl_the_deposits_eric_staal)
+
+mike_green = Player.find_by_beacon_id 925
+Factory.define :pchl_orthopedic_shoes_mike_green, :class => RosterAssignment do |f|
+  f.player_id mike_green.id
+  f.fantasy_team_id 10
+  f.keeper true
+end
+pchl_orthopedic_shoes_mike_green = Factory(:pchl_orthopedic_shoes_mike_green)
+
+daniel_sedin = Player.find_by_beacon_id 438
+Factory.define :pchl_orthopedic_shoes_daniel_sedin, :class => RosterAssignment do |f|
+  f.player_id daniel_sedin.id
+  f.fantasy_team_id 10
+  f.keeper true
+end
+pchl_orthopedic_shoes_daniel_sedin = Factory(:pchl_orthopedic_shoes_daniel_sedin)
+
+patrick_marleau = Player.find_by_beacon_id 376
+Factory.define :pchl_orthopedic_shoes_patrick_marleau, :class => RosterAssignment do |f|
+  f.player_id patrick_marleau.id
+  f.fantasy_team_id 10
+  f.keeper true
+end
+pchl_orthopedic_shoes_patrick_marleau = Factory(:pchl_orthopedic_shoes_patrick_marleau)
 
 ### Role Assignments ###
 
