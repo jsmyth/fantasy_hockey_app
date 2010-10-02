@@ -32,7 +32,7 @@ namespace :db do
         yahoo_rank_for  = YAML.load_file("#{RAILS_ROOT}/extras/yahoo_id-yahoo_rank.yaml")
         yahoo_orank_for = YAML.load_file("#{RAILS_ROOT}/extras/yahoo_id-yahoo_orank.yaml")
 
-        xml_file = File.expand_path(File.dirname(__FILE__) + "/../../db/import") + "/ACTIVE_PLAYERS-NHL-REGULAR-20100815.xml"
+        xml_file = File.expand_path(File.dirname(__FILE__) + "/../../db/import") + "/ACTIVE_PLAYERS-NHL-REGULAR-20101002.xml"
         doc = Hpricot.XML(open(xml_file))
 
         SECTIONS = %w{ player team playerstats }
